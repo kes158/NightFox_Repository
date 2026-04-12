@@ -6,40 +6,47 @@
   "website": "https://github.com/kes158/NightFox_Repository",
   "patreonURL": "https://patreon.com/altstudio",
   "tintColor": "#00b39e",
+  "featuredApps": [],
   "apps": [
     {
       "name": "YouTube",
       "bundleIdentifier": "com.google.ios.youtube",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/uZI2Pyf.png",
       "tintColor": "#ff0002",
       "category": "other",
+      "screenshots": [],
       "versions": [
         {
           "version": "21.13.6",
           "date": "2026-04-12T15:02:48+09:00",
+          "localizedDescription": "NightFox",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
           "size": 126776343,
           "buildVersion": "",
-          "localizedDescription": "NightFox",
           "minOSVersion": ""
         }
       ],
-      "version": "21.13.6",
-      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
-      "size": 126776343
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "patreon": {}
     },
     {
       "name": "StikDebug",
       "bundleIdentifier": "com.stik.stikdebug",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/JtyYEdh.png",
       "tintColor": "#24ccfc",
       "category": "other",
+      "screenshots": [],
       "versions": [
         {
           "version": "3.0.1",
@@ -51,43 +58,67 @@
           "minOSVersion": ""
         }
       ],
-      "version": "3.0.1",
-      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/StikDebug-3.0.1.ipa",
-      "size": 10500000
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "patreon": {}
     },
     {
-      "name": "Instagram Theta",
+      "name": "Instagram",
       "bundleIdentifier": "com.burbn.instagram",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/W0sm7gJ.png",
-      "tintColor": "#ffef00",
+      "tintColor": "#00b39e",
       "category": "other",
+      "screenshots": [],
       "versions": [
         {
-          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.4/Instagram-Theta_415.1.ipa",
-          "size": 253600000,
-          "version": "415.1.0",
-          "buildVersion": "",
-          "date": "2026-04-12T14:59:00+09:00",
-          "minOSVersion": "",
-          "localizedDescription": ""
+          "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/Theta5.0Hotfix_407.0.0.ipa",
+          "size": 247400000,
+          "version": "407.0.0",
+          "buildVersion": null,
+          "date": "2026-04-12T15:53:00+09:00",
+          "localizedDescription": null,
+          "minOSVersion": null
         }
       ],
-      "version": "415.1.0",
-      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.4/Instagram-Theta_415.1.ipa",
-      "size": 253600000
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {
+          "NSAdvertisingAttributionReportEndpoint": "https://facebook.com",
+          "NSBluetoothAlwaysUsageDescription": "This allows your phone to find and connect to the glasses using a Bluetooth connection.",
+          "NSFocusStatusUsageDescription": "This allows Instagram to check to see if you’ve been missing notifications from friends. You can always change this later in settings.",
+          "NSCameraUsageDescription": "Instagram uses your device's camera to do things like help you take photos, record videos and use effects.",
+          "NSUserTrackingUsageDescription": "This helps Instagram personalize ads we show you.",
+          "NSPhotoLibraryAddUsageDescription": "This lets you save photos and videos to your Camera Roll.",
+          "NSLocationUsageDescription": "Instagram uses this to make some features work, personalize content and help people find places. You can change your preferences at any time in your device settings.",
+          "NSCalendarsUsageDescription": "This will let Instagram sync events to your calendar.",
+          "NSMicrophoneUsageDescription": "Instagram uses your device's microphone to do things like help you record videos and preview audio effects.",
+          "NSLocationWhenInUseUsageDescription": "Instagram uses this to make some features work, personalize content and help people find places. You can change your preferences at any time in your device settings.",
+          "NSCalendarsWriteOnlyAccessUsageDescription": "This will let Instagram sync events to your calendar.",
+          "NSFaceIDUsageDescription": "Enable Face ID for quick and secure authentication on Instagram.",
+          "NSLocationAlwaysAndWhenInUseUsageDescription": "Instagram uses this to make some features work, personalize content and help people find places. You can change your preferences at any time in your device settings.",
+          "NSContactsUsageDescription": "Instagram will use your contacts to suggest people and things you care about, and offer a better service. Your contacts will be periodically synced and securely stored on Instagram’s servers.",
+          "NSPhotoLibraryUsageDescription": "Instagram uses access to your camera roll to do things like help you share photos and videos to Instagram, apply effects and suggest photos and videos to share."
+        }
+      },
+      "patreon": {}
     },
     {
       "name": "RedditDeluxe",
       "bundleIdentifier": "com.reddit.Reddit",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/ApnXe4K.png",
       "tintColor": "#fc4404",
       "category": "other",
+      "screenshots": [],
       "versions": [
         {
           "version": "2026.06.0",
@@ -99,19 +130,23 @@
           "minOSVersion": ""
         }
       ],
-      "version": "2026.06.0",
-      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.5.2/Reddit_2026_13_1.ipa",
-      "size": 159600000
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "patreon": {}
     },
     {
       "name": "NeoFreeBird",
       "bundleIdentifier": "com.atebits.Tweetie2",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/9MyLXvv.png",
       "tintColor": "#1c9cf4",
       "category": "other",
+      "screenshots": [],
       "versions": [
         {
           "version": "11.35",
@@ -123,19 +158,23 @@
           "minOSVersion": ""
         }
       ],
-      "version": "11.35",
-      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/NeoFreeBird-2.2-Twitter-11.35-noFixTwitterLogin.ipa",
-      "size": 158500000
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "patreon": {}
     },
     {
       "name": "Spotify",
       "bundleIdentifier": "com.spotify.client",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/j51OrKn.png",
       "tintColor": "#1cd464",
       "category": "other",
+      "screenshots": [],
       "versions": [
         {
           "version": "9.1.34",
@@ -192,19 +231,23 @@
           "minOSVersion": "15.0"
         }
       ],
-      "version": "9.1.34",
-      "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289733435/download",
-      "size": 98723618
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "patreon": {}
     },
     {
       "name": "Spotify (Patched)",
       "bundleIdentifier": "com.spotify.client.patched",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/j51OrKn.png",
       "tintColor": "#1cd464",
       "category": "other",
+      "screenshots": [],
       "versions": [
         {
           "version": "9.1.34",
@@ -261,19 +304,23 @@
           "minOSVersion": "15.0"
         }
       ],
-      "version": "9.1.34",
-      "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289733485/download",
-      "size": 104414955
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "patreon": {}
     },
     {
       "name": "YouTubeMusic",
       "bundleIdentifier": "com.google.ios.youtubemusic",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/POQxyLq.png",
       "tintColor": "#fc0434",
       "category": "other",
+      "screenshots": [],
       "versions": [
         {
           "version": "9.13.3",
@@ -285,19 +332,23 @@
           "minOSVersion": ""
         }
       ],
-      "version": "9.13.3",
-      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.5.7/YTMusicUltimate.ipa",
-      "size": 98900000
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "patreon": {}
     },
     {
       "name": "Infuse",
       "bundleIdentifier": "com.firecore.infuse",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/yjmNslM.png",
       "tintColor": "#fc6c04",
       "category": "other",
+      "screenshots": [],
       "versions": [
         {
           "version": "8.4.1",
@@ -309,19 +360,23 @@
           "minOSVersion": ""
         }
       ],
-      "version": "8.4.1",
-      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.3.2/Infuse.8.4.1.ipa",
-      "size": 83500000
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "patreon": {}
     },
     {
       "name": "iTorrent",
       "bundleIdentifier": "com.xitrix.iTorrent2",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://user-images.githubusercontent.com/9553519/80646366-3d271680-8a75-11ea-8b60-9c5edd4ffd60.png",
       "tintColor": "#7100b3",
       "category": "other",
+      "screenshots": [],
       "versions": [
         {
           "version": "2.1.1",
@@ -333,19 +388,23 @@
           "minOSVersion": ""
         }
       ],
-      "version": "2.1.1",
-      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.1/iTorrent_2.1.1.ipa",
-      "size": 8700000
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "patreon": {}
     },
     {
       "name": "EnsWilde",
       "bundleIdentifier": "com.yangjiii.EnsWilde",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/CliGoqS.png",
       "tintColor": "#c0683c",
       "category": "other",
+      "screenshots": [],
       "versions": [
         {
           "version": "3.1.3",
@@ -357,9 +416,11 @@
           "minOSVersion": ""
         }
       ],
-      "version": "3.1.3",
-      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.3/EnsWilde_v3.1.3.ipa",
-      "size": 13600000
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "patreon": {}
     }
   ],
   "news": []

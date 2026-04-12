@@ -22,7 +22,7 @@
         {
           "version": "21.13.6",
           "buildVersion": "",
-          "date": "2026-04-12T09:17:03+09:00",
+          "date": "2026-04-12T09:25:03+09:00",
           "localizedDescription": "NightFox Build - 21.13.6",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
           "size": 126776343
@@ -34,7 +34,7 @@
           "buildVersion": "5.2b4",
           "date": "2026-04-11T22:56:00+09:00",
           "localizedDescription": "NightFox Build - 21.03.2",
-          "minOSVersion": null
+          "minOSVersion": ""
         }
       ],
       "appPermissions": {
@@ -74,7 +74,7 @@
           "buildVersion": "",
           "date": "2026-04-12T07:59:00+09:00",
           "localizedDescription": "NightFox",
-          "minOSVersion": null
+          "minOSVersion": ""
         }
       ],
       "appPermissions": {
@@ -106,7 +106,7 @@
           "buildVersion": "5.0Hotfix",
           "date": "2026-04-11T13:46:00+09:00",
           "localizedDescription": "NightFox",
-          "minOSVersion": null
+          "minOSVersion": ""
         }
       ],
       "appPermissions": {
@@ -150,7 +150,7 @@
           "buildVersion": "",
           "date": "2026-04-12T07:52:00+09:00",
           "localizedDescription": "NightFox",
-          "minOSVersion": null
+          "minOSVersion": ""
         }
       ],
       "appPermissions": {
@@ -186,7 +186,7 @@
           "buildVersion": "2.2",
           "date": "2026-04-11T22:51:00+09:00",
           "localizedDescription": "NightFox",
-          "minOSVersion": null
+          "minOSVersion": ""
         }
       ],
       "appPermissions": {
@@ -375,7 +375,7 @@
           "buildVersion": "",
           "date": "2026-04-12T08:16:00+09:00",
           "localizedDescription": "NightFox",
-          "minOSVersion": null
+          "minOSVersion": ""
         }
       ],
       "appPermissions": {
@@ -412,7 +412,7 @@
           "buildVersion": "",
           "date": "2026-04-12T08:01:00+09:00",
           "localizedDescription": "NightFox",
-          "minOSVersion": null
+          "minOSVersion": ""
         }
       ],
       "appPermissions": {

@@ -22,7 +22,7 @@
       "versions": [
         {
           "version": "21.13.6",
-          "date": "2026-04-12T10:27:12+09:00",
+          "date": "2026-04-12T10:31:50+09:00",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
           "size": 126776343,
           "buildVersion": "1",
@@ -318,6 +318,29 @@
           "size": 83500000,
           "buildVersion": "",
           "minOSVersion": ""
+        }
+      ]
+    },
+    {
+      "name": "iTorrent",
+      "bundleIdentifier": "com.xitrix.iTorrent2",
+      "developerName": "NightFox",
+      "subtitle": "NightFox",
+      "localizedDescription": "NightFox",
+      "iconURL": "https://i.imgur.com/nAsnPKq.png",
+      "tintColor": "#00b39e",
+      "category": "other",
+      "version": "2.1.1",
+      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.1/iTorrent_2.1.1.ipa",
+      "size": 8672137,
+      "versions": [
+        {
+          "version": "2.1.1",
+          "date": "2026-04-12T10:31:50+09:00",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.1/iTorrent_2.1.1.ipa",
+          "size": 8672137,
+          "buildVersion": "1",
+          "localizedDescription": "NightFox Build - 2.1.1"
         }
       ]
     }

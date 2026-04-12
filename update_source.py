@@ -59,7 +59,7 @@ if os.path.exists(JSON_FILE):
 
 # --- 4. 앱 데이터 정밀 세척 및 업데이트 ---
 ipa_files = sorted([f for f in os.listdir('.') if f.lower().endswith('.ipa')])
-assets = {a.name: a.browser_download_url for r in repo.get_releases() for asset in r.get_assets()}
+assets = {asset.name: asset.browser_download_url for r in repo.get_releases() for asset in r.get_assets()}
 
 updated_apps = []
 

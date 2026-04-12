@@ -5,9 +5,7 @@
   "description": "Welcome to NightFox's source!",
   "iconURL": "https://i.imgur.com/Se6jHAj.png",
   "website": "https://github.com/kes158/NightFox_Repository",
-  "patreonURL": "https://patreon.com/altstudio",
   "tintColor": "#00b39e",
-  "featuredApps": [],
   "apps": [
     {
       "name": "YouTube",
@@ -24,19 +22,9 @@
       "versions": [
         {
           "version": "21.13.6",
-          "date": "2026-04-12T11:18:10+09:00",
+          "date": "2026-04-12T11:22:31+09:00",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
-          "size": 126776343,
-          "buildVersion": "1"
-        },
-        {
-          "version": "21.03.2",
-          "date": "2026-04-11T22:56:00+09:00",
-          "localizedDescription": "NightFox Build - 21.03.2",
-          "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/YouTubePlus.5.2b4_21.03.2.ipa",
-          "size": 125300000,
-          "buildVersion": "5.2b4",
-          "minOSVersion": ""
+          "size": 126776343
         }
       ]
     },

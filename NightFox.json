@@ -6,47 +6,37 @@
   "website": "https://github.com/kes158/NightFox_Repository",
   "patreonURL": "https://patreon.com/altstudio",
   "tintColor": "#00b39e",
-  "featuredApps": [],
   "apps": [
     {
       "name": "YouTube",
       "bundleIdentifier": "com.google.ios.youtube",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/uZI2Pyf.png",
       "tintColor": "#ff0002",
       "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "21.13.6",
-          "date": "2026-04-12T13:40:42+09:00",
-          "localizedDescription": "First AltStore release!",
+          "date": "2026-04-12T13:54:56+09:00",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
-          "size": 126776343,
-          "buildVersion": null,
-          "minOSVersion": null
+          "size": 126776343
         }
       ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      "version": "21.13.6",
+      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
+      "size": 126776343
     },
     {
       "name": "StikDebug",
       "bundleIdentifier": "com.stik.stikdebug",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/JtyYEdh.png",
       "tintColor": "#24ccfc",
       "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "3.0.1",
@@ -58,23 +48,19 @@
           "minOSVersion": ""
         }
       ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      "version": "3.0.1",
+      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/StikDebug-3.0.1.ipa",
+      "size": 10500000
     },
     {
       "name": "RedditDeluxe",
       "bundleIdentifier": "com.reddit.Reddit",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/ApnXe4K.png",
       "tintColor": "#fc4404",
       "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "2026.06.0",
@@ -86,23 +72,19 @@
           "minOSVersion": ""
         }
       ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      "version": "2026.06.0",
+      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.5.2/Reddit_2026_13_1.ipa",
+      "size": 159600000
     },
     {
       "name": "NeoFreeBird",
       "bundleIdentifier": "com.atebits.Tweetie2",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/9MyLXvv.png",
       "tintColor": "#1c9cf4",
       "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "11.35",
@@ -114,23 +96,19 @@
           "minOSVersion": ""
         }
       ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      "version": "11.35",
+      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/NeoFreeBird-2.2-Twitter-11.35-noFixTwitterLogin.ipa",
+      "size": 158500000
     },
     {
       "name": "Spotify",
       "bundleIdentifier": "com.spotify.client",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/j51OrKn.png",
       "tintColor": "#1cd464",
       "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "9.1.34",
@@ -187,23 +165,19 @@
           "minOSVersion": "15.0"
         }
       ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      "version": "9.1.34",
+      "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289733435/download",
+      "size": 98723618
     },
     {
       "name": "Spotify (Patched)",
       "bundleIdentifier": "com.spotify.client.patched",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/j51OrKn.png",
       "tintColor": "#1cd464",
       "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "9.1.34",
@@ -260,23 +234,19 @@
           "minOSVersion": "15.0"
         }
       ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      "version": "9.1.34",
+      "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289733485/download",
+      "size": 104414955
     },
     {
       "name": "YouTubeMusic",
       "bundleIdentifier": "com.google.ios.youtubemusic",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/POQxyLq.png",
       "tintColor": "#fc0434",
       "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "9.13.3",
@@ -288,23 +258,19 @@
           "minOSVersion": ""
         }
       ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      "version": "9.13.3",
+      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.5.7/YTMusicUltimate.ipa",
+      "size": 98900000
     },
     {
       "name": "Infuse",
       "bundleIdentifier": "com.firecore.infuse",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/yjmNslM.png",
       "tintColor": "#fc6c04",
       "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "8.4.1",
@@ -316,23 +282,19 @@
           "minOSVersion": ""
         }
       ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      "version": "8.4.1",
+      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.3.2/Infuse.8.4.1.ipa",
+      "size": 83500000
     },
     {
       "name": "iTorrent",
       "bundleIdentifier": "com.xitrix.iTorrent2",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://user-images.githubusercontent.com/9553519/80646366-3d271680-8a75-11ea-8b60-9c5edd4ffd60.png",
       "tintColor": "#7100b3",
       "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "2.1.1",
@@ -344,23 +306,19 @@
           "minOSVersion": ""
         }
       ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      "version": "2.1.1",
+      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.1/iTorrent_2.1.1.ipa",
+      "size": 8700000
     },
     {
       "name": "EnsWilde",
       "bundleIdentifier": "com.yangjiii.EnsWilde",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/CliGoqS.png",
       "tintColor": "#c0683c",
       "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "3.1.3",
@@ -372,11 +330,9 @@
           "minOSVersion": null
         }
       ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      "version": "3.1.3",
+      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.3/EnsWilde_v3.1.3.ipa",
+      "size": 13600000
     }
   ],
   "news": []

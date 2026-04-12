@@ -27,6 +27,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           UPSTREAM_LIST: |
             diarrhea3/YTLiteDiarrhea
+            jaydenjcpy/EeveeSpotifyRevivedPublic
         run: |
           for UPSTREAM in $UPSTREAM_LIST; do
             [[ "$UPSTREAM" =~ ^#.* ]] && continue

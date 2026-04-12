@@ -1,20 +1,24 @@
 {
   "name": "NightFox",
-  "identifier": "com.nightfox1.repo",
   "subtitle": "NightFox's App Repository",
   "description": "Welcome to NightFox's source!",
   "iconURL": "https://i.imgur.com/Se6jHAj.png",
   "website": "https://github.com/kes158/NightFox_Repository",
-  "tintColor": "#00b39e",
+  "patreonURL": "https://patreon.com/altstudio",
+  "tintColor": "#7fd17b",
+  "featuredApps": [],
   "apps": [
     {
-      "name": "YouTube",
+      "name": "YTPlus",
       "bundleIdentifier": "com.google.ios.youtube",
-      "version": "21.13.6",
-      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
-      "iconURL": "https://i.imgur.com/nAsnPKq.png",
-      "tintColor": "#00b39e",
+      "marketplaceID": "",
+      "developerName": "NightFox",
+      "subtitle": "NightFox",
+      "localizedDescription": "NightFox",
+      "iconURL": "https://i.imgur.com/HDPn2ih.png",
+      "tintColor": "#fc0434",
       "category": "other",
+      "screenshots": [],
       "versions": [
         {
           "version": "21.13.6",
@@ -22,12 +26,26 @@
           "localizedDescription": "NightFox Build - 21.13.6",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
           "size": 126776343,
-          "buildVersion": "21.13.6"
+          "buildVersion": "21.13.6",
+          "minOSVersion": null
         }
       ],
-      "developerName": "NightFox",
-      "subtitle": "NightFox",
-      "localizedDescription": "NightFox"
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {
+          "NSCameraUsageDescription": "This lets you create videos using the app.",
+          "NSUserTrackingUsageDescription": "To personalize ads and provide ad measurement, YouTube will link activity from this app with activity from non-Google apps and websites.",
+          "NSBluetoothPeripheralUsageDescription": "YouTube needs bluetooth access to scan for nearby Cast devices.",
+          "NSLocalNetworkUsageDescription": "Access to your network allows YouTube to discover and connect to devices such as your TV.",
+          "NSAppleMusicUsageDescription": "This lets you add your own audio files to your videos.",
+          "NSMicrophoneUsageDescription": "This lets you include audio with your videos and search using your voice.",
+          "NSLocationWhenInUseUsageDescription": "This enables local content discovery, improved recommendations, and enhanced search results.",
+          "NSContactsUsageDescription": "Your contacts will be sent to YouTube servers to help you find friends to share videos with.",
+          "NSPhotoLibraryUsageDescription": "This lets you upload media you've already created."
+        }
+      },
+      "patreon": {}
     }
-  ]
+  ],
+  "news": []
 }

@@ -1,0 +1,434 @@
+{
+  "name": "NightFox",
+  "identifier": "com.nightfox1.repo",
+  "subtitle": "NightFox's App Repository",
+  "description": "Welcome to NightFox's source!",
+  "iconURL": "https://i.imgur.com/Se6jHAj.png",
+  "website": "https://github.com/kes158/NightFox_Repository",
+  "tintColor": "#00b39e",
+  "apps": [
+    {
+      "name": "YTPlus",
+      "bundleIdentifier": "com.google.ios.youtube",
+      "marketplaceID": "",
+      "developerName": "NightFox",
+      "subtitle": "NightFox",
+      "localizedDescription": "NightFox",
+      "iconURL": "https://i.imgur.com/uZI2Pyf.png",
+      "tintColor": "#fc0434",
+      "category": "other",
+      "screenshots": [],
+      "versions": [
+        {
+          "version": "21.13.6",
+          "buildVersion": "",
+          "date": "2026-04-12T09:17:03+09:00",
+          "localizedDescription": "NightFox Build - 21.13.6",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
+          "size": 126776343
+        },
+        {
+          "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/YouTubePlus.5.2b4_21.03.2.ipa",
+          "size": 125300000,
+          "version": "21.03.2",
+          "buildVersion": "5.2b4",
+          "date": "2026-04-11T22:56:00+09:00",
+          "localizedDescription": "NightFox Build - 21.03.2",
+          "minOSVersion": null
+        }
+      ],
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {
+          "NSCameraUsageDescription": "This lets you create videos using the app.",
+          "NSUserTrackingUsageDescription": "To personalize ads and provide ad measurement, YouTube will link activity from this app with activity from non-Google apps and websites.",
+          "NSBluetoothPeripheralUsageDescription": "YouTube needs bluetooth access to scan for nearby Cast devices.",
+          "NSLocalNetworkUsageDescription": "Access to your network allows YouTube to discover and connect to devices such as your TV.",
+          "NSAppleMusicUsageDescription": "This lets you add your own audio files to your videos.",
+          "NSMicrophoneUsageDescription": "This lets you include audio with your videos and search using your voice.",
+          "NSLocationWhenInUseUsageDescription": "This enables local content discovery, improved recommendations, and enhanced search results.",
+          "NSContactsUsageDescription": "Your contacts will be sent to YouTube servers to help you find friends to share videos with.",
+          "NSPhotoLibraryUsageDescription": "This lets you upload media you've already created."
+        }
+      },
+      "patreon": {},
+      "version": "21.13.6",
+      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa"
+    },
+    {
+      "name": "StikDebug",
+      "bundleIdentifier": "com.stik.stikdebug",
+      "marketplaceID": "",
+      "developerName": "NightFox",
+      "subtitle": "NightFox",
+      "localizedDescription": "NightFox",
+      "iconURL": "https://i.imgur.com/JtyYEdh.png",
+      "tintColor": "#24ccfc",
+      "category": "other",
+      "screenshots": [],
+      "versions": [
+        {
+          "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/StikDebug-3.0.1.ipa",
+          "size": 10500000,
+          "version": "3.0.1",
+          "buildVersion": "",
+          "date": "2026-04-12T07:59:00+09:00",
+          "localizedDescription": "NightFox",
+          "minOSVersion": null
+        }
+      ],
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {
+          "NSLocalNetworkUsageDescription": "StikDebug needs access to devices on your local network so it can connect to the targets you add to the Device Library.",
+          "NSLocationAlwaysAndWhenInUseUsageDescription": "StikDebug uses location to stay running in the background and maintain your JIT connection.",
+          "NSLocationWhenInUseUsageDescription": "StikDebug uses location to stay running in the background and maintain your JIT connection."
+        }
+      },
+      "patreon": {}
+    },
+    {
+      "name": "Instagram Theta",
+      "bundleIdentifier": "com.burbn.instagram",
+      "marketplaceID": "",
+      "developerName": "NightFox",
+      "subtitle": "NightFox",
+      "localizedDescription": "NightFox",
+      "iconURL": "https://i.imgur.com/QP70lBE.jpeg",
+      "tintColor": "#ffd275",
+      "category": "other",
+      "screenshots": [],
+      "versions": [
+        {
+          "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/Theta5.0Hotfix_407.0.0.ipa",
+          "size": 247400000,
+          "version": "407.0.0",
+          "buildVersion": "5.0Hotfix",
+          "date": "2026-04-11T13:46:00+09:00",
+          "localizedDescription": "NightFox",
+          "minOSVersion": null
+        }
+      ],
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {
+          "NSAdvertisingAttributionReportEndpoint": "https://facebook.com",
+          "NSBluetoothAlwaysUsageDescription": "This allows your phone to find and connect to the glasses using a Bluetooth connection.",
+          "NSFocusStatusUsageDescription": "This allows Instagram to check to see if you’ve been missing notifications from friends. You can always change this later in settings.",
+          "NSCameraUsageDescription": "Instagram uses your device's camera to do things like help you take photos, record videos and use effects.",
+          "NSUserTrackingUsageDescription": "This helps Instagram personalize ads we show you.",
+          "NSPhotoLibraryAddUsageDescription": "This lets you save photos and videos to your Camera Roll.",
+          "NSLocationUsageDescription": "Instagram uses this to make some features work, personalize content and help people find places. You can change your preferences at any time in your device settings.",
+          "NSCalendarsUsageDescription": "This will let Instagram sync events to your calendar.",
+          "NSMicrophoneUsageDescription": "Instagram uses your device's microphone to do things like help you record videos and preview audio effects.",
+          "NSLocationWhenInUseUsageDescription": "Instagram uses this to make some features work, personalize content and help people find places. You can change your preferences at any time in your device settings.",
+          "NSCalendarsWriteOnlyAccessUsageDescription": "This will let Instagram sync events to your calendar.",
+          "NSFaceIDUsageDescription": "Enable Face ID for quick and secure authentication on Instagram.",
+          "NSLocationAlwaysAndWhenInUseUsageDescription": "Instagram uses this to make some features work, personalize content and help people find places. You can change your preferences at any time in your device settings.",
+          "NSContactsUsageDescription": "Instagram will use your contacts to suggest people and things you care about, and offer a better service. Your contacts will be periodically synced and securely stored on Instagram’s servers.",
+          "NSPhotoLibraryUsageDescription": "Instagram uses access to your camera roll to do things like help you share photos and videos to Instagram, apply effects and suggest photos and videos to share."
+        }
+      },
+      "patreon": {}
+    },
+    {
+      "name": "RedditDeluxe",
+      "bundleIdentifier": "com.reddit.Reddit",
+      "marketplaceID": "",
+      "developerName": "NightFox",
+      "subtitle": "NightFox",
+      "localizedDescription": "NightFox",
+      "iconURL": "https://i.imgur.com/ApnXe4K.png",
+      "tintColor": "#fc4404",
+      "category": "other",
+      "screenshots": [],
+      "versions": [
+        {
+          "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.5.2/Reddit_2026_13_1.ipa",
+          "size": 159600000,
+          "version": "2026.06.0",
+          "buildVersion": "",
+          "date": "2026-04-12T07:52:00+09:00",
+          "localizedDescription": "NightFox",
+          "minOSVersion": null
+        }
+      ],
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {
+          "NSCalendarsUsageDescription": "Reddit needs access to your calendar to operate the community calendar widget.",
+          "NSCameraUsageDescription": "Use your camera to record videos. See our Privacy Policy for more information.",
+          "NSFaceIDUsageDescription": "Reddit needs access to Face ID to unlock your Vault.",
+          "NSMicrophoneUsageDescription": "Reddit needs access to your microphone to post videos with audio.",
+          "NSPhotoLibraryAddUsageDescription": "Reddit needs access to your photo library to post, save, and upload photos or videos.",
+          "NSPhotoLibraryUsageDescription": "Reddit needs access to your photo library to post, save, and upload photos or videos.",
+          "NSUserTrackingUsageDescription": "This allows Reddit to provide you with a better ads experience."
+        }
+      },
+      "patreon": {}
+    },
+    {
+      "name": "NeoFreeBird",
+      "bundleIdentifier": "com.atebits.Tweetie2",
+      "marketplaceID": "",
+      "developerName": "NightFox",
+      "subtitle": "NightFox",
+      "localizedDescription": "NightFox",
+      "iconURL": "https://i.imgur.com/9MyLXvv.png",
+      "tintColor": "#1c9cf4",
+      "category": "other",
+      "screenshots": [],
+      "versions": [
+        {
+          "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/NeoFreeBird-2.2-Twitter-11.35-noFixTwitterLogin.ipa",
+          "size": 158500000,
+          "version": "11.35",
+          "buildVersion": "2.2",
+          "date": "2026-04-11T22:51:00+09:00",
+          "localizedDescription": "NightFox",
+          "minOSVersion": null
+        }
+      ],
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {
+          "NSAdvertisingAttributionReportEndpoint": "https://singular-bi.net",
+          "NSBluetoothAlwaysUsageDescription": "Twitter uses Bluetooth to discover Cast-enabled devices near you.",
+          "NSCameraUsageDescription": "Capture and post photos and videos from Twitter.",
+          "NSUserTrackingUsageDescription": "This helps Twitter show you more relevant ads.",
+          "NSPhotoLibraryAddUsageDescription": "This lets you download photos and videos to your Photos.",
+          "NSLocalNetworkUsageDescription": "Twitter uses the local network to discover Cast-enabled devices on your WiFi network.",
+          "NSSpeechRecognitionUsageDescription": "Going forward, whenever you choose to share captions on this device, Apple will provide the service. Doing so helps make sure people of all hearing abilities can access your content.",
+          "NSLocationUsageDescription": "Enjoy Twitter tailored to your location.",
+          "NSCalendarsUsageDescription": "Add events to your calendar from Twitter.",
+          "NSMicrophoneUsageDescription": "Capture and post videos with sound from Twitter.",
+          "NSLocationWhenInUseUsageDescription": "Enjoy Twitter experience tailored to your location.",
+          "NSFaceIDUsageDescription": "Use FaceID to authenticate on Twitter.",
+          "NSContactsUsageDescription": "We will securely upload your contacts to our servers to help you connect with friends and suggest users to follow on X.",
+          "NSPhotoLibraryUsageDescription": "Allow access to share photos from your camera roll."
+        }
+      },
+      "patreon": {}
+    },
+    {
+      "name": "Spotify",
+      "bundleIdentifier": "com.spotify.client",
+      "marketplaceID": "",
+      "developerName": "Skye/whoeevee",
+      "subtitle": "Latest Eevee release",
+      "localizedDescription": "This tweak only support Musixmatch custom lyrics at this time.\nUse original EeveeSpotify 9.1.0 for working lyrics.\n\nThis tweak makes Spotify think you have a Premium subscription, granting free listening, just like Spotilife, and provides some additional features like custom lyrics.",
+      "iconURL": "https://i.imgur.com/j51OrKn.png",
+      "tintColor": "#1cd464",
+      "category": "other",
+      "screenshots": [],
+      "versions": [
+        {
+          "version": "9.1.34",
+          "date": "2026-04-07",
+          "localizedDescription": "- Updated to Spotify v9.1.34\n- More Adblocking for visual pop-ups and Ads\n- As always, thanks to blatants for his patch bot\nDISABLE ANY VPN BEFORE OPENING AFTER INSTALL",
+          "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289733435/download",
+          "size": 98723618,
+          "buildVersion": "913402053",
+          "minOSVersion": "16.1"
+        },
+        {
+          "version": "9.1.32",
+          "date": "2026-04-01",
+          "localizedDescription": "The logout issue is fixed\n\n- EeveeSpotifyRevived public v9.1.32 Crashes Fixed\n— Improved AdBlocking for blocking home page ads\n— Logout and Crash Fixes\nThanks to blatant's for his patch bot",
+          "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289722012/download",
+          "size": 97200573,
+          "buildVersion": "913202081",
+          "minOSVersion": "16.1"
+        },
+        {
+          "version": "9.1.12",
+          "date": "2026-01-15",
+          "localizedDescription": "- Updated to Spotify v9.1.12\n- Re added Musixmatch custom lyrics (If lyrics dont show at first, change to next song then go back)\n- Eevee Spotify v6.5.0 included\n- OpenSpotifySafariExtension included",
+          "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289725731/download",
+          "size": 94101596,
+          "buildVersion": "911200224",
+          "minOSVersion": "16.1"
+        },
+        {
+          "version": "9.1.6",
+          "date": "2026-01-01",
+          "localizedDescription": "- Spotify v9.1.6\n- Re added setting menu\n- Eevee Spotify v6.4.5 included\n- OpenSpotifySafariExtension included",
+          "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289726176/download",
+          "size": 92219638,
+          "buildVersion": "910601142",
+          "minOSVersion": "16.1"
+        },
+        {
+          "version": "9.1.0",
+          "date": "2025-11-27",
+          "localizedDescription": "- updated spotify to v9.1.0\n— one of the most popular music streaming services!\n- EeveeSpotify v6.2.2 included\n- OpenSpotifySafariExtension included",
+          "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289728862/download",
+          "size": 92011146,
+          "buildVersion": "910001151",
+          "minOSVersion": "16.1"
+        },
+        {
+          "version": "9.0.48",
+          "date": "2025-05-31",
+          "localizedDescription": "- updated spotify to v9.0.48\n— one of the most popular music streaming services!\n- EeveeSpotify v5.9.9 included\n- OpenSpotifySafariExtension included\n\n• Updated Polish localization by @yaptx",
+          "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289729092/download",
+          "size": 83888442,
+          "buildVersion": "904800415",
+          "minOSVersion": "15.0"
+        }
+      ],
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "patreon": {}
+    },
+    {
+      "name": "Spotify (Patched)",
+      "bundleIdentifier": "com.spotify.client.patched",
+      "marketplaceID": "",
+      "developerName": "Skye/whoeevee",
+      "subtitle": "Patched for paid certs",
+      "localizedDescription": "Warning : Only use with Feather, ESign or KSign.\n\nThis tweak only support Musixmatch custom lyrics at this time.\nUse original EeveeSpotify 9.1.0 for working lyrics.\n\nUsing the patched IPA should fix any widgets issues had when sideloading with paid certs (with app groups entitlement). this fix does not work with free sideloading methods such as AltStore/Sideloadly, and TrollStore users do not need to use a patched IPA.\n\nfurther note: this IPA should be considered a beta test for now, so general support will not be provided for it.",
+      "iconURL": "https://i.imgur.com/j51OrKn.png",
+      "tintColor": "#1cd464",
+      "category": "other",
+      "screenshots": [],
+      "versions": [
+        {
+          "version": "9.1.34",
+          "date": "2026-04-07",
+          "localizedDescription": "- Updated to Spotify v9.1.34\n- More Adblocking for visual pop-ups and Ads\n- As always, thanks to blatants for his patch bot\nDISABLE ANY VPN BEFORE OPENING AFTER INSTALL",
+          "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289733485/download",
+          "size": 104414955,
+          "buildVersion": "913402053",
+          "minOSVersion": "16.1"
+        },
+        {
+          "version": "9.1.32",
+          "date": "2026-04-01",
+          "localizedDescription": "The logout issue is fixed\n\n- EeveeSpotifyRevived public v9.1.32 Crashes Fixed\n— Improved AdBlocking for blocking home page ads\n— Logout and Crash Fixes\nThanks to blatant's for his patch bot",
+          "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289722040/download",
+          "size": 102814856,
+          "buildVersion": "913202081",
+          "minOSVersion": "16.1"
+        },
+        {
+          "version": "9.1.12",
+          "date": "2026-01-15",
+          "localizedDescription": "- Updated to Spotify v9.1.12\n- Re added Musixmatch custom lyrics (If lyrics dont show at first, change to next song then go back)\n- Eevee Spotify v6.5.0 included\n- OpenSpotifySafariExtension included",
+          "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289725826/download",
+          "size": 96189010,
+          "buildVersion": "911200224",
+          "minOSVersion": "16.1"
+        },
+        {
+          "version": "9.1.6",
+          "date": "2026-01-01",
+          "localizedDescription": "- Spotify v9.1.6\n- Re added setting menu\n- Eevee Spotify v6.4.5 included\n- OpenSpotifySafariExtension included",
+          "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289726212/download",
+          "size": 94261473,
+          "buildVersion": "910601142",
+          "minOSVersion": "16.1"
+        },
+        {
+          "version": "9.1.0",
+          "date": "2025-11-27",
+          "localizedDescription": "- updated spotify to v9.1.0\n— one of the most popular music streaming services!\n- EeveeSpotify v6.2.2 included\n- OpenSpotifySafariExtension included",
+          "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289728900/download",
+          "size": 90262024,
+          "buildVersion": "910001151",
+          "minOSVersion": "16.1"
+        },
+        {
+          "version": "9.0.48",
+          "date": "2025-06-03",
+          "localizedDescription": "- updated spotify to v9.0.48\n— one of the most popular music streaming services!\n- EeveeSpotify v5.9.9 included\n- OpenSpotifySafariExtension included\n\n• Updated Polish localization by @yaptx",
+          "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289729122/download",
+          "size": 81180907,
+          "buildVersion": "904800415",
+          "minOSVersion": "15.0"
+        }
+      ],
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "patreon": {}
+    },
+    {
+      "name": "YouTubeMusic",
+      "bundleIdentifier": "com.google.ios.youtubemusic",
+      "marketplaceID": "",
+      "developerName": "NightFox",
+      "subtitle": "NightFox",
+      "localizedDescription": "NightFox",
+      "iconURL": "https://i.imgur.com/POQxyLq.png",
+      "tintColor": "#fc0434",
+      "category": "other",
+      "screenshots": [],
+      "versions": [
+        {
+          "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.5.7/YTMusicUltimate.ipa",
+          "size": 98900000,
+          "version": "9.13.3",
+          "buildVersion": "",
+          "date": "2026-04-12T08:16:00+09:00",
+          "localizedDescription": "NightFox",
+          "minOSVersion": null
+        }
+      ],
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {
+          "NSBluetoothAlwaysUsageDescription": "YouTube Music uses Bluetooth to locate and connect to Chromecast and other devices.",
+          "NSBluetoothPeripheralUsageDescription": "YouTube Music uses Bluetooth to locate and connect to Chromecast and other devices.",
+          "NSCameraUsageDescription": "To take a profile picture, allow YouTube Music to access your camera.",
+          "NSContactsUsageDescription": "This will allow you to invite your family into your membership plan.",
+          "NSLocalNetworkUsageDescription": "Access to your network allows YouTube Music to discover and connect to devices such as your TV.",
+          "NSMicrophoneUsageDescription": "This lets you include audio with your videos.",
+          "NSPhotoLibraryAddUsageDescription": "To save images, allow YouTube Music to access your photo library.",
+          "NSPhotoLibraryUsageDescription": "To choose a profile picture, allow YouTube Music to access your photos."
+        }
+      },
+      "patreon": {}
+    },
+    {
+      "name": "Infuse",
+      "bundleIdentifier": "com.firecore.infuse",
+      "marketplaceID": "",
+      "developerName": "NightFox",
+      "subtitle": "NightFox",
+      "localizedDescription": "NightFox",
+      "iconURL": "https://i.imgur.com/yjmNslM.png",
+      "tintColor": "#fc6c04",
+      "category": "other",
+      "screenshots": [],
+      "versions": [
+        {
+          "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.3.2/Infuse.8.4.1.ipa",
+          "size": 83500000,
+          "version": "8.4.1",
+          "buildVersion": "",
+          "date": "2026-04-12T08:01:00+09:00",
+          "localizedDescription": "NightFox",
+          "minOSVersion": null
+        }
+      ],
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {
+          "NSAppleMusicUsageDescription": "Please allow access in order to show iTunes videos.",
+          "NSBluetoothAlwaysUsageDescription": "Used to discover nearby Cast devices",
+          "NSBluetoothPeripheralUsageDescription": "Used for streaming media to external devices",
+          "NSCameraUsageDescription": "Used for scanning QR codes",
+          "NSFaceIDUsageDescription": "Used for unlocking your device when restrictions are enabled",
+          "NSLocalNetworkUsageDescription": "Used to discover network shares and Google Cast devices in your local network",
+          "NSMicrophoneUsageDescription": "Used for pairing with external devices",
+          "NSPhotoLibraryAddUsageDescription": "Used for saving QR code"
+        }
+      },
+      "patreon": {}
+    }
+  ]
+}

@@ -33,49 +33,71 @@ if os.path.exists(JSON_FILE):
     with open(JSON_FILE, 'r', encoding='utf-8') as f:
         base_data = json.load(f)
 else:
-    base_data = {"name": "NightFox", "apps": []}
+    # 헤더 정보가 날아가지 않게 기본값 설정
+    base_data = {
+        "name": "NightFox",
+        "identifier": "com.nightfox1.repo",
+        "subtitle": "NightFox's App Repository",
+        "description": "Welcome to NightFox's source!",
+        "iconURL": "https://i.imgur.com/Se6jHAj.png",
+        "website": f"https://github.com/{REPO_NAME}",
+        "tintColor": "#00b39e",
+        "apps": []
+    }
 
-# --- 3. 업데이트 및 데이터 끌어올리기 로직 ---
-ipa_files = sorted([f for f in os.listdir('.') if f.lower().endswith('.ipa')])
-assets = {asset.name: asset.browser_download_url for r in repo.get_releases() for asset in r.get_assets()}
+# --- 3. GitHub 릴리즈에서 최신 에셋 정보 가져오기 ---
+# [정당화] IPA 파일이 로컬에 없어도 릴리즈 정보를 바탕으로 JSON을 업데이트하기 위함
+all_releases = repo.get_releases()
+assets_info = []
 
-# [생각하며 정당화] 
-# 모든 앱을 순회하며 '상위 필드'가 비어있으면 '하위(versions)'에서 데이터를 가져와 채웁니다.
+for r in all_releases:
+    for asset in r.get_assets():
+        if asset.name.lower().endswith('.ipa'):
+            assets_info.append({
+                "name": asset.name,
+                "url": asset.browser_download_url,
+                "size": asset.size,
+                "date": asset.created_at.strftime("%Y-%m-%dT%H:%M:%S+09:00")
+            })
+
+# --- 4. 앱 데이터 업데이트 로직 ---
+# 현재 폴더에 있는 IPA 파일들도 체크
+local_ipa_files = [f for f in os.listdir('.') if f.lower().endswith('.ipa')]
+
+for asset in assets_info:
+    # 파일 이름에서 대략적인 정보 추측 (추출이 안 될 경우 대비)
+    # 실제로는 로컬에 파일이 있어야 bundleID 추출이 정확합니다.
+    
+    # 릴리즈된 IPA 이름과 일치하는 앱 찾기
+    found = False
+    for app in base_data.get('apps', []):
+        # 파일명에 앱 이름이 포함되어 있는지 확인하거나, 기존 downloadURL과 매칭
+        if asset['name'] in app.get('downloadURL', '') or asset['url'] == app.get('downloadURL', ''):
+            app["version"] = app.get("version") # 기존 버전 유지 또는 수동 수정 필요
+            app["downloadURL"] = asset['url']
+            app["size"] = asset['size']
+            
+            # 최상위 필드 업데이트
+            new_v = {
+                "version": app["version"],
+                "date": asset['date'],
+                "downloadURL": asset['url'],
+                "size": asset['size']
+            }
+            if "versions" not in app: app["versions"] = []
+            # 중복 방지 로직
+            if not any(v.get('downloadURL') == asset['url'] for v in app["versions"]):
+                app["versions"].insert(0, new_v)
+            found = True
+            break
+
+# --- 5. 최종 세척 및 저장 ---
+# 사이드스토어 에러 유발 필드 제거
 for app in base_data.get('apps', []):
-    bid = app.get("bundleIdentifier")
-    
-    # 1. 현재 폴더에 새 IPA가 있는 경우 정보 갱신
-    ipa_match = next((f for f in ipa_files if extract_ipa_info(f) and extract_ipa_info(f)['bundleID'] == bid), None)
-    
-    if ipa_match:
-        info = extract_ipa_info(ipa_match)
-        url = assets.get(ipa_match) or f"https://github.com/{REPO_NAME}/releases/download/latest/{ipa_match.replace(' ', '%20')}"
-        app["version"] = info['version']
-        app["downloadURL"] = url
-        app["size"] = info['size']
-        
-        # versions 리스트 업데이트
-        new_v = {"version": info['version'], "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+09:00"), "downloadURL": url, "size": info['size']}
-        if "versions" not in app: app["versions"] = []
-        app["versions"] = [v for v in app["versions"] if v.get('version') != info['version']]
-        app["versions"].insert(0, new_v)
-        
-    # 2. 새 IPA는 없지만 상위 필드가 비어있는 경우 (기존 데이터 이관)
-    elif not app.get("version") or app.get("version") == "":
-        if app.get("versions") and len(app["versions"]) > 0:
-            latest = app["versions"][0] # 가장 최근 버전 정보
-            app["version"] = latest.get("version", "")
-            app["downloadURL"] = latest.get("downloadURL", "")
-            app["size"] = latest.get("size", 0)
-
-# --- 4. 최종 세척 및 저장 ---
-# 불필요한 필드(appPermissions 등) 제거
-for app in base_data['apps']:
-    app.pop("appPermissions", None)
-    app.pop("patreon", None)
-    app.pop("screenshots", None)
+    for key in ["appPermissions", "patreon", "screenshots", "marketplaceID"]:
+        app.pop(key, None)
 
 with open(JSON_FILE, 'w', encoding='utf-8') as f:
     json.dump(base_data, f, ensure_ascii=False, indent=2)
 
-print("🎉 모든 앱의 상위 필드 복구 및 세척 완료!")
+print(f"🎉 총 {len(assets_info)}개의 릴리즈 에셋을 확인하고 JSON을 업데이트했습니다.")

@@ -89,23 +89,14 @@ def apply_nightfox_branding(entry):
 
 # --- 3. 기본 데이터 구조 정의 ---
 base_data = {
-    "name": "NightFox Repository",
-    "identifier": "com.nightfox.repo",
+    "name": "NightFox",
+    "identifier": "com.nightfox1.repo",
     "subtitle": "NightFox's App Repository",
     "description": "Welcome to NightFox's source!",
-    "iconURL": "https://i.imgur.com/EVyT7Ji.png",
+    "iconURL": "https://i.imgur.com/Se6jHAj.png",
     "website": REPO_URL,
     "tintColor": "#00b39e",
     "featuredApps": [],
-    "news": [
-        {
-            "title": "Source Updated",
-            "identifier": "update-" + datetime.now().strftime("%Y%m%d"),
-            "caption": "Latest apps added.",
-            "date": datetime.now().strftime("%Y-%m-%d"),
-            "tintColor": "#00b39e"
-        }
-    ],
     "apps": []
 }
 

@@ -167,7 +167,17 @@ for ipa_file in ipa_files:
         apply_nightfox_branding(new_app)
         base_data['apps'].append(new_app)
 
-# --- 6. JSON 저장 ---
+# --- 6. JSON 저장 전 최종 클리닝 로직 추가 ---
+def clean_nulls(obj):
+    if isinstance(obj, list):
+        return [clean_nulls(x) for x in obj]
+    elif isinstance(obj, dict):
+        return {k: (clean_nulls(v) if v is not None else "") for k, v in obj.items()}
+    return obj
+
+# 저장 직전에 실행
+base_data = clean_nulls(base_data)
+
 with open(JSON_FILE, 'w', encoding='utf-8') as f:
     json.dump(base_data, f, ensure_ascii=False, indent=2)
 

@@ -92,6 +92,15 @@ for source_url in other_sources:
                     print(f"   ✅ 외부 앱 추가됨: {other_app.get('name')}")
     except Exception as e:
         print(f"   ⚠️ 외부 소스 로드 실패: {e}")
+        # other_app["versions"] 처리 루프 내부에서
+for v in other_app.get('versions', []):
+    # 날짜가 YYYY-MM-DD 형식이면 시간대를 붙여서 보정
+    if len(v.get('date', '')) == 10:
+        v['date'] = f"{v['date']}T00:00:00+09:00"
+    
+    # 설명이 null이면 빈 문자열로 대체
+    if v.get('localizedDescription') is None:
+        v['localizedDescription'] = "Update from external source"
 
 # --- 5. 내 저장소 릴리즈 자산 및 IPA 처리 ---
 # [정당화] NameError 방지를 위해 루프 전에 변수를 먼저 정의합니다.

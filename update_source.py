@@ -43,8 +43,15 @@ def extract_ipa_info_only(ipa_path):
 def apply_nightfox_branding(entry):
     entry["developerName"] = "NightFox"
     entry["subtitle"] = "NightFox"
-    # [정당화] null 방지를 위해 빈 문자열로 설정
     entry["localizedDescription"] = "NightFox"
+
+# [정당화] 사이드스토어의 "Data missing" 에러를 방지하기 위해 모든 null을 빈 문자열로 바꾸는 재귀 함수입니다.
+def deep_clean_nulls(obj):
+    if isinstance(obj, list):
+        return [deep_clean_nulls(x) for x in obj]
+    elif isinstance(obj, dict):
+        return {k: (deep_clean_nulls(v) if v is not None else "") for k, v in obj.items()}
+    return obj
 
 # --- 3. 기본 데이터 구조 및 기존 데이터 로드 ---
 base_data = {
@@ -87,11 +94,8 @@ for source_url in other_sources:
         if response.status_code == 200:
             other_data = response.json()
             for other_app in other_data.get('apps', []):
-                # [정당화] 외부 소스의 null 값 및 날짜 형식 보정
+                # 외부 소스의 날짜 형식 보정 (사이드스토어 호환용)
                 for v in other_app.get('versions', []):
-                    if v.get('buildVersion') is None: v['buildVersion'] = ""
-                    if v.get('localizedDescription') is None: v['localizedDescription'] = ""
-                    # 사이드스토어 호환성을 위한 날짜 형식 보정
                     if len(v.get('date', '')) == 10:
                         v['date'] = f"{v['date']}T00:00:00+09:00"
 
@@ -102,7 +106,7 @@ for source_url in other_sources:
     except Exception as e:
         print(f"   ⚠️ 외부 소스 로드 실패: {e}")
 
-# --- 5. 내 저장소 IPA 처리 (순서 유지 및 데이터 정제) ---
+# --- 5. 내 저장소 릴리즈 자산 및 IPA 처리 (순서 유지 로직) ---
 ipa_files = sorted([f for f in os.listdir('.') if f.lower().endswith('.ipa')])
 
 all_release_assets = {asset.name: asset.browser_download_url 
@@ -118,14 +122,13 @@ for ipa_file in ipa_files:
     current_version = info.get('version', '1.0')
     download_url = all_release_assets.get(ipa_file) or f"{REPO_URL}/releases/download/latest/{ipa_file.replace(' ', '%20')}"
 
-    # 기존 순서(인덱스) 확인
+    # [정당화] NightFox님이 수동 정렬한 순서를 index로 찾아 유지합니다.
     found_index = -1
     for i, a in enumerate(base_data['apps']):
         if a.get('bundleIdentifier') == current_bundle_id:
             found_index = i
             break
 
-    # [정당화] 신규 버전 생성 시 buildVersion을 ""로 고정
     new_v = {
         "version": current_version,
         "buildVersion": "",
@@ -136,24 +139,17 @@ for ipa_file in ipa_files:
     }
 
     if found_index != -1:
-        # 기존 앱 업데이트 (위치 고정)
+        # 기존에 있던 자리에 내용만 업데이트 (순서 유지)
         app_entry = base_data['apps'][found_index]
         app_entry["version"] = current_version
         app_entry["downloadURL"] = download_url
         apply_nightfox_branding(app_entry)
         
         if "versions" not in app_entry: app_entry["versions"] = []
-        
-        # [정당화] 기존 버전 리스트 내 null 값 일괄 청소
-        for v in app_entry["versions"]:
-            if v.get('buildVersion') is None: v['buildVersion'] = ""
-            if v.get('localizedDescription') is None: v['localizedDescription'] = ""
-
-        # 중복 버전 제거 후 최신 버전 삽입
         app_entry["versions"] = [v for v in app_entry["versions"] if v.get('version') != current_version]
         app_entry["versions"].insert(0, new_v)
     else:
-        # 새로운 앱 추가
+        # 아예 없는 앱일 때만 맨 뒤에 추가
         new_app = {
             "name": info.get('name', ipa_file),
             "bundleIdentifier": current_bundle_id,
@@ -167,16 +163,9 @@ for ipa_file in ipa_files:
         apply_nightfox_branding(new_app)
         base_data['apps'].append(new_app)
 
-# --- 6. JSON 저장 전 최종 클리닝 로직 추가 ---
-def clean_nulls(obj):
-    if isinstance(obj, list):
-        return [clean_nulls(x) for x in obj]
-    elif isinstance(obj, dict):
-        return {k: (clean_nulls(v) if v is not None else "") for k, v in obj.items()}
-    return obj
-
-# 저장 직전에 실행
-base_data = clean_nulls(base_data)
+# --- 6. 최종 클리닝 및 JSON 저장 ---
+# [정당화] 저장 직전 모든 하위 필드의 null 값을 ""로 완벽하게 치환합니다.
+base_data = deep_clean_nulls(base_data)
 
 with open(JSON_FILE, 'w', encoding='utf-8') as f:
     json.dump(base_data, f, ensure_ascii=False, indent=2)

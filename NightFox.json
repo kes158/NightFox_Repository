@@ -18,7 +18,7 @@
       "versions": [
         {
           "version": "21.13.6",
-          "date": "2026-04-12T05:24:24+09:00",
+          "date": "2026-04-12T05:28:05+09:00",
           "localizedDescription": "NightFox Build - 21.13.6",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
           "size": 126776343,
@@ -28,15 +28,6 @@
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox"
-    }
-  ],
-  "news": [
-    {
-      "title": "Source Updated",
-      "identifier": "update-20260412",
-      "caption": "Latest apps added.",
-      "date": "2026-04-12",
-      "tintColor": "#00b39e"
     }
   ]
 }

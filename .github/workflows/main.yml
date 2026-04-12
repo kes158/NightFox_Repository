@@ -27,7 +27,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           UPSTREAM_LIST: |
             diarrhea3/YTLiteDiarrhea
-            titouan336/Spotify-AltStoreRepo-mirror
+            
         run: |
           for UPSTREAM in $UPSTREAM_LIST; do
             [[ "$UPSTREAM" =~ ^#.* ]] && continue

@@ -1,21 +1,26 @@
 import os
-import json
-import base64
-import plistlib
-import zipfile
-from datetime import datetime
-from github import Github  # PyGithub 라이브러리 필요
+from github import Github
+from github import Auth
 
 # --- 1. 설정 및 인증 (NightFox님 환경에 맞게 수정됨) ---
 GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
 
-REPO_NAME = "NightFox/NightFox_Repository" 
-REPO_URL = f"https://github.com/{REPO_NAME}"
+
+REPO_NAME = "kes158/NightFox_Repository" 
 
 JSON_FILE = "NightFox.json" 
 
-g = Github(GITHUB_TOKEN)
-repo = g.get_repo(REPO_NAME)
+# 최신 PyGithub 라이브러리 방식(DeprecationWarning 해결)
+auth = Auth.Token(GITHUB_TOKEN)
+g = Github(auth=auth)
+
+try:
+    repo = g.get_repo(REPO_NAME)
+    print(f"✅ 저장소 연결 성공: {REPO_NAME}")
+except Exception as e:
+    print(f"❌ 저장소를 찾을 수 없습니다: {REPO_NAME}")
+    print(f"오류 내용: {e}")
+    raise  # 에러를 중단시키고 전체 내용을 보여줌
 
 # --- 2. 필수 함수 (기존 로직 유지 필요) ---
 def extract_ipa_info_only(ipa_path):

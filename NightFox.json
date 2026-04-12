@@ -1,12 +1,11 @@
 {
   "name": "NightFox",
+  "identifier": "com.nightfox1.repo",
   "subtitle": "NightFox's App Repository",
   "description": "Welcome to NightFox's source!",
   "iconURL": "https://i.imgur.com/Se6jHAj.png",
   "website": "https://github.com/kes158/NightFox_Repository",
-  "patreonURL": "https://patreon.com/altstudio",
   "tintColor": "#00b39e",
-  "featuredApps": [],
   "apps": [
     {
       "name": "YTPlus",
@@ -22,12 +21,11 @@
       "versions": [
         {
           "version": "21.13.6",
-          "date": "2026-04-12T09:25:03+09:00",
+          "buildVersion": "",
+          "date": "2026-04-12T09:54:46+09:00",
           "localizedDescription": "NightFox Build - 21.13.6",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
-          "size": 126776343,
-          "buildVersion": "",
-          "minOSVersion": null
+          "size": 126776343
         },
         {
           "version": "21.03.2",
@@ -53,7 +51,9 @@
           "NSPhotoLibraryUsageDescription": "This lets you upload media you've already created."
         }
       },
-      "patreon": {}
+      "patreon": {},
+      "version": "21.13.6",
+      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa"
     },
     {
       "name": "StikDebug",
@@ -430,6 +430,5 @@
       },
       "patreon": {}
     }
-  ],
-  "news": []
+  ]
 }

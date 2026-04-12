@@ -21,23 +21,35 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
-      # 1. 고정 리스트에서 IPA 자동 복제
+      # 1. 고정 리스트에서 IPA 및 릴리즈 정보 자동 복제
       - name: Sync Multiple Upstreams
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           UPSTREAM_LIST: |
             diarrhea3/YTLiteDiarrhea
-            # 추가할 저장소 주소를 이 아래에 줄바꿈으로 적으세요.
         run: |
           for UPSTREAM in $UPSTREAM_LIST; do
             [[ "$UPSTREAM" =~ ^#.* ]] && continue
             echo "[$UPSTREAM] 동기화 중..."
-            gh release download --repo "$UPSTREAM" --pattern "*.ipa" --clobber || echo "$UPSTREAM 에서 파일을 찾지 못했습니다."
+
+            # 원본의 최신 릴리즈 타이틀과 본문 가져오기
+            REL_TITLE=$(gh release view --repo "$UPSTREAM" --json name --jq '.name')
+            REL_BODY=$(gh release view --repo "$UPSTREAM" --json body --jq '.body')
+            
+            # IPA 다운로드
+            gh release download --repo "$UPSTREAM" --pattern "*.ipa" --clobber
+            
+            # 내 저장소의 'latest' 릴리즈 업데이트 (원본 타이틀과 본문 이식)
+            # 이미 있으면 수정(edit), 없으면 생성(create)
+            if gh release view latest > /dev/null 2>&1; then
+              gh release edit latest --title "$REL_TITLE" --notes "$REL_BODY"
+            else
+              gh release create latest --title "$REL_TITLE" --notes "$REL_BODY"
+            fi
+            
+            # 파일 업로드
+            gh release upload latest *.ipa --clobber
           done
-          
-          # 내 저장소의 'latest' 릴리즈에 업로드
-          gh release create latest --title "Latest Synced Apps" --notes "Automatically synced" || true
-          gh release upload latest *.ipa --clobber
 
       - name: Download Final IPAs
         env:

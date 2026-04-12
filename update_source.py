@@ -3,7 +3,7 @@ import json
 import base64
 import plistlib
 import zipfile
-import requests  # 외부 소스 데이터를 가져오기 위해 필수
+import requests
 from datetime import datetime
 from github import Github, Auth
 
@@ -43,9 +43,10 @@ def extract_ipa_info_only(ipa_path):
 def apply_nightfox_branding(entry):
     entry["developerName"] = "NightFox"
     entry["subtitle"] = "NightFox"
+    # [정당화] null 방지를 위해 빈 문자열로 설정
     entry["localizedDescription"] = "NightFox"
 
-# --- 3. 기본 데이터 구조 및 기존 데이터 로드 (순서 고정) ---
+# --- 3. 기본 데이터 구조 및 기존 데이터 로드 ---
 base_data = {
     "name": "NightFox",
     "identifier": "com.nightfox1.repo",
@@ -64,6 +65,7 @@ if os.path.exists(JSON_FILE):
             if 'apps' in loaded_data:
                 base_data['apps'] = loaded_data['apps']
             
+            # 불필요한 필드 정리
             if 'news' in loaded_data: del loaded_data['news']
             if 'patreonURL' in loaded_data: del loaded_data['patreonURL']
             
@@ -73,7 +75,7 @@ if os.path.exists(JSON_FILE):
         except Exception as e:
             print(f"⚠️ 기존 JSON 로드 오류: {e}")
 
-# --- 4. 외부 소스 퍼오기 (3.5번 기능) ---
+# --- 4. 외부 소스 퍼오기 및 데이터 정제 ---
 other_sources = [
     "https://raw.githubusercontent.com/titouan336/Spotify-AltStoreRepo-mirror/main/source.json"
 ]
@@ -85,25 +87,22 @@ for source_url in other_sources:
         if response.status_code == 200:
             other_data = response.json()
             for other_app in other_data.get('apps', []):
-                # 내 목록에 없는 앱만 추가하여 내 데이터를 보호합니다.
+                # [정당화] 외부 소스의 null 값 및 날짜 형식 보정
+                for v in other_app.get('versions', []):
+                    if v.get('buildVersion') is None: v['buildVersion'] = ""
+                    if v.get('localizedDescription') is None: v['localizedDescription'] = ""
+                    # 사이드스토어 호환성을 위한 날짜 형식 보정
+                    if len(v.get('date', '')) == 10:
+                        v['date'] = f"{v['date']}T00:00:00+09:00"
+
                 exists = next((a for a in base_data['apps'] if a.get('bundleIdentifier') == other_app.get('bundleIdentifier')), None)
                 if not exists:
                     base_data['apps'].append(other_app)
                     print(f"   ✅ 외부 앱 추가됨: {other_app.get('name')}")
     except Exception as e:
         print(f"   ⚠️ 외부 소스 로드 실패: {e}")
-        # other_app["versions"] 처리 루프 내부에서
-for v in other_app.get('versions', []):
-    # 날짜가 YYYY-MM-DD 형식이면 시간대를 붙여서 보정
-    if len(v.get('date', '')) == 10:
-        v['date'] = f"{v['date']}T00:00:00+09:00"
-    
-    # 설명이 null이면 빈 문자열로 대체
-    if v.get('localizedDescription') is None:
-        v['localizedDescription'] = "Update from external source"
 
-# --- 5. 내 저장소 릴리즈 자산 및 IPA 처리 ---
-# [정당화] NameError 방지를 위해 루프 전에 변수를 먼저 정의합니다.
+# --- 5. 내 저장소 IPA 처리 (순서 유지 및 데이터 정제) ---
 ipa_files = sorted([f for f in os.listdir('.') if f.lower().endswith('.ipa')])
 
 all_release_assets = {asset.name: asset.browser_download_url 
@@ -119,15 +118,17 @@ for ipa_file in ipa_files:
     current_version = info.get('version', '1.0')
     download_url = all_release_assets.get(ipa_file) or f"{REPO_URL}/releases/download/latest/{ipa_file.replace(' ', '%20')}"
 
-    # [정당화] 인덱스를 찾아서 기존 앱의 위치(순서)를 유지합니다.
+    # 기존 순서(인덱스) 확인
     found_index = -1
     for i, a in enumerate(base_data['apps']):
         if a.get('bundleIdentifier') == current_bundle_id:
             found_index = i
             break
 
+    # [정당화] 신규 버전 생성 시 buildVersion을 ""로 고정
     new_v = {
         "version": current_version,
+        "buildVersion": "",
         "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+09:00"),
         "localizedDescription": f"NightFox Build - {current_version}", 
         "downloadURL": download_url,
@@ -135,17 +136,24 @@ for ipa_file in ipa_files:
     }
 
     if found_index != -1:
-        # 기존에 있던 자리에 내용만 업데이트 (순서 유지)
+        # 기존 앱 업데이트 (위치 고정)
         app_entry = base_data['apps'][found_index]
         app_entry["version"] = current_version
         app_entry["downloadURL"] = download_url
         apply_nightfox_branding(app_entry)
         
         if "versions" not in app_entry: app_entry["versions"] = []
+        
+        # [정당화] 기존 버전 리스트 내 null 값 일괄 청소
+        for v in app_entry["versions"]:
+            if v.get('buildVersion') is None: v['buildVersion'] = ""
+            if v.get('localizedDescription') is None: v['localizedDescription'] = ""
+
+        # 중복 버전 제거 후 최신 버전 삽입
         app_entry["versions"] = [v for v in app_entry["versions"] if v.get('version') != current_version]
         app_entry["versions"].insert(0, new_v)
     else:
-        # 아예 없는 앱일 때만 맨 뒤에 추가
+        # 새로운 앱 추가
         new_app = {
             "name": info.get('name', ipa_file),
             "bundleIdentifier": current_bundle_id,

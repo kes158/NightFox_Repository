@@ -1,12 +1,33 @@
 {
-  "name": "NightFox",
-  "subtitle": "내가 사용하려고 만든 소스",
+  "name": "NightFox Repository",
+  "identifier": "com.nightfox.repo",
+  "subtitle": "NightFox's App Repository",
   "description": "Welcome to NightFox's source!",
-  "iconURL": "https://i.imgur.com/Se6jHAj.png",
+  "iconURL": "https://i.imgur.com/EVyT7Ji.png",
   "website": "https://github.com/kes158/NightFox_Repository",
-  "patreonURL": "",
-  "tintColor": "#74b879",
-  "featuredApps": [],
-  "apps": [],
-  "news": []
+  "tintColor": "#00b39e",
+  "apps": [
+    {
+      "name": "YouTube",
+      "bundleIdentifier": "com.google.ios.youtube",
+      "version": "21.13.6",
+      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
+      "iconURL": "https://i.imgur.com/nAsnPKq.png",
+      "tintColor": "#00b39e",
+      "category": "other",
+      "versions": [
+        {
+          "version": "21.13.6",
+          "date": "2026-04-12T05:04:51+09:00",
+          "localizedDescription": "NightFox Build - 21.13.6",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
+          "size": 126776343,
+          "buildVersion": "21.13.6"
+        }
+      ],
+      "developerName": "NightFox",
+      "subtitle": "NightFox",
+      "localizedDescription": "NightFox"
+    }
+  ]
 }

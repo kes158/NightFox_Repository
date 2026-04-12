@@ -94,13 +94,6 @@ for source_url in other_sources:
         print(f"   ⚠️ 외부 소스 로드 실패: {e}")
 
 # --- 5. 내 저장소 릴리즈 자산 및 IPA 처리 ---
-all_release_assets = {asset.name: asset.browser_download_url 
-                      for release in repo.get_releases() 
-                      for asset in release.get_assets() 
-                      if asset.name.lower().endswith('.ipa')}
-
-ipa_files = sorted([f for f in os.listdir('.') if f.lower().endswith('.ipa')])
-
 for ipa_file in ipa_files:
     info = extract_ipa_info_only(ipa_file)
     if not info: continue
@@ -109,7 +102,12 @@ for ipa_file in ipa_files:
     current_version = info.get('version', '1.0')
     download_url = all_release_assets.get(ipa_file) or f"{REPO_URL}/releases/download/latest/{ipa_file.replace(' ', '%20')}"
 
-    app_entry = next((a for a in base_data['apps'] if a.get('bundleIdentifier') == current_bundle_id), None)
+    # [정당화] 인덱스(순서)를 찾아서 그 자리 그대로 업데이트합니다.
+    found_index = -1
+    for i, a in enumerate(base_data['apps']):
+        if a.get('bundleIdentifier') == current_bundle_id:
+            found_index = i
+            break
 
     new_v = {
         "version": current_version,
@@ -119,7 +117,9 @@ for ipa_file in ipa_files:
         "size": info.get('size', 0)
     }
 
-    if app_entry:
+    if found_index != -1:
+        # [정당화] 기존 순서를 유지하며 내용만 업데이트
+        app_entry = base_data['apps'][found_index]
         app_entry["version"] = current_version
         app_entry["downloadURL"] = download_url
         apply_nightfox_branding(app_entry)
@@ -127,7 +127,9 @@ for ipa_file in ipa_files:
         if "versions" not in app_entry: app_entry["versions"] = []
         app_entry["versions"] = [v for v in app_entry["versions"] if v.get('version') != current_version]
         app_entry["versions"].insert(0, new_v)
+        # base_data['apps'][found_index] = app_entry  # 리스트 내 위치 고정
     else:
+        # 완전히 새로운 앱일 때만 맨 뒤에 추가
         new_app = {
             "name": info.get('name', ipa_file),
             "bundleIdentifier": current_bundle_id,
@@ -141,6 +143,8 @@ for ipa_file in ipa_files:
         apply_nightfox_branding(new_app)
         base_data['apps'].append(new_app)
 
+# --- 6. JSON 저장 ---
+# (이하 생략)
 # --- 6. JSON 저장 ---
 with open(JSON_FILE, 'w', encoding='utf-8') as f:
     json.dump(base_data, f, ensure_ascii=False, indent=2)

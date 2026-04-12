@@ -8,13 +8,13 @@
   "tintColor": "#00b39e",
   "apps": [
     {
-      "name": "YTPlus",
+      "name": "YouTube",
       "bundleIdentifier": "com.google.ios.youtube",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/uZI2Pyf.png",
-      "tintColor": "#fc0434",
+      "tintColor": "#00b39e",
       "category": "other",
       "version": "21.13.6",
       "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
@@ -22,10 +22,10 @@
       "versions": [
         {
           "version": "21.13.6",
-          "date": "2026-04-12T10:14:08+09:00",
+          "date": "2026-04-12T10:27:12+09:00",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
           "size": 126776343,
-          "buildVersion": "",
+          "buildVersion": "1",
           "localizedDescription": "NightFox Build - 21.13.6"
         },
         {

@@ -2,11 +2,11 @@ name: Update SideStore Source
 on:
   push:
     paths:
-      - 'NightFox.json' # 수정됨
+      - 'NightFox.json' # 수동 수정 시에도 감지
   release:
     types: [published]
   schedule:
-    - cron: '0 0 * * *' # 매일 자정 자동 실행
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
-      # 1. 고정 리스트에서 IPA 및 릴리즈 정보 자동 복제
+      # 1. 타 저장소에서 IPA와 릴리즈 정보 복제
       - name: Sync Multiple Upstreams
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -32,22 +32,19 @@ jobs:
             [[ "$UPSTREAM" =~ ^#.* ]] && continue
             echo "[$UPSTREAM] 동기화 중..."
 
-            # 원본의 최신 릴리즈 타이틀과 본문 가져오기
+            # 릴리즈 정보 가져오기
             REL_TITLE=$(gh release view --repo "$UPSTREAM" --json name --jq '.name')
             REL_BODY=$(gh release view --repo "$UPSTREAM" --json body --jq '.body')
             
             # IPA 다운로드
             gh release download --repo "$UPSTREAM" --pattern "*.ipa" --clobber
             
-            # 내 저장소의 'latest' 릴리즈 업데이트 (원본 타이틀과 본문 이식)
-            # 이미 있으면 수정(edit), 없으면 생성(create)
+            # 내 저장소 릴리즈 업데이트
             if gh release view latest > /dev/null 2>&1; then
               gh release edit latest --title "$REL_TITLE" --notes "$REL_BODY"
             else
               gh release create latest --title "$REL_TITLE" --notes "$REL_BODY"
             fi
-            
-            # 파일 업로드
             gh release upload latest *.ipa --clobber
           done
 
@@ -68,6 +65,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install PyGithub
 
+      # 2. Python 실행 (update_source.py가 NightFox.json을 생성함)
       - name: Run Script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -75,15 +73,17 @@ jobs:
           TAG_NAME: ${{ github.event.release.tag_name || 'latest' }}
         run: python update_source.py
 
+      # 3. 변경된 NightFox.json을 저장소에 푸시
       - name: Commit and Push Changes
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           
-          git add "NightFox.json" # 수정됨
+          # [핵심] 파일명을 정확히 NightFox.json으로 지정
+          git add "NightFox.json"
           if [ -d "icons" ]; then git add icons/*.png; fi
 
           if ! git diff --cached --quiet; then
-            git commit -m "chore: sync and update NightFox.json [skip ci]"
+            git commit -m "chore: update NightFox.json with identifier [skip ci]"
             git push origin HEAD:main
           fi

@@ -87,7 +87,7 @@ def apply_nightfox_branding(entry):
     entry["subtitle"] = "NightFox"
     entry["localizedDescription"] = "NightFox"
 
-# --- 3. 기본 데이터 구조 정의 ---
+# --- 3. 기본 데이터 구조 정의 (뉴스 필드 삭제) ---
 base_data = {
     "name": "NightFox",
     "identifier": "com.nightfox1.repo",
@@ -98,10 +98,10 @@ base_data = {
     "tintColor": "#00b39e",
     "featuredApps": [],
     "apps": []
+    # "news": [] 필드를 아예 정의하지 않습니다.
 }
 
-
-# --- 4. 기존 데이터 로드 및 필수 필드 강제 보정 ---
+# --- 4. 기존 데이터 로드 및 필수 필드 강제 보정 (뉴스 로직 제거) ---
 if os.path.exists(JSON_FILE):
     with open(JSON_FILE, 'r', encoding='utf-8') as f:
         try:
@@ -110,24 +110,22 @@ if os.path.exists(JSON_FILE):
             # 1. 기존 앱 리스트 가져오기
             base_data['apps'] = loaded_data.get('apps', [])
             
-            # 2. [중요] AltStudio 등 외부 도구에서 누락시킨 필수 필드 강제 보정
-            # base_data(코드 상단 설정)에 있는 값을 우선적으로 loaded_data에 주입합니다.
+            # 2. 필수 필드 보정
             required_fields = [
                 'name', 'identifier', 'subtitle', 'description', 
-                'iconURL', 'website', 'patreonURL', 'tintColor'
+                'iconURL', 'website', 'tintColor'
             ]
             for field in required_fields:
                 if field in base_data:
                     loaded_data[field] = base_data[field]
 
-            # 3. 뉴스 데이터 처리 및 null 값(Feather 오류 원인) 방지
-            if 'news' in loaded_data:
-                for item in loaded_data['news']:
-                    if item.get('appID') is None:
-                        item['appID'] = "" # null을 빈 문자열로 정화
-                base_data['news'] = loaded_data['news']
+            # 3. [수정] 뉴스 데이터 처리 로직을 완전히 삭제했습니다.
+            # 기존에는 여기서 loaded_data.get('news')를 처리했으나 이를 건너뜁니다.
             
-            # 4. 보정된 모든 내용을 base_data에 최종 반영
+            # 4. 보정된 내용을 base_data에 반영 (뉴스는 제외됨)
+            if 'news' in loaded_data:
+                del loaded_data['news'] # 혹시 있을 뉴스 데이터 삭제
+            
             base_data.update(loaded_data)
             
         except Exception as e:

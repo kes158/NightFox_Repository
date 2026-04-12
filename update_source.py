@@ -1,15 +1,32 @@
 import os
-from github import Github
-from github import Auth
+import json
+import base64
+import plistlib
+import zipfile
+from datetime import datetime
+from github import Github, Auth
 
-# --- 1. 설정 및 인증 (NightFox님 환경에 맞게 수정됨) ---
+# --- 1. 설정 및 인증 (kes158님 환경에 최적화) ---
 GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
 
 
 REPO_NAME = "kes158/NightFox_Repository" 
+REPO_URL = f"https://github.com/{REPO_NAME}"
 
+# 파일명도 NightFox.json으로 고정했습니다.
 JSON_FILE = "NightFox.json" 
 
+# 최신 PyGithub 인증 방식
+auth = Auth.Token(GITHUB_TOKEN)
+g = Github(auth=auth)
+
+try:
+    repo = g.get_repo(REPO_NAME)
+    print(f"✅ 저장소 연결 성공: {REPO_NAME}")
+except Exception as e:
+    print(f"❌ 저장소 연결 실패: {REPO_NAME}")
+    print(f"상세 오류: {e}")
+    raise
 # 최신 PyGithub 라이브러리 방식(DeprecationWarning 해결)
 auth = Auth.Token(GITHUB_TOKEN)
 g = Github(auth=auth)

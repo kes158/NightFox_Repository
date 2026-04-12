@@ -73,7 +73,7 @@ if os.path.exists(JSON_FILE):
         except Exception as e:
             print(f"⚠️ 기존 JSON 로드 오류: {e}")
 
-# --- 4. 외부 소스 퍼오기 ---
+# --- 4. 외부 소스 퍼오기 (3.5번 기능) ---
 other_sources = [
     "https://raw.githubusercontent.com/titouan336/Spotify-AltStoreRepo-mirror/main/source.json"
 ]
@@ -85,7 +85,7 @@ for source_url in other_sources:
         if response.status_code == 200:
             other_data = response.json()
             for other_app in other_data.get('apps', []):
-                # 내 저장소에 없는 앱만 추가하여 내 데이터를 보호합니다.
+                # 내 목록에 없는 앱만 추가하여 내 데이터를 보호합니다.
                 exists = next((a for a in base_data['apps'] if a.get('bundleIdentifier') == other_app.get('bundleIdentifier')), None)
                 if not exists:
                     base_data['apps'].append(other_app)
@@ -94,6 +94,14 @@ for source_url in other_sources:
         print(f"   ⚠️ 외부 소스 로드 실패: {e}")
 
 # --- 5. 내 저장소 릴리즈 자산 및 IPA 처리 ---
+# [정당화] NameError 방지를 위해 루프 전에 변수를 먼저 정의합니다.
+ipa_files = sorted([f for f in os.listdir('.') if f.lower().endswith('.ipa')])
+
+all_release_assets = {asset.name: asset.browser_download_url 
+                      for release in repo.get_releases() 
+                      for asset in release.get_assets() 
+                      if asset.name.lower().endswith('.ipa')}
+
 for ipa_file in ipa_files:
     info = extract_ipa_info_only(ipa_file)
     if not info: continue
@@ -102,7 +110,7 @@ for ipa_file in ipa_files:
     current_version = info.get('version', '1.0')
     download_url = all_release_assets.get(ipa_file) or f"{REPO_URL}/releases/download/latest/{ipa_file.replace(' ', '%20')}"
 
-    # [정당화] 인덱스(순서)를 찾아서 그 자리 그대로 업데이트합니다.
+    # [정당화] 인덱스를 찾아서 기존 앱의 위치(순서)를 유지합니다.
     found_index = -1
     for i, a in enumerate(base_data['apps']):
         if a.get('bundleIdentifier') == current_bundle_id:
@@ -118,7 +126,7 @@ for ipa_file in ipa_files:
     }
 
     if found_index != -1:
-        # [정당화] 기존 순서를 유지하며 내용만 업데이트
+        # 기존에 있던 자리에 내용만 업데이트 (순서 유지)
         app_entry = base_data['apps'][found_index]
         app_entry["version"] = current_version
         app_entry["downloadURL"] = download_url
@@ -127,9 +135,8 @@ for ipa_file in ipa_files:
         if "versions" not in app_entry: app_entry["versions"] = []
         app_entry["versions"] = [v for v in app_entry["versions"] if v.get('version') != current_version]
         app_entry["versions"].insert(0, new_v)
-        # base_data['apps'][found_index] = app_entry  # 리스트 내 위치 고정
     else:
-        # 완전히 새로운 앱일 때만 맨 뒤에 추가
+        # 아예 없는 앱일 때만 맨 뒤에 추가
         new_app = {
             "name": info.get('name', ipa_file),
             "bundleIdentifier": current_bundle_id,
@@ -143,8 +150,6 @@ for ipa_file in ipa_files:
         apply_nightfox_branding(new_app)
         base_data['apps'].append(new_app)
 
-# --- 6. JSON 저장 ---
-# (이하 생략)
 # --- 6. JSON 저장 ---
 with open(JSON_FILE, 'w', encoding='utf-8') as f:
     json.dump(base_data, f, ensure_ascii=False, indent=2)

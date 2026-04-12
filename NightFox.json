@@ -19,14 +19,14 @@
       "versions": [
         {
           "version": "21.13.6",
-          "date": "2026-04-12T11:37:59+09:00",
-          "localizedDescription": "First AltStore release!",
+          "date": "2026-04-12T13:31:57+09:00",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
-          "size": 126776343,
-          "buildVersion": null,
-          "minOSVersion": null
+          "size": 126776343
         }
-      ]
+      ],
+      "version": "21.13.6",
+      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
+      "size": 126776343
     },
     {
       "name": "StikDebug",
@@ -47,7 +47,10 @@
           "buildVersion": "",
           "minOSVersion": ""
         }
-      ]
+      ],
+      "version": "3.0.1",
+      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/StikDebug-3.0.1.ipa",
+      "size": 10500000
     },
     {
       "name": "Instagram Theta",
@@ -68,7 +71,10 @@
           "buildVersion": "5.0Hotfix",
           "minOSVersion": ""
         }
-      ]
+      ],
+      "version": "407.0.0",
+      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/Theta5.0Hotfix_407.0.0.ipa",
+      "size": 247400000
     },
     {
       "name": "RedditDeluxe",
@@ -89,7 +95,10 @@
           "buildVersion": "",
           "minOSVersion": ""
         }
-      ]
+      ],
+      "version": "2026.06.0",
+      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.5.2/Reddit_2026_13_1.ipa",
+      "size": 159600000
     },
     {
       "name": "NeoFreeBird",
@@ -110,7 +119,10 @@
           "buildVersion": "2.2",
           "minOSVersion": ""
         }
-      ]
+      ],
+      "version": "11.35",
+      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/NeoFreeBird-2.2-Twitter-11.35-noFixTwitterLogin.ipa",
+      "size": 158500000
     },
     {
       "name": "Spotify",
@@ -176,7 +188,10 @@
           "buildVersion": "904800415",
           "minOSVersion": "15.0"
         }
-      ]
+      ],
+      "version": "9.1.34",
+      "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289733435/download",
+      "size": 98723618
     },
     {
       "name": "Spotify (Patched)",
@@ -242,7 +257,10 @@
           "buildVersion": "904800415",
           "minOSVersion": "15.0"
         }
-      ]
+      ],
+      "version": "9.1.34",
+      "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289733485/download",
+      "size": 104414955
     },
     {
       "name": "YouTubeMusic",
@@ -263,7 +281,10 @@
           "buildVersion": "",
           "minOSVersion": ""
         }
-      ]
+      ],
+      "version": "9.13.3",
+      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.5.7/YTMusicUltimate.ipa",
+      "size": 98900000
     },
     {
       "name": "Infuse",
@@ -284,7 +305,10 @@
           "buildVersion": "",
           "minOSVersion": ""
         }
-      ]
+      ],
+      "version": "8.4.1",
+      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.3.2/Infuse.8.4.1.ipa",
+      "size": 83500000
     },
     {
       "name": "iTorrent",
@@ -305,7 +329,10 @@
           "buildVersion": "",
           "minOSVersion": ""
         }
-      ]
+      ],
+      "version": "2.1.1",
+      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.1/iTorrent_2.1.1.ipa",
+      "size": 8700000
     },
     {
       "name": "EnsWilde",
@@ -326,7 +353,10 @@
           "localizedDescription": null,
           "minOSVersion": null
         }
-      ]
+      ],
+      "version": "3.1.3",
+      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.3/EnsWilde_v3.1.3.ipa",
+      "size": 13600000
     }
   ],
   "news": []

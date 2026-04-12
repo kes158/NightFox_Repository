@@ -1,20 +1,12 @@
 {
   "name": "NightFox Repository",
-  "identifier": "com.nightfox.repo",
+  "subtitle": "내가 사용하려고 만든 소스",
+  "identifier": "com.nightfox1.repo",
   "subtitle": "NightFox's App Repository",
   "description": "Welcome to NightFox's source!",
-  "iconURL": "https://i.imgur.com/EVyT7Ji.png",
+  "iconURL": "https://i.imgur.com/Se6jHAj.png",
   "website": "https://github.com/kes158/NightFox_Repository",
   "tintColor": "#00b39e",
-  "news": [
-    {
-      "title": "Source Updated",
-      "identifier": "update-20260412",
-      "caption": "Latest apps added.",
-      "date": "2026-04-12",
-      "tintColor": "#00b39e"
-    }
-  ],
   "apps": [
     {
       "name": "YouTube",

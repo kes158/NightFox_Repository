@@ -1,33 +1,32 @@
 {
   "name": "NightFox",
+  "identifier": "com.nightfox1.repo",
   "subtitle": "NightFox's App Repository",
   "description": "Welcome to NightFox's source!",
   "iconURL": "https://i.imgur.com/Se6jHAj.png",
   "website": "https://github.com/kes158/NightFox_Repository",
-  "patreonURL": "https://patreon.com/altstudio",
   "tintColor": "#00b39e",
-  "featuredApps": [],
   "apps": [
     {
       "name": "YouTube",
       "bundleIdentifier": "com.google.ios.youtube",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/uZI2Pyf.png",
       "tintColor": "#00b39e",
       "category": "other",
-      "screenshots": [],
+      "version": "21.13.6",
+      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
+      "size": 126776343,
       "versions": [
         {
           "version": "21.13.6",
-          "date": "2026-04-12T10:31:50+09:00",
-          "localizedDescription": "NightFox Build - 21.13.6",
+          "date": "2026-04-12T10:34:11+09:00",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
           "size": 126776343,
           "buildVersion": "1",
-          "minOSVersion": null
+          "localizedDescription": "NightFox Build - 21.13.6"
         },
         {
           "version": "21.03.2",
@@ -38,12 +37,7 @@
           "buildVersion": "5.2b4",
           "minOSVersion": ""
         }
-      ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      ]
     },
     {
       "name": "StikDebug",
@@ -378,7 +372,7 @@
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.1/iTorrent_2.1.1.ipa",
           "size": 8672137,
           "buildVersion": "1",
-          "minOSVersion": null
+          "minOSVersion": ""
         }
       ],
       "appPermissions": {
@@ -389,6 +383,5 @@
       },
       "patreon": {}
     }
-  ],
-  "news": []
+  ]
 }

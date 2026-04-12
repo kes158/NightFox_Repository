@@ -3,6 +3,7 @@ import json
 import base64
 import plistlib
 import zipfile
+import requests  # 외부 소스 데이터를 가져오기 위해 필수
 from datetime import datetime
 from github import Github, Auth
 
@@ -44,8 +45,7 @@ def apply_nightfox_branding(entry):
     entry["subtitle"] = "NightFox"
     entry["localizedDescription"] = "NightFox"
 
-# --- 3. 기존 데이터 로드 및 초기 구조 정의 (순서 고정) ---
-# [정당화] 사용자가 원하는 순서대로 딕셔너리를 미리 정의합니다.
+# --- 3. 기본 데이터 구조 및 기존 데이터 로드 (순서 고정) ---
 base_data = {
     "name": "NightFox",
     "identifier": "com.nightfox1.repo",
@@ -54,51 +54,46 @@ base_data = {
     "iconURL": "https://i.imgur.com/Se6jHAj.png",
     "website": REPO_URL,
     "tintColor": "#00b39e",
-    "apps": [] # 앱 목록은 아래에 배치
+    "apps": []
 }
 
 if os.path.exists(JSON_FILE):
     with open(JSON_FILE, 'r', encoding='utf-8') as f:
         try:
             loaded_data = json.load(f)
-            # 기존 앱 목록 보존
             if 'apps' in loaded_data:
                 base_data['apps'] = loaded_data['apps']
             
-            # [정당화] 뉴스 및 패트리온 링크 삭제 유지
             if 'news' in loaded_data: del loaded_data['news']
             if 'patreonURL' in loaded_data: del loaded_data['patreonURL']
             
-            # 나머지 메타데이터 업데이트 (기존 수동 수정 사항 반영)
             for key in base_data:
                 if key != 'apps' and key in loaded_data:
                     base_data[key] = loaded_data[key]
-                    
         except Exception as e:
             print(f"⚠️ 기존 JSON 로드 오류: {e}")
 
-# --- 3.5 다른 사람의 소스 퍼오기 ---
+# --- 4. 외부 소스 퍼오기 ---
 other_sources = [
-    "https://raw.githubusercontent.com/titouan336/Spotify-AltStoreRepo-mirror/main/source.json",
-    
+    "https://raw.githubusercontent.com/titouan336/Spotify-AltStoreRepo-mirror/main/source.json"
 ]
 
 for source_url in other_sources:
     try:
-        response = requests.get(source_url)
+        print(f"🌐 외부 소스 동기화 중: {source_url}")
+        response = requests.get(source_url, timeout=10)
         if response.status_code == 200:
             other_data = response.json()
-            # 그 소스에 있는 앱들을 내 앱 목록에 추가
             for other_app in other_data.get('apps', []):
-                # 이미 내 목록에 있는 앱인지 번들 ID로 확인
+                # 내 저장소에 없는 앱만 추가하여 내 데이터를 보호합니다.
                 exists = next((a for a in base_data['apps'] if a.get('bundleIdentifier') == other_app.get('bundleIdentifier')), None)
                 if not exists:
                     base_data['apps'].append(other_app)
-                    print(f"✅ 외부 앱 추가됨: {other_app.get('name')}")
+                    print(f"   ✅ 외부 앱 추가됨: {other_app.get('name')}")
     except Exception as e:
-        print(f"⚠️ 외부 소스 {source_url} 로드 실패: {e}")
+        print(f"   ⚠️ 외부 소스 로드 실패: {e}")
 
-# --- 4. 릴리즈 자산 및 IPA 처리 ---
+# --- 5. 내 저장소 릴리즈 자산 및 IPA 처리 ---
 all_release_assets = {asset.name: asset.browser_download_url 
                       for release in repo.get_releases() 
                       for asset in release.get_assets() 
@@ -146,9 +141,8 @@ for ipa_file in ipa_files:
         apply_nightfox_branding(new_app)
         base_data['apps'].append(new_app)
 
-# --- 5. JSON 저장 (순서 보존 저장) ---
+# --- 6. JSON 저장 ---
 with open(JSON_FILE, 'w', encoding='utf-8') as f:
-    # [정당화] indent를 주어 가독성을 높이고 정의한 순서대로 저장합니다.
     json.dump(base_data, f, ensure_ascii=False, indent=2)
 
-print(f"🎉 작업 완료: {JSON_FILE}의 데이터 순서가 예전처럼 조정되었습니다.")
+print(f"🎉 모든 작업이 완료되었습니다: {JSON_FILE}")

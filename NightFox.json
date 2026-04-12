@@ -19,9 +19,12 @@
       "versions": [
         {
           "version": "21.13.6",
-          "date": "2026-04-12T13:58:04+09:00",
+          "date": "2026-04-12T14:07:56+09:00",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
-          "size": 126776343
+          "size": 126776343,
+          "buildVersion": "",
+          "localizedDescription": "NightFox",
+          "minOSVersion": ""
         }
       ],
       "version": "21.13.6",
@@ -66,10 +69,10 @@
           "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/Theta5.0Hotfix_407.0.0.ipa",
           "size": 247400000,
           "version": "407.0.0",
-          "buildVersion": null,
+          "buildVersion": "",
           "date": "2026-04-12T13:54:00+09:00",
-          "localizedDescription": null,
-          "minOSVersion": null
+          "localizedDescription": "",
+          "minOSVersion": ""
         }
       ],
       "version": "407.0.0",
@@ -347,11 +350,11 @@
         {
           "version": "3.1.3",
           "date": "2026-04-12T11:43:00+09:00",
-          "localizedDescription": null,
+          "localizedDescription": "",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.3/EnsWilde_v3.1.3.ipa",
           "size": 13600000,
-          "buildVersion": null,
-          "minOSVersion": null
+          "buildVersion": "",
+          "minOSVersion": ""
         }
       ],
       "version": "3.1.3",

@@ -44,33 +44,38 @@ def apply_nightfox_branding(entry):
     entry["subtitle"] = "NightFox"
     entry["localizedDescription"] = "NightFox"
 
-# --- 3. 기존 데이터 완벽 로드 (핵심 섹션) ---
-# 기존 파일이 있다면 그 내용을 기반으로 시작합니다.
-if os.path.exists(JSON_FILE):
-    with open(JSON_FILE, 'r', encoding='utf-8') as f:
-        try:
-            base_data = json.load(f)
-            print(f"📂 기존 {JSON_FILE} 데이터를 로드했습니다.")
-        except Exception as e:
-            print(f"⚠️ 기존 JSON 로드 실패, 새로 생성합니다: {e}")
-            base_data = { "apps": [] }
-else:
-    base_data = { "apps": [] }
-
-# 기본 메타데이터 강제 업데이트 (필요한 경우만)
-base_data.update({
+# --- 3. 기존 데이터 로드 및 초기 구조 정의 (순서 고정) ---
+# [정당화] 사용자가 원하는 순서대로 딕셔너리를 미리 정의합니다.
+base_data = {
     "name": "NightFox",
     "identifier": "com.nightfox1.repo",
     "subtitle": "NightFox's App Repository",
     "description": "Welcome to NightFox's source!",
     "iconURL": "https://i.imgur.com/Se6jHAj.png",
     "website": REPO_URL,
-    "tintColor": "#00b39e"
-})
+    "tintColor": "#00b39e",
+    "apps": [] # 앱 목록은 아래에 배치
+}
 
-# [정당화] 불필요한 필드 삭제 로직
-if 'news' in base_data: del base_data['news']
-if 'patreonURL' in base_data: del base_data['patreonURL']
+if os.path.exists(JSON_FILE):
+    with open(JSON_FILE, 'r', encoding='utf-8') as f:
+        try:
+            loaded_data = json.load(f)
+            # 기존 앱 목록 보존
+            if 'apps' in loaded_data:
+                base_data['apps'] = loaded_data['apps']
+            
+            # [정당화] 뉴스 및 패트리온 링크 삭제 유지
+            if 'news' in loaded_data: del loaded_data['news']
+            if 'patreonURL' in loaded_data: del loaded_data['patreonURL']
+            
+            # 나머지 메타데이터 업데이트 (기존 수동 수정 사항 반영)
+            for key in base_data:
+                if key != 'apps' and key in loaded_data:
+                    base_data[key] = loaded_data[key]
+                    
+        except Exception as e:
+            print(f"⚠️ 기존 JSON 로드 오류: {e}")
 
 # --- 4. 릴리즈 자산 및 IPA 처리 ---
 all_release_assets = {asset.name: asset.browser_download_url 
@@ -88,8 +93,7 @@ for ipa_file in ipa_files:
     current_version = info.get('version', '1.0')
     download_url = all_release_assets.get(ipa_file) or f"{REPO_URL}/releases/download/latest/{ipa_file.replace(' ', '%20')}"
 
-    # 기존 앱 목록에서 번들 ID가 일치하는 앱 찾기
-    app_entry = next((a for a in base_data.get('apps', []) if a.get('bundleIdentifier') == current_bundle_id), None)
+    app_entry = next((a for a in base_data['apps'] if a.get('bundleIdentifier') == current_bundle_id), None)
 
     new_v = {
         "version": current_version,
@@ -100,17 +104,14 @@ for ipa_file in ipa_files:
     }
 
     if app_entry:
-        # [정당화] 이미 있는 앱(수동 추가 포함)은 버전과 URL만 업데이트
         app_entry["version"] = current_version
         app_entry["downloadURL"] = download_url
         apply_nightfox_branding(app_entry)
         
         if "versions" not in app_entry: app_entry["versions"] = []
-        # 중복 버전 제거 후 최신 버전 추가
         app_entry["versions"] = [v for v in app_entry["versions"] if v.get('version') != current_version]
         app_entry["versions"].insert(0, new_v)
     else:
-        # 완전히 새로운 앱일 때만 추가
         new_app = {
             "name": info.get('name', ipa_file),
             "bundleIdentifier": current_bundle_id,
@@ -124,8 +125,9 @@ for ipa_file in ipa_files:
         apply_nightfox_branding(new_app)
         base_data['apps'].append(new_app)
 
-# --- 5. JSON 저장 ---
+# --- 5. JSON 저장 (순서 보존 저장) ---
 with open(JSON_FILE, 'w', encoding='utf-8') as f:
+    # [정당화] indent를 주어 가독성을 높이고 정의한 순서대로 저장합니다.
     json.dump(base_data, f, ensure_ascii=False, indent=2)
 
-print(f"🎉 작업 완료: 수동으로 추가한 앱 정보가 보존되었습니다.")
+print(f"🎉 작업 완료: {JSON_FILE}의 데이터 순서가 예전처럼 조정되었습니다.")

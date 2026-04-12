@@ -56,30 +56,6 @@
       "size": 10500000
     },
     {
-      "name": "Instagram Theta",
-      "bundleIdentifier": "com.burbn.instagram",
-      "developerName": "NightFox",
-      "subtitle": "NightFox",
-      "localizedDescription": "NightFox",
-      "iconURL": "https://i.imgur.com/vNJLmo2.png",
-      "tintColor": "#f1e600",
-      "category": "other",
-      "versions": [
-        {
-          "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/Theta5.0Hotfix_407.0.0.ipa",
-          "size": 247400000,
-          "version": "407.0.0",
-          "buildVersion": "",
-          "date": "2026-04-12T13:54:00+09:00",
-          "localizedDescription": "",
-          "minOSVersion": ""
-        }
-      ],
-      "version": "407.0.0",
-      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/Theta5.0Hotfix_407.0.0.ipa",
-      "size": 247400000
-    },
-    {
       "name": "RedditDeluxe",
       "bundleIdentifier": "com.reddit.Reddit",
       "developerName": "NightFox",

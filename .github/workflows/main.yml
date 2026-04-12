@@ -2,12 +2,12 @@ name: Update SideStore Source
 on:
   push:
     paths:
-      - 'NightFox_Repository.json'
+      - 'NightFox.json' # 수정됨
   release:
     types: [published]
   schedule:
     - cron: '0 0 * * *' # 매일 자정 자동 실행
-  workflow_dispatch: # 수동 실행 버튼 (입력값 없어도 버튼만 누르면 리스트대로 작동)
+  workflow_dispatch:
 
 jobs:
   update:
@@ -21,26 +21,24 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
-      # 1. 고정된 리스트에서 IPA 파일들을 한꺼번에 긁어옵니다.
+      # 1. 고정 리스트에서 IPA 자동 복제
       - name: Sync Multiple Upstreams
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           UPSTREAM_LIST: |
             diarrhea3/YTLiteDiarrhea
-            # 추가하고 싶은 저장소가 있다면 여기에 계속 적으세요.
+            # 추가할 저장소 주소를 이 아래에 줄바꿈으로 적으세요.
         run: |
           for UPSTREAM in $UPSTREAM_LIST; do
-            # 주석(#) 처리된 줄은 무시하고 진행
             [[ "$UPSTREAM" =~ ^#.* ]] && continue
             echo "[$UPSTREAM] 동기화 중..."
             gh release download --repo "$UPSTREAM" --pattern "*.ipa" --clobber || echo "$UPSTREAM 에서 파일을 찾지 못했습니다."
           done
           
-          # 내 저장소의 'latest' 릴리즈에 모두 업로드 (덮어쓰기)
+          # 내 저장소의 'latest' 릴리즈에 업로드
           gh release create latest --title "Latest Synced Apps" --notes "Automatically synced" || true
           gh release upload latest *.ipa --clobber
 
-      # 2. 내 릴리즈에서 파일 확인 및 환경 준비
       - name: Download Final IPAs
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -58,7 +56,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install PyGithub
 
-      # 3. Python 스크립트로 JSON 업데이트
       - name: Run Script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -66,16 +63,15 @@ jobs:
           TAG_NAME: ${{ github.event.release.tag_name || 'latest' }}
         run: python update_source.py
 
-      # 4. 변경사항 커밋 및 푸시
       - name: Commit and Push Changes
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           
-          git add "NightFox Repository.json"
+          git add "NightFox.json" # 수정됨
           if [ -d "icons" ]; then git add icons/*.png; fi
 
           if ! git diff --cached --quiet; then
-            git commit -m "chore: sync multiple upstreams and update source [skip ci]"
+            git commit -m "chore: sync and update NightFox.json [skip ci]"
             git push origin HEAD:main
           fi

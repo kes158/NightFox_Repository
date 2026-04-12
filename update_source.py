@@ -45,7 +45,7 @@ def apply_nightfox_branding(entry):
     entry["subtitle"] = "NightFox"
     entry["localizedDescription"] = "NightFox"
 
-# [정당화] 사이드스토어의 "Data missing" 에러를 방지하기 위해 모든 null을 빈 문자열로 바꾸는 재귀 함수입니다.
+# 사이드스토어 호환성을 위해 모든 null을 빈 문자열로 바꾸는 딥 클리닝 함수
 def deep_clean_nulls(obj):
     if isinstance(obj, list):
         return [deep_clean_nulls(x) for x in obj]
@@ -53,7 +53,7 @@ def deep_clean_nulls(obj):
         return {k: (deep_clean_nulls(v) if v is not None else "") for k, v in obj.items()}
     return obj
 
-# --- 3. 기본 데이터 구조 및 기존 데이터 로드 ---
+# --- 3. 기본 데이터 구조 로드 ---
 base_data = {
     "name": "NightFox",
     "identifier": "com.nightfox1.repo",
@@ -71,103 +71,60 @@ if os.path.exists(JSON_FILE):
             loaded_data = json.load(f)
             if 'apps' in loaded_data:
                 base_data['apps'] = loaded_data['apps']
-            
-            # 불필요한 필드 정리
-            if 'news' in loaded_data: del loaded_data['news']
-            if 'patreonURL' in loaded_data: del loaded_data['patreonURL']
-            
-            for key in base_data:
-                if key != 'apps' and key in loaded_data:
-                    base_data[key] = loaded_data[key]
-        except Exception as e:
-            print(f"⚠️ 기존 JSON 로드 오류: {e}")
+        except: pass
 
-# --- 4. 외부 소스 퍼오기 및 데이터 정제 ---
-other_sources = [
-    "https://raw.githubusercontent.com/titouan336/Spotify-AltStoreRepo-mirror/main/source.json"
-]
-
+# --- 4. 외부 소스 동기화 ---
+other_sources = ["https://raw.githubusercontent.com/titouan336/Spotify-AltStoreRepo-mirror/main/source.json"]
 for source_url in other_sources:
     try:
-        print(f"🌐 외부 소스 동기화 중: {source_url}")
         response = requests.get(source_url, timeout=10)
         if response.status_code == 200:
-            other_data = response.json()
-            for other_app in other_data.get('apps', []):
-                # 외부 소스의 날짜 형식 보정 (사이드스토어 호환용)
-                for v in other_app.get('versions', []):
-                    if len(v.get('date', '')) == 10:
-                        v['date'] = f"{v['date']}T00:00:00+09:00"
-
+            for other_app in response.json().get('apps', []):
                 exists = next((a for a in base_data['apps'] if a.get('bundleIdentifier') == other_app.get('bundleIdentifier')), None)
-                if not exists:
-                    base_data['apps'].append(other_app)
-                    print(f"   ✅ 외부 앱 추가됨: {other_app.get('name')}")
-    except Exception as e:
-        print(f"   ⚠️ 외부 소스 로드 실패: {e}")
+                if not exists: base_data['apps'].append(other_app)
+    except: pass
 
-# --- 5. 내 저장소 릴리즈 자산 및 IPA 처리 (순서 유지 로직) ---
+# --- 5. 내 IPA 처리 (순서 유지) ---
 ipa_files = sorted([f for f in os.listdir('.') if f.lower().endswith('.ipa')])
-
-all_release_assets = {asset.name: asset.browser_download_url 
-                      for release in repo.get_releases() 
-                      for asset in release.get_assets() 
-                      if asset.name.lower().endswith('.ipa')}
+all_release_assets = {asset.name: asset.browser_download_url for r in repo.get_releases() for asset in r.get_assets()}
 
 for ipa_file in ipa_files:
     info = extract_ipa_info_only(ipa_file)
     if not info: continue
-
-    current_bundle_id = info.get('bundleID')
-    current_version = info.get('version', '1.0')
-    download_url = all_release_assets.get(ipa_file) or f"{REPO_URL}/releases/download/latest/{ipa_file.replace(' ', '%20')}"
-
-    # [정당화] NightFox님이 수동 정렬한 순서를 index로 찾아 유지합니다.
-    found_index = -1
-    for i, a in enumerate(base_data['apps']):
-        if a.get('bundleIdentifier') == current_bundle_id:
-            found_index = i
-            break
-
-    new_v = {
-        "version": current_version,
-        "buildVersion": "",
-        "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+09:00"),
-        "localizedDescription": f"NightFox Build - {current_version}", 
-        "downloadURL": download_url,
-        "size": info.get('size', 0)
-    }
-
-    if found_index != -1:
-        # 기존에 있던 자리에 내용만 업데이트 (순서 유지)
-        app_entry = base_data['apps'][found_index]
-        app_entry["version"] = current_version
-        app_entry["downloadURL"] = download_url
-        apply_nightfox_branding(app_entry)
-        
-        if "versions" not in app_entry: app_entry["versions"] = []
-        app_entry["versions"] = [v for v in app_entry["versions"] if v.get('version') != current_version]
-        app_entry["versions"].insert(0, new_v)
+    
+    bid = info['bundleID']
+    ver = info['version']
+    url = all_release_assets.get(ipa_file) or f"{REPO_URL}/releases/download/latest/{ipa_file}"
+    
+    new_v = {"version": ver, "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+09:00"), "downloadURL": url, "size": info['size'], "buildVersion": "", "localizedDescription": f"NightFox Build - {ver}"}
+    
+    idx = next((i for i, a in enumerate(base_data['apps']) if a.get('bundleIdentifier') == bid), -1)
+    if idx != -1:
+        app = base_data['apps'][idx]
+        app.update({"version": ver, "downloadURL": url, "size": info['size']}) # 최상위 필드 갱신
+        apply_nightfox_branding(app)
+        app["versions"] = [v for v in app.get("versions", []) if v.get("version") != ver]
+        app["versions"].insert(0, new_v)
     else:
-        # 아예 없는 앱일 때만 맨 뒤에 추가
-        new_app = {
-            "name": info.get('name', ipa_file),
-            "bundleIdentifier": current_bundle_id,
-            "version": current_version,
-            "downloadURL": download_url,
-            "iconURL": "https://i.imgur.com/nAsnPKq.png", 
-            "tintColor": "#00b39e",
-            "category": "other",
-            "versions": [new_v]
-        }
+        new_app = {"name": info['name'], "bundleIdentifier": bid, "version": ver, "downloadURL": url, "size": info['size'], "iconURL": "https://i.imgur.com/nAsnPKq.png", "category": "other", "versions": [new_v]}
         apply_nightfox_branding(new_app)
         base_data['apps'].append(new_app)
 
-# --- 6. 최종 클리닝 및 JSON 저장 ---
-# [정당화] 저장 직전 모든 하위 필드의 null 값을 ""로 완벽하게 치환합니다.
+# --- 6. 사이드스토어용 최종 강제 정제 ---
+for app in base_data['apps']:
+    # 최상위 필드가 비어있으면 첫 번째 버전에서 가져와서 채움 (사이드스토어 필수 로직)
+    if app.get('versions'):
+        latest = app['versions'][0]
+        app["version"] = app.get("version") or latest.get("version", "")
+        app["downloadURL"] = app.get("downloadURL") or latest.get("downloadURL", "")
+        app["size"] = app.get("size") or latest.get("size", 0)
+    
+    # 사이드스토어가 싫어하는 복잡한 권한 필드 삭제 (필요 시 주석 처리)
+    if "appPermissions" in app:
+        del app["appPermissions"]
+
+# 모든 데이터에서 null을 완전히 제거
 base_data = deep_clean_nulls(base_data)
 
 with open(JSON_FILE, 'w', encoding='utf-8') as f:
     json.dump(base_data, f, ensure_ascii=False, indent=2)
-
-print(f"🎉 모든 작업이 완료되었습니다: {JSON_FILE}")

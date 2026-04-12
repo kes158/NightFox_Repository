@@ -77,6 +77,27 @@ if os.path.exists(JSON_FILE):
         except Exception as e:
             print(f"⚠️ 기존 JSON 로드 오류: {e}")
 
+# --- 3.5 다른 사람의 소스 퍼오기 ---
+other_sources = [
+    "https://raw.githubusercontent.com/titouan336/Spotify-AltStoreRepo-mirror/main/source.json",
+    
+]
+
+for source_url in other_sources:
+    try:
+        response = requests.get(source_url)
+        if response.status_code == 200:
+            other_data = response.json()
+            # 그 소스에 있는 앱들을 내 앱 목록에 추가
+            for other_app in other_data.get('apps', []):
+                # 이미 내 목록에 있는 앱인지 번들 ID로 확인
+                exists = next((a for a in base_data['apps'] if a.get('bundleIdentifier') == other_app.get('bundleIdentifier')), None)
+                if not exists:
+                    base_data['apps'].append(other_app)
+                    print(f"✅ 외부 앱 추가됨: {other_app.get('name')}")
+    except Exception as e:
+        print(f"⚠️ 외부 소스 {source_url} 로드 실패: {e}")
+
 # --- 4. 릴리즈 자산 및 IPA 처리 ---
 all_release_assets = {asset.name: asset.browser_download_url 
                       for release in repo.get_releases() 

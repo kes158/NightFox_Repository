@@ -27,6 +27,69 @@
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox"
+    },
+    {
+      "name": "EeveeSpotify",
+      "bundleIdentifier": "com.spotify.client",
+      "developerName": "NightFox",
+      "subtitle": "NightFox",
+      "localizedDescription": "NightFox",
+      "iconURL": "https://i.imgur.com/2BDo8wk.png",
+      "tintColor": "#04e154",
+      "category": "other",
+      "versions": [
+        {
+          "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.5.5/EeveeSpotify_v9.1.34_Patched.ipa",
+          "size": 100500000,
+          "version": "9.1.34_P",
+          "buildVersion": "913402053",
+          "date": "2026-04-10T07:01:00+09:00",
+          "localizedDescription": "NightFox Build - 9.1.34_P"
+        },
+        {
+          "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.5.5/EeveeSpotify_v9.1.32_Patched.ipa",
+          "size": 99000000,
+          "version": "9.1.32_P",
+          "buildVersion": "913202081",
+          "date": "2026-04-10T06:59:00+09:00",
+          "localizedDescription": "NightFox Build - 9.1.32_P"
+        },
+        {
+          "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.5.5/EeveeSpotify_v9.1.12_Patched.ipa",
+          "size": 95500000,
+          "version": "9.1.12_P",
+          "buildVersion": "911200224",
+          "date": "2026-04-09T21:58:00+09:00",
+          "localizedDescription": "NightFox Build - 9.1.12_P"
+        },
+        {
+          "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.5.5/EeveeSpotify_v9.1.0_Patched.ipa",
+          "size": 90600000,
+          "version": "9.1.0_P",
+          "buildVersion": "910001151",
+          "date": "2026-04-09T12:57:00+09:00",
+          "localizedDescription": "NightFox Build - 9.1.0_P"
+        }
+      ],
+      "appPermissions": {
+        "privacy": {
+          "NSBluetoothAlwaysUsageDescription": "This lets you unlock new ways of interacting with other devices compatible with Spotify via Bluetooth.",
+          "NSCameraUsageDescription": "This lets you use your camera to scan or upload images.",
+          "NSUserTrackingUsageDescription": "Your data will be used to deliver personalized ads or content to you.",
+          "NSHealthUpdateUsageDescription": "Spotify will use HealthKit data to provide personalised audio recommendations for your workouts.",
+          "NSMotionUsageDescription": "We will use this to understand which audio motivates you most.",
+          "NSPhotoLibraryAddUsageDescription": "This lets you save images to your Photo Library.",
+          "NSHealthShareUsageDescription": "Spotify will use HealthKit data to provide personalised audio recommendations for your workouts.",
+          "NSLocalNetworkUsageDescription": "This lets you listen on different devices. Spotify will also get access to local audio files.",
+          "NSAppleMusicUsageDescription": "This will let you play your imported music on Spotify.",
+          "NSCalendarsUsageDescription": "This lets Spotify view and add events to your calendar.",
+          "NSMicrophoneUsageDescription": "This lets you control Spotify using your voice.",
+          "NSCalendarsWriteOnlyAccessUsageDescription": "This lets Spotify add events to your calendar.",
+          "NSFaceIDUsageDescription": "This lets you set access restrictions using Face ID.",
+          "NSContactsUsageDescription": "This lets Spotify access calendars you may have shared with your contacts.",
+          "NSPhotoLibraryUsageDescription": "This lets you select images from your Photo Library."
+        }
+      }
     }
   ]
 }

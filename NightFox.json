@@ -56,7 +56,7 @@
       "size": 10500000
     },
     {
-      "name": "Instagram Theta",
+      "name": "Instagram IGFormat",
       "bundleIdentifier": "com.burbn.instagram",
       "developerName": "NightFox",
       "subtitle": "NightFox",
@@ -72,15 +72,6 @@
           "size": 252936646,
           "buildVersion": "",
           "localizedDescription": "NightFox",
-          "minOSVersion": ""
-        },
-        {
-          "version": "407.0.0",
-          "date": "2026-04-12T15:53:00+09:00",
-          "localizedDescription": "",
-          "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/Theta5.0Hotfix_407.0.0.ipa",
-          "size": 247400000,
-          "buildVersion": "",
           "minOSVersion": ""
         }
       ],

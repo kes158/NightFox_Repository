@@ -19,7 +19,7 @@
       "versions": [
         {
           "version": "21.13.6",
-          "date": "2026-04-13T12:12:25+09:00",
+          "date": "2026-04-13T16:26:38+09:00",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
           "size": 126776343,
           "buildVersion": "",
@@ -66,6 +66,15 @@
       "category": "other",
       "versions": [
         {
+          "version": "410.0.0",
+          "date": "2026-04-13T16:26:39+09:00",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.5/IGFormatV1.98.410.0.0.ipa",
+          "size": 252936646,
+          "buildVersion": "",
+          "localizedDescription": "NightFox",
+          "minOSVersion": ""
+        },
+        {
           "version": "407.0.0",
           "date": "2026-04-12T15:53:00+09:00",
           "localizedDescription": "",
@@ -75,9 +84,9 @@
           "minOSVersion": ""
         }
       ],
-      "version": "407.0.0",
-      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/Theta5.0Hotfix_407.0.0.ipa",
-      "size": 247400000
+      "version": "410.0.0",
+      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.5/IGFormatV1.98.410.0.0.ipa",
+      "size": 252936646
     },
     {
       "name": "RedditDeluxe",

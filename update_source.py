@@ -21,20 +21,24 @@ def extract_ipa_info(ipa_path):
             with z.open(plist_path) as f:
                 plist = plistlib.load(f)
                 return {
-                    'name': plist.get('CFBundleDisplayName') or plist.get('CFBundleName') or "",
-                    'version': plist.get('CFBundleShortVersionString') or "1.0",
-                    'bundleID': plist.get('CFBundleIdentifier') or "",
-                    'size': os.path.getsize(ipa_path)
+                    'name': str(plist.get('CFBundleDisplayName') or plist.get('CFBundleName') or ""),
+                    'version': str(plist.get('CFBundleShortVersionString') or "1.0"),
+                    'bundleID': str(plist.get('CFBundleIdentifier') or ""),
+                    'size': os.path.getsize(ipa_path) # 내부 계산용 숫자
                 }
     except: return None
 
-# [중요] 모든 null(None) 값을 ""으로 바꾸는 함수
-def clean_none_to_empty(obj):
+# [정당화] 모든 데이터 타입을 문자열로 강제 변환하여 'unrecognized selector' 에러 방지
+def clean_for_sidestore(obj):
     if isinstance(obj, list):
-        return [clean_none_to_empty(x) for x in obj]
+        return [clean_for_sidestore(x) for x in obj]
     elif isinstance(obj, dict):
-        return {k: (clean_none_to_empty(v) if v is not None else "") for k, v in obj.items()}
-    return obj
+        # 사이드스토어 크래시 방지: 숫자형 필드(size 등)도 모두 문자열로 변환 고려
+        # 단, size는 숫자를 요구하는 스펙이 있으나 에러 지속 시 str(v)로 변경
+        return {k: (clean_for_sidestore(v) if v is not None else "") for k, v in obj.items()}
+    elif isinstance(obj, (int, float)):
+        return str(obj) # 모든 숫자를 문자열로 변환하여 안전성 확보
+    return str(obj) if obj is not None else ""
 
 # --- 2. 데이터 로드 및 헤더 설정 ---
 if os.path.exists(JSON_FILE):
@@ -56,62 +60,58 @@ else:
         "apps": []
     }
 
-# 불필요한 필드 제거 (featuredApps 등)
-base_data.pop("featuredApps", None)
+# 헤더에서 불필요한 필드 즉시 제거
+for unwanted in ["featuredApps", "patreonURL"]:
+    base_data.pop(unwanted, None)
 
-# --- 3. 업데이트 및 데이터 끌어올리기 ---
+# --- 3. 업데이트 및 데이터 동기화 ---
 ipa_files = sorted([f for f in os.listdir('.') if f.lower().endswith('.ipa')])
 assets = {asset.name: asset.browser_download_url for r in repo.get_releases() for asset in r.get_assets()}
 
 for app in base_data.get('apps', []):
     bid = app.get("bundleIdentifier")
+    # [정당화] 최상위 필드와 버전 리스트의 일관성을 유지
     ipa_match = next((f for f in ipa_files if extract_ipa_info(f) and extract_ipa_info(f)['bundleID'] == bid), None)
     
-    # IPA 파일이 있는 경우 최신 정보로 갱신
     if ipa_match:
         info = extract_ipa_info(ipa_match)
         url = assets.get(ipa_match) or f"https://github.com/{REPO_NAME}/releases/download/latest/{ipa_match.replace(' ', '%20')}"
-        app["version"] = info['version']
-        app["downloadURL"] = url
-        app["size"] = info['size']
+        
+        # 최신 정보 업데이트 (문자열 강제)
+        app["version"] = str(info['version'])
+        app["downloadURL"] = str(url)
+        app["size"] = str(info['size'])
         
         new_v = {
-            "version": info['version'], 
+            "version": str(info['version']), 
             "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+09:00"), 
-            "downloadURL": url, 
-            "size": info['size'],
-            "buildVersion": "", # null 대신 빈칸
-            "localizedDescription": "NightFox", # null 대신 기본값
-            "minOSVersion": "" # null 대신 빈칸
+            "downloadURL": str(url), 
+            "size": str(info['size']),
+            "buildVersion": "",
+            "localizedDescription": "NightFox Build", 
+            "minOSVersion": ""
         }
         if "versions" not in app: app["versions"] = []
         app["versions"] = [v for v in app["versions"] if v.get('version') != info['version']]
         app["versions"].insert(0, new_v)
         
-    # 상위 필드가 비어있으면 하위에서 가져옴
-    elif not app.get("version") or app.get("version") == "":
-        if app.get("versions"):
-            latest = app["versions"][0]
-            app["version"] = latest.get("version", "")
-            app["downloadURL"] = latest.get("downloadURL", "")
-            app["size"] = latest.get("size", 0)
+    elif app.get("versions"):
+        # IPA 파일이 없어도 기존 데이터에서 상위 필드 복구
+        latest = app["versions"][0]
+        app["version"] = str(latest.get("version", ""))
+        app["downloadURL"] = str(latest.get("downloadURL", ""))
+        app["size"] = str(latest.get("size", ""))
 
-# --- 4. 최종 세척 (null 제거 및 필드 삭제) ---
+# --- 4. 최종 클리닝 및 저장 ---
 for app in base_data.get('apps', []):
+    # 사이드스토어에서 문제를 일으키는 앱 레벨 필드 제거
     for key in ["appPermissions", "patreon", "screenshots", "marketplaceID", "featuredApps"]:
         app.pop(key, None)
-    
-    # 각 버전 내부의 null 체크
-    if "versions" in app:
-        for v in app["versions"]:
-            if v.get("buildVersion") is None: v["buildVersion"] = ""
-            if v.get("localizedDescription") is None: v["localizedDescription"] = ""
-            if v.get("minOSVersion") is None: v["minOSVersion"] = ""
 
-# 전체 데이터에 대해 다시 한번 null 세척
-base_data = clean_none_to_empty(base_data)
+# 전체 데이터를 사이드스토어 규격(문자열 중심)으로 최종 변환
+base_data = clean_for_sidestore(base_data)
 
 with open(JSON_FILE, 'w', encoding='utf-8') as f:
     json.dump(base_data, f, ensure_ascii=False, indent=2)
 
-print("🎉 null 제거 및 빈 칸 채우기 완료! 사이드스토어 최적화가 끝났습니다.")
+print("🎉 모든 필드 문자열화 및 사이드스토어 최적화 완료!")

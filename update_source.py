@@ -28,18 +28,42 @@ def extract_ipa_info(ipa_path):
                 }
     except: return None
 
-# [정당화] 모든 데이터 타입을 문자열로 강제 변환하여 'unrecognized selector' 에러 방지
+# [수정] 필드 성격에 따라 숫자와 문자열을 구분해서 처리
 def clean_for_sidestore(obj):
     if isinstance(obj, list):
         return [clean_for_sidestore(x) for x in obj]
     elif isinstance(obj, dict):
-        # 사이드스토어 크래시 방지: 숫자형 필드(size 등)도 모두 문자열로 변환 고려
-        # 단, size는 숫자를 요구하는 스펙이 있으나 에러 지속 시 str(v)로 변경
-        return {k: (clean_for_sidestore(v) if v is not None else "") for k, v in obj.items()}
-    elif isinstance(obj, (int, float)):
-        return str(obj) # 모든 숫자를 문자열로 변환하여 안전성 확보
+        new_dict = {}
+        for k, v in obj.items():
+            # size 필드만큼은 숫자로 유지 (Int64 대응)
+            if k == "size":
+                try:
+                    new_dict[k] = int(v) if v is not None else 0
+                except:
+                    new_dict[k] = 0
+            # 나머지는 모두 문자열로 처리
+            else:
+                new_dict[k] = clean_for_sidestore(v)
+        return new_dict
     return str(obj) if obj is not None else ""
 
+# --- 중간 데이터 입력 로직 (상위 필드) ---
+for app in base_data.get('apps', []):
+    # ... (생략) ...
+    if ipa_match:
+        info = extract_ipa_info(ipa_match)
+        app["version"] = str(info['version'])
+        app["size"] = int(info['size']) # 숫자로 입력
+        
+        new_v = {
+            "version": str(info['version']), 
+            "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+09:00"), 
+            "downloadURL": str(url), 
+            "size": int(info['size']), # 숫자로 입력
+            "buildVersion": "",
+            "localizedDescription": "NightFox Build", 
+            "minOSVersion": ""
+        }
 # --- 2. 데이터 로드 및 헤더 설정 ---
 if os.path.exists(JSON_FILE):
     with open(JSON_FILE, 'r', encoding='utf-8') as f:

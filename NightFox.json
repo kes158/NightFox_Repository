@@ -4,49 +4,41 @@
   "description": "Welcome to NightFox's source!",
   "iconURL": "https://i.imgur.com/Se6jHAj.png",
   "website": "https://github.com/kes158/NightFox_Repository",
-  "patreonURL": "https://patreon.com/altstudio",
   "tintColor": "#00b39e",
-  "featuredApps": [],
   "apps": [
     {
       "name": "YouTube",
       "bundleIdentifier": "com.google.ios.youtube",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/uZI2Pyf.png",
       "tintColor": "#ff0002",
       "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "21.13.6",
-          "date": "2026-04-13T18:54:47+09:00",
-          "localizedDescription": "NightFox Build",
+          "date": "2026-04-13T23:03:43+09:00",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
           "size": 126776343,
           "buildVersion": "",
+          "localizedDescription": "NightFox Build",
           "minOSVersion": ""
         }
       ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      "version": "21.13.6",
+      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
+      "size": 126776343
     },
     {
       "name": "StikDebug",
       "bundleIdentifier": "com.stik.stikdebug",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/JtyYEdh.png",
       "tintColor": "#24ccfc",
       "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "3.0.1",
@@ -58,23 +50,19 @@
           "minOSVersion": ""
         }
       ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      "version": "3.0.1",
+      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/StikDebug-3.0.1.ipa",
+      "size": 10500000
     },
     {
       "name": "Instagram Theta",
       "bundleIdentifier": "com.burbn.instagram",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/W0sm7gJ.png",
       "tintColor": "#ffe000",
       "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "407.0.0",
@@ -86,23 +74,19 @@
           "minOSVersion": ""
         }
       ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      "version": "407.0.0",
+      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/Theta5.0Hotfix_407.0.0.ipa",
+      "size": 247400000
     },
     {
       "name": "RedditDeluxe",
       "bundleIdentifier": "com.reddit.Reddit",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/ApnXe4K.png",
       "tintColor": "#fc4404",
       "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "2026.06.0",
@@ -114,23 +98,19 @@
           "minOSVersion": ""
         }
       ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      "version": "2026.06.0",
+      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.5.2/Reddit_2026_13_1.ipa",
+      "size": 159600000
     },
     {
       "name": "NeoFreeBird",
       "bundleIdentifier": "com.atebits.Tweetie2",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/9MyLXvv.png",
       "tintColor": "#1c9cf4",
       "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "11.35",
@@ -142,23 +122,19 @@
           "minOSVersion": ""
         }
       ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      "version": "11.35",
+      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/NeoFreeBird-2.2-Twitter-11.35-noFixTwitterLogin.ipa",
+      "size": 158500000
     },
     {
       "name": "Spotify",
       "bundleIdentifier": "com.spotify.client",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/j51OrKn.png",
       "tintColor": "#1cd464",
       "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "9.1.34",
@@ -215,23 +191,19 @@
           "minOSVersion": "15.0"
         }
       ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      "version": "9.1.34",
+      "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289733435/download",
+      "size": 98723618
     },
     {
       "name": "Spotify (Patched)",
       "bundleIdentifier": "com.spotify.client.patched",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/j51OrKn.png",
       "tintColor": "#1cd464",
       "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "9.1.34",
@@ -288,23 +260,19 @@
           "minOSVersion": "15.0"
         }
       ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      "version": "9.1.34",
+      "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289733485/download",
+      "size": 104414955
     },
     {
       "name": "YouTubeMusic",
       "bundleIdentifier": "com.google.ios.youtubemusic",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/POQxyLq.png",
       "tintColor": "#fc0434",
       "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "9.13.3",
@@ -316,60 +284,43 @@
           "minOSVersion": ""
         }
       ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      "version": "9.13.3",
+      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.5.7/YTMusicUltimate.ipa",
+      "size": 98900000
     },
     {
       "name": "nPlayer",
       "bundleIdentifier": "com.newin.nplayer",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/IIY9hpH.png",
       "tintColor": "#fcec14",
       "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/nPlayer.Plus.3.13.0.ipa",
           "size": 39400000,
           "version": "3.13.0",
-          "buildVersion": null,
+          "buildVersion": "",
           "date": "2026-04-13T23:01:00+09:00",
-          "localizedDescription": null,
-          "minOSVersion": null
+          "localizedDescription": "",
+          "minOSVersion": ""
         }
       ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {
-          "NSAppleMusicUsageDescription": "nPlayer needs access to your Media Library to play audios and videos in the App.",
-          "NSBluetoothAlwaysUsageDescription": "nPlayer needs bluetooth access to be able to find bluetooth devices in the app.",
-          "NSBluetoothPeripheralUsageDescription": "nPlayer needs bluetooth access to be able to find bluetooth devices in the app.",
-          "NSFaceIDUsageDescription": "nPlayer needs access to your Face ID to identify the access permissions in the app.",
-          "NSLocalNetworkUsageDescription": "nPlayer uses the local network to discover Cast-enabled devices on your WiFi\nnetwork.",
-          "NSMicrophoneUsageDescription": "The app will access your microphone.",
-          "NSPhotoLibraryAddUsageDescription": "nPlayer needs access to your Photo Library to save photos in the App.",
-          "NSPhotoLibraryUsageDescription": "nPlayer needs access to your Photo Library to show photos in the App."
-        }
-      },
-      "patreon": {}
+      "version": "3.13.0",
+      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/nPlayer.Plus.3.13.0.ipa",
+      "size": 39400000
     },
     {
       "name": "iTorrent",
       "bundleIdentifier": "com.xitrix.iTorrent2",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://user-images.githubusercontent.com/9553519/80646366-3d271680-8a75-11ea-8b60-9c5edd4ffd60.png",
       "tintColor": "#7100b3",
       "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "2.1.1",
@@ -381,23 +332,19 @@
           "minOSVersion": ""
         }
       ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      "version": "2.1.1",
+      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.1/iTorrent_2.1.1.ipa",
+      "size": 8700000
     },
     {
       "name": "EnsWilde",
       "bundleIdentifier": "com.yangjiii.EnsWilde",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/CliGoqS.png",
       "tintColor": "#c0683c",
       "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "3.1.3",
@@ -409,11 +356,9 @@
           "minOSVersion": ""
         }
       ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      "version": "3.1.3",
+      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.3/EnsWilde_v3.1.3.ipa",
+      "size": 13600000
     }
   ],
   "news": []

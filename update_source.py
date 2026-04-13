@@ -28,42 +28,25 @@ def extract_ipa_info(ipa_path):
                 }
     except: return None
 
-# [수정] 필드 성격에 따라 숫자와 문자열을 구분해서 처리
+# [정당화] 사이드스토어는 'size'만 Int형을 원하고 나머지는 String을 원함
 def clean_for_sidestore(obj):
     if isinstance(obj, list):
         return [clean_for_sidestore(x) for x in obj]
     elif isinstance(obj, dict):
         new_dict = {}
         for k, v in obj.items():
-            # size 필드만큼은 숫자로 유지 (Int64 대응)
+            # 'size' 필드만큼은 따옴표 없는 숫자로 유지 (Int64 대응)
             if k == "size":
                 try:
                     new_dict[k] = int(v) if v is not None else 0
                 except:
                     new_dict[k] = 0
-            # 나머지는 모두 문자열로 처리
+            # 나머지는 모두 문자열로 처리 (unrecognized selector 에러 방지)
             else:
                 new_dict[k] = clean_for_sidestore(v)
         return new_dict
     return str(obj) if obj is not None else ""
 
-# --- 중간 데이터 입력 로직 (상위 필드) ---
-for app in base_data.get('apps', []):
-    # ... (생략) ...
-    if ipa_match:
-        info = extract_ipa_info(ipa_match)
-        app["version"] = str(info['version'])
-        app["size"] = int(info['size']) # 숫자로 입력
-        
-        new_v = {
-            "version": str(info['version']), 
-            "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+09:00"), 
-            "downloadURL": str(url), 
-            "size": int(info['size']), # 숫자로 입력
-            "buildVersion": "",
-            "localizedDescription": "NightFox Build", 
-            "minOSVersion": ""
-        }
 # --- 2. 데이터 로드 및 헤더 설정 ---
 if os.path.exists(JSON_FILE):
     with open(JSON_FILE, 'r', encoding='utf-8') as f:
@@ -79,12 +62,11 @@ else:
         "description": "Welcome to NightFox's source!",
         "iconURL": "https://i.imgur.com/Se6jHAj.png",
         "website": f"https://github.com/{REPO_NAME}",
-        "patreonURL": "https://patreon.com/altstudio",
         "tintColor": "#00b39e",
         "apps": []
     }
 
-# 헤더에서 불필요한 필드 즉시 제거
+# 불필요한 필드 즉시 제거
 for unwanted in ["featuredApps", "patreonURL"]:
     base_data.pop(unwanted, None)
 
@@ -94,27 +76,27 @@ assets = {asset.name: asset.browser_download_url for r in repo.get_releases() fo
 
 for app in base_data.get('apps', []):
     bid = app.get("bundleIdentifier")
-    # [정당화] 최상위 필드와 버전 리스트의 일관성을 유지
     ipa_match = next((f for f in ipa_files if extract_ipa_info(f) and extract_ipa_info(f)['bundleID'] == bid), None)
     
     if ipa_match:
         info = extract_ipa_info(ipa_match)
         url = assets.get(ipa_match) or f"https://github.com/{REPO_NAME}/releases/download/latest/{ipa_match.replace(' ', '%20')}"
         
-        # 최신 정보 업데이트 (문자열 강제)
+        # 최신 정보 업데이트 (임시로 변수에 저장, 최종 세척기에서 타입 결정)
         app["version"] = str(info['version'])
         app["downloadURL"] = str(url)
-        app["size"] = str(info['size'])
+        app["size"] = int(info['size'])
         
         new_v = {
             "version": str(info['version']), 
             "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+09:00"), 
             "downloadURL": str(url), 
-            "size": str(info['size']),
+            "size": int(info['size']),
             "buildVersion": "",
             "localizedDescription": "NightFox Build", 
             "minOSVersion": ""
         }
+        
         if "versions" not in app: app["versions"] = []
         app["versions"] = [v for v in app["versions"] if v.get('version') != info['version']]
         app["versions"].insert(0, new_v)
@@ -124,18 +106,20 @@ for app in base_data.get('apps', []):
         latest = app["versions"][0]
         app["version"] = str(latest.get("version", ""))
         app["downloadURL"] = str(latest.get("downloadURL", ""))
-        app["size"] = str(latest.get("size", ""))
+        try:
+            app["size"] = int(latest.get("size", 0))
+        except:
+            app["size"] = 0
 
 # --- 4. 최종 클리닝 및 저장 ---
 for app in base_data.get('apps', []):
-    # 사이드스토어에서 문제를 일으키는 앱 레벨 필드 제거
     for key in ["appPermissions", "patreon", "screenshots", "marketplaceID", "featuredApps"]:
         app.pop(key, None)
 
-# 전체 데이터를 사이드스토어 규격(문자열 중심)으로 최종 변환
+# [핵심] 전체 데이터를 사이드스토어 규격(size=Int, 나머지=String)으로 일괄 변환
 base_data = clean_for_sidestore(base_data)
 
 with open(JSON_FILE, 'w', encoding='utf-8') as f:
     json.dump(base_data, f, ensure_ascii=False, indent=2)
 
-print("🎉 모든 필드 문자열화 및 사이드스토어 최적화 완료!")
+print("🎉 모든 에러 해결 및 사이드스토어 최적화 완료!")

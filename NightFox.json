@@ -57,9 +57,9 @@
     {
       "name": "Instagram Theta",
       "bundleIdentifier": "com.burbn.instagram",
-      "developerName": "Example Developer",
-      "subtitle": "An awesome app.",
-      "localizedDescription": "This is an awesome app only available on AltStore.",
+      "developerName": "NightFox",
+      "subtitle": "NightFox",
+      "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/W0sm7gJ.png",
       "tintColor": "#ffe000",
       "category": "other",
@@ -70,7 +70,7 @@
           "version": "407.0.0",
           "buildVersion": "",
           "date": "2026-04-13T17:48:00+09:00",
-          "localizedDescription": "",
+          "localizedDescription": "NightFox",
           "minOSVersion": ""
         }
       ],

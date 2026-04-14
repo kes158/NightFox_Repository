@@ -2,6 +2,7 @@ import os
 import json
 import plistlib
 import zipfile
+import requests # 외부 JSON 로드를 위해 추가
 from datetime import datetime
 from github import Github, Auth
 
@@ -9,6 +10,9 @@ from github import Github, Auth
 GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
 REPO_NAME = "kes158/NightFox_Repository" 
 JSON_FILE = "NightFox.json" 
+
+# [추가] 병합할 외부 소스 URL (EeveeSpotify 등 포함된 미러)
+EXTERNAL_SOURCE_URL = "https://raw.githubusercontent.com/titouan336/Spotify-AltStoreRepo-mirror/refs/heads/main/source.json"
 
 auth = Auth.Token(GITHUB_TOKEN)
 g = Github(auth=auth)
@@ -24,18 +28,18 @@ def extract_ipa_info(ipa_path):
                     'name': str(plist.get('CFBundleDisplayName') or plist.get('CFBundleName') or ""),
                     'version': str(plist.get('CFBundleShortVersionString') or "1.0"),
                     'bundleID': str(plist.get('CFBundleIdentifier') or ""),
-                    'size': os.path.getsize(ipa_path) # 내부 계산용 숫자
+                    'size': os.path.getsize(ipa_path)
                 }
     except: return None
 
-# [정당화] 사이드스토어는 'size'만 Int형을 원하고 나머지는 String을 원함
+# [정당화] 사이드스토어는 'size'만 Int형(Int64)을 원하고 나머지는 String을 원함
 def clean_for_sidestore(obj):
     if isinstance(obj, list):
         return [clean_for_sidestore(x) for x in obj]
     elif isinstance(obj, dict):
         new_dict = {}
         for k, v in obj.items():
-            # 'size' 필드만큼은 따옴표 없는 숫자로 유지 (Int64 대응)
+            # 'size' 필드만큼은 따옴표 없는 숫자로 유지
             if k == "size":
                 try:
                     new_dict[k] = int(v) if v is not None else 0
@@ -59,18 +63,46 @@ else:
         "name": "NightFox",
         "identifier": "com.nightfox1.repo",
         "subtitle": "NightFox's App Repository",
-        "description": "Welcome to NightFox's source!",
         "iconURL": "https://i.imgur.com/Se6jHAj.png",
         "website": f"https://github.com/{REPO_NAME}",
         "tintColor": "#00b39e",
         "apps": []
     }
 
-# 불필요한 필드 즉시 제거
-for unwanted in ["featuredApps", "patreonURL"]:
-    base_data.pop(unwanted, None)
+# --- [핵심 추가] 외부 소스 병합 로직 ---
+def sync_external_source(base_data, url):
+    try:
+        print(f"🌐 외부 소스 동기화 중: {url}")
+        response = requests.get(url, timeout=15)
+        if response.status_code == 200:
+            external_data = response.json()
+            ext_apps = external_data.get("apps", [])
+            
+            # 기존 앱 목록의 번들 ID 세트 생성
+            existing_bids = {app.get("bundleIdentifier") for app in base_data.get("apps", []) if app.get("bundleIdentifier")}
+            
+            for ext_app in ext_apps:
+                bid = ext_app.get("bundleIdentifier")
+                if not bid: continue
+                
+                # 내 소스에 없는 앱이면 새로 추가
+                if bid not in existing_bids:
+                    print(f"✅ 새 앱 추가: {ext_app.get('name')}")
+                    base_data["apps"].append(ext_app)
+                else:
+                    # 기존에 있는 앱이면 외부의 최신 정보를 반영
+                    for i, app in enumerate(base_data["apps"]):
+                        if app.get("bundleIdentifier") == bid:
+                            # 기존 데이터를 외부 소스 데이터로 업데이트
+                            base_data["apps"][i].update(ext_app)
+                            break
+    except Exception as e:
+        print(f"❌ 외부 소스 로드 실패: {e}")
 
-# --- 3. 업데이트 및 데이터 동기화 ---
+# 외부 소스 병합 실행
+sync_external_source(base_data, EXTERNAL_SOURCE_URL)
+
+# --- 3. 업데이트 및 데이터 동기화 (내 IPA 파일 기준) ---
 ipa_files = sorted([f for f in os.listdir('.') if f.lower().endswith('.ipa')])
 assets = {asset.name: asset.browser_download_url for r in repo.get_releases() for asset in r.get_assets()}
 
@@ -82,7 +114,7 @@ for app in base_data.get('apps', []):
         info = extract_ipa_info(ipa_match)
         url = assets.get(ipa_match) or f"https://github.com/{REPO_NAME}/releases/download/latest/{ipa_match.replace(' ', '%20')}"
         
-        # 최신 정보 업데이트 (임시로 변수에 저장, 최종 세척기에서 타입 결정)
+        # 최신 정보 업데이트 (임시 저장)
         app["version"] = str(info['version'])
         app["downloadURL"] = str(url)
         app["size"] = int(info['size'])
@@ -98,11 +130,12 @@ for app in base_data.get('apps', []):
         }
         
         if "versions" not in app: app["versions"] = []
+        # 중복 버전 제거 후 최신 버전 삽입
         app["versions"] = [v for v in app["versions"] if v.get('version') != info['version']]
         app["versions"].insert(0, new_v)
         
-    elif app.get("versions"):
-        # IPA 파일이 없어도 기존 데이터에서 상위 필드 복구
+    elif app.get("versions") and (not app.get("version") or app.get("version") == ""):
+        # IPA는 없지만 versions 목록이 있는 경우 상위 필드 복구
         latest = app["versions"][0]
         app["version"] = str(latest.get("version", ""))
         app["downloadURL"] = str(latest.get("downloadURL", ""))
@@ -112,14 +145,15 @@ for app in base_data.get('apps', []):
             app["size"] = 0
 
 # --- 4. 최종 클리닝 및 저장 ---
+# 사이드스토어에서 불필요하거나 문제를 일으킬 수 있는 필드 제거
 for app in base_data.get('apps', []):
     for key in ["appPermissions", "patreon", "screenshots", "marketplaceID", "featuredApps"]:
         app.pop(key, None)
 
-# [핵심] 전체 데이터를 사이드스토어 규격(size=Int, 나머지=String)으로 일괄 변환
+# [정당화] 전체 데이터를 사이드스토어 규격(size=Int, 나머지=String)으로 일괄 세척
 base_data = clean_for_sidestore(base_data)
 
 with open(JSON_FILE, 'w', encoding='utf-8') as f:
     json.dump(base_data, f, ensure_ascii=False, indent=2)
 
-print("🎉 모든 에러 해결 및 사이드스토어 최적화 완료!")
+print("🎉 외부 소스 병합 및 모든 데이터 최적화 완료!")

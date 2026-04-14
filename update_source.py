@@ -102,23 +102,25 @@ def sync_external_source(base_data, url):
 # 외부 소스 병합 실행
 sync_external_source(base_data, EXTERNAL_SOURCE_URL)
 
-# --- 3. 업데이트 및 데이터 동기화 (내 IPA 파일 기준) ---
+# --- 3. 업데이트 및 데이터 동기화 (과거 버전 보존 로직) ---
 ipa_files = sorted([f for f in os.listdir('.') if f.lower().endswith('.ipa')])
 assets = {asset.name: asset.browser_download_url for r in repo.get_releases() for asset in r.get_assets()}
 
 for app in base_data.get('apps', []):
     bid = app.get("bundleIdentifier")
+    # 현재 폴더에 있는 IPA 중 번들ID가 일치하는 파일 찾기
     ipa_match = next((f for f in ipa_files if extract_ipa_info(f) and extract_ipa_info(f)['bundleID'] == bid), None)
     
     if ipa_match:
         info = extract_ipa_info(ipa_match)
         url = assets.get(ipa_match) or f"https://github.com/{REPO_NAME}/releases/download/latest/{ipa_match.replace(' ', '%20')}"
         
-        # 최신 정보 업데이트 (임시 저장)
+        # 1. 앱의 기본 정보를 현재 파일 기준으로 업데이트
         app["version"] = str(info['version'])
         app["downloadURL"] = str(url)
         app["size"] = int(info['size'])
         
+        # 2. 새로운 버전 객체 생성
         new_v = {
             "version": str(info['version']), 
             "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+09:00"), 
@@ -129,20 +131,30 @@ for app in base_data.get('apps', []):
             "minOSVersion": ""
         }
         
-        if "versions" not in app: app["versions"] = []
-        # 중복 버전 제거 후 최신 버전 삽입
-        app["versions"] = [v for v in app["versions"] if v.get('version') != info['version']]
-        app["versions"].insert(0, new_v)
+        # 3. [핵심] 과거 버전 유지 로직
+        if "versions" not in app:
+            app["versions"] = []
+            
+        # 이미 같은 버전이 리스트에 있는지 확인
+        version_exists = False
+        for i, v in enumerate(app["versions"]):
+            if v.get("version") == info['version']:
+                # 같은 버전이 이미 있다면 최신 정보(URL 등)만 업데이트
+                app["versions"][i] = new_v
+                version_exists = True
+                break
         
-    elif app.get("versions") and (not app.get("version") or app.get("version") == ""):
-        # IPA는 없지만 versions 목록이 있는 경우 상위 필드 복구
+        # 새로운 버전이라면 리스트의 맨 앞에 추가 (기존 데이터는 뒤로 밀림)
+        if not version_exists:
+            app["versions"].insert(0, new_v)
+            
+    # IPA 파일이 없더라도 기존에 저장된 versions 데이터가 있다면 상위 필드 유지
+    elif app.get("versions"):
         latest = app["versions"][0]
-        app["version"] = str(latest.get("version", ""))
-        app["downloadURL"] = str(latest.get("downloadURL", ""))
-        try:
-            app["size"] = int(latest.get("size", 0))
-        except:
-            app["size"] = 0
+        app["version"] = str(latest.get("version", app.get("version", "")))
+        app["downloadURL"] = str(latest.get("downloadURL", app.get("downloadURL", "")))
+        app["size"] = int(latest.get("size", app.get("size", 0)))
+
 
 # --- 4. 최종 클리닝 및 저장 ---
 # 사이드스토어에서 불필요하거나 문제를 일으킬 수 있는 필드 제거

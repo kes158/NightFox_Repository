@@ -21,7 +21,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
-      # 1. 타 저장소에서 IPA와 릴리즈 정보 복제
+# 1. 타 저장소에서 가장 최근에 생성된 릴리즈 복제
       - name: Sync Multiple Upstreams
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -31,21 +31,33 @@ jobs:
         run: |
           for UPSTREAM in $UPSTREAM_LIST; do
             [[ "$UPSTREAM" =~ ^#.* ]] && continue
-            echo "[$UPSTREAM] 동기화 중..."
+            echo "[$UPSTREAM] 최신 릴리즈 확인 중..."
 
-            # 릴리즈 정보 가져오기
-            REL_TITLE=$(gh release view --repo "$UPSTREAM" --json name --jq '.name')
-            REL_BODY=$(gh release view --repo "$UPSTREAM" --json body --jq '.body')
+            # [정당화] --limit 1을 사용하여 날짜 기준 가장 최근 릴리즈의 태그명을 가져옴
+            LATEST_TAG=$(gh release list --repo "$UPSTREAM" --limit 1 --json tagName --jq '.[0].tagName')
             
-            # IPA 다운로드
-            gh release download --repo "$UPSTREAM" --pattern "*.ipa" --clobber
+            if [ -z "$LATEST_TAG" ]; then
+              echo "릴리즈를 찾을 수 없습니다."
+              continue
+            fi
             
-            # 내 저장소 릴리즈 업데이트
+            echo "발견된 최신 태그: $LATEST_TAG"
+
+            # 해당 태그의 정보 가져오기
+            REL_TITLE=$(gh release view "$LATEST_TAG" --repo "$UPSTREAM" --json name --jq '.name')
+            REL_BODY=$(gh release view "$LATEST_TAG" --repo "$UPSTREAM" --json body --jq '.body')
+            
+            # 해당 태그의 IPA 다운로드
+            gh release download "$LATEST_TAG" --repo "$UPSTREAM" --pattern "*.ipa" --clobber
+            
+            # 내 저장소 릴리즈 업데이트 (내 저장소는 여전히 'latest' 태그를 창고로 사용)
             if gh release view latest > /dev/null 2>&1; then
               gh release edit latest --title "$REL_TITLE" --notes "$REL_BODY"
             else
               gh release create latest --title "$REL_TITLE" --notes "$REL_BODY"
             fi
+            
+            # 내 저장소에 업로드
             gh release upload latest *.ipa --clobber
           done
 

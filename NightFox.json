@@ -17,6 +17,15 @@
       "category": "other",
       "versions": [
         {
+          "version": "21.13.6",
+          "date": "2026-04-14T16:06:42+09:00",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
+          "size": 126776343,
+          "buildVersion": "",
+          "localizedDescription": "NightFox Build",
+          "minOSVersion": ""
+        },
+        {
           "version": "21.08.3",
           "date": "2026-04-14T15:53:04+09:00",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.08.3_YouTubePlus_5.2b4.ipa",
@@ -33,20 +42,11 @@
           "buildVersion": "",
           "localizedDescription": "NightFox Build",
           "minOSVersion": ""
-        },
-        {
-          "version": "21.13.6",
-          "date": "2026-04-14T15:18:16+09:00",
-          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
-          "size": 126776343,
-          "buildVersion": "",
-          "localizedDescription": "NightFox Build",
-          "minOSVersion": ""
         }
       ],
-      "version": "21.08.3",
-      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.08.3_YouTubePlus_5.2b4.ipa",
-      "size": 125969488
+      "version": "21.13.6",
+      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
+      "size": 126776343
     },
     {
       "name": "StikDebug",

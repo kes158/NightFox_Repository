@@ -18,7 +18,7 @@
       "versions": [
         {
           "version": "21.13.6",
-          "date": "2026-04-14T12:09:10+09:00",
+          "date": "2026-04-14T15:18:16+09:00",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
           "size": 126776343,
           "buildVersion": "",
@@ -129,9 +129,9 @@
     {
       "name": "Spotify",
       "bundleIdentifier": "com.spotify.client",
-      "developerName": "NightFox",
-      "subtitle": "NightFox",
-      "localizedDescription": "NightFox",
+      "developerName": "Skye/whoeevee",
+      "subtitle": "Latest Eevee release",
+      "localizedDescription": "This tweak only support Musixmatch custom lyrics at this time.\nUse original EeveeSpotify 9.1.0 for working lyrics.\n\nThis tweak makes Spotify think you have a Premium subscription, granting free listening, just like Spotilife, and provides some additional features like custom lyrics.",
       "iconURL": "https://i.imgur.com/j51OrKn.png",
       "tintColor": "#1cd464",
       "category": "other",
@@ -193,14 +193,15 @@
       ],
       "version": "9.1.34",
       "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289733435/download",
-      "size": 98723618
+      "size": 98723618,
+      "versionDate": "2026-04-07"
     },
     {
       "name": "Spotify (Patched)",
       "bundleIdentifier": "com.spotify.client.patched",
-      "developerName": "NightFox",
-      "subtitle": "NightFox",
-      "localizedDescription": "NightFox",
+      "developerName": "Skye/whoeevee",
+      "subtitle": "Patched for paid certs",
+      "localizedDescription": "Warning : Only use with Feather, ESign or KSign.\n\nThis tweak only support Musixmatch custom lyrics at this time.\nUse original EeveeSpotify 9.1.0 for working lyrics.\n\nUsing the patched IPA should fix any widgets issues had when sideloading with paid certs (with app groups entitlement). this fix does not work with free sideloading methods such as AltStore/Sideloadly, and TrollStore users do not need to use a patched IPA.\n\nfurther note: this IPA should be considered a beta test for now, so general support will not be provided for it.",
       "iconURL": "https://i.imgur.com/j51OrKn.png",
       "tintColor": "#1cd464",
       "category": "other",
@@ -262,7 +263,8 @@
       ],
       "version": "9.1.34",
       "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289733485/download",
-      "size": 104414955
+      "size": 104414955,
+      "versionDate": "2026-04-07"
     },
     {
       "name": "YouTubeMusic",

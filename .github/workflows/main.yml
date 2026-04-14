@@ -78,17 +78,18 @@ jobs:
           TAG_NAME: ${{ github.event.release.tag_name || 'latest' }}
         run: python update_source.py
 
-      # 3. 변경된 NightFox.json을 저장소에 푸시
+# 3. 변경된 NightFox.json을 저장소에 푸시
       - name: Commit and Push Changes
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           
-          # [핵심] 파일명을 정확히 NightFox.json으로 지정
+          # [수정] 파이썬 스크립트가 생성하는 파일 이름과 일치시킵니다.
           git add "NightFox.json"
+          
           if [ -d "icons" ]; then git add icons/*.png; fi
 
           if ! git diff --cached --quiet; then
-            git commit -m "chore: update NightFox.json with identifier [skip ci]"
+            git commit -m "chore: update NightFox.json [skip ci]"
             git push origin HEAD:main
           fi

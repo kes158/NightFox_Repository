@@ -11,7 +11,7 @@ GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
 REPO_NAME = "kes158/NightFox_Repository" 
 JSON_FILE = "NightFox.json" 
 
-# 병합할 외부 소스 URL
+# 병합할 외부 소스 URL (Spotify 미러 등)
 EXTERNAL_SOURCE_URL = "https://raw.githubusercontent.com/titouan336/Spotify-AltStoreRepo-mirror/refs/heads/main/source.json"
 
 auth = Auth.Token(GITHUB_TOKEN)
@@ -32,6 +32,7 @@ def extract_ipa_info(ipa_path):
                 }
     except: return None
 
+# [정당화] 사이드스토어 규격 준수: size는 Int, 나머지는 String 강제
 def clean_for_sidestore(obj):
     if isinstance(obj, list):
         return [clean_for_sidestore(x) for x in obj]
@@ -88,6 +89,7 @@ def sync_external_source(base_data, url):
     except Exception as e:
         print(f"❌ 외부 소스 로드 실패: {e}")
 
+# 외부 소스 병합 실행
 sync_external_source(base_data, EXTERNAL_SOURCE_URL)
 
 # --- 3. 업데이트 및 데이터 동기화 (누적 및 정렬 로직) ---
@@ -98,7 +100,6 @@ for app in base_data.get('apps', []):
     bid = app.get("bundleIdentifier")
     ipa_match = next((f for f in ipa_files if extract_ipa_info(f) and extract_ipa_info(f)['bundleID'] == bid), None)
     
-    # 신규 파일 처리 (누적)
     if ipa_match:
         info = extract_ipa_info(ipa_match)
         url = assets.get(ipa_match) or f"https://github.com/{REPO_NAME}/releases/download/latest/{ipa_match.replace(' ', '%20')}"
@@ -126,28 +127,33 @@ for app in base_data.get('apps', []):
         if not version_exists:
             app["versions"].insert(0, new_v)
 
-    # [핵심] 버전 정렬 및 상위 필드 동기화 로직
+    # [정렬] 버전 번호를 숫자 배열로 변환하여 내림차순 정렬 (21.13.6 > 21.8.3 보장)
     if "versions" in app and len(app["versions"]) > 0:
-        # 1. 버전 번호를 숫자 리스트로 변환하여 내림차순 정렬 (예: 21.13.6 > 21.8.3)
         app["versions"].sort(
             key=lambda x: [int(part) if part.isdigit() else 0 for part in x.get("version", "0").split('.')],
             reverse=True
         )
-        
-        # 2. 정렬된 리스트의 최상단(최신 버전) 정보를 앱의 메인 필드에 적용
+        # 정렬된 최신 정보를 상위 필드에 동기화
         latest_v = app["versions"][0]
         app["version"] = str(latest_v.get("version", ""))
         app["downloadURL"] = str(latest_v.get("downloadURL", ""))
         app["size"] = int(latest_v.get("size", 0))
 
-# --- 4. 최종 클리닝 및 저장 ---
+# --- 4. 최종 클리닝 및 저장 (필요 없는 필드 제거) ---
+
+# [정당화] 최상위(Root) 레벨에서 불필요한 필드 삭제 (featuredApps 등 차단)
+for root_key in ["featuredApps", "marketplaceID", "patreonURL"]:
+    base_data.pop(root_key, None)
+
+# 각 앱 레벨에서 불필요한 필드 삭제
 for app in base_data.get('apps', []):
     for key in ["appPermissions", "patreon", "screenshots", "marketplaceID", "featuredApps"]:
         app.pop(key, None)
 
+# 최종 사이드스토어 규격 세척
 base_data = clean_for_sidestore(base_data)
 
 with open(JSON_FILE, 'w', encoding='utf-8') as f:
     json.dump(base_data, f, ensure_ascii=False, indent=2)
 
-print("🎉 버전 정렬 및 사이드스토어 최적화가 완료되었습니다!")
+print("🎉 NightFox.json 업데이트 및 정렬, 최상위 클리닝 완료!")

@@ -110,7 +110,7 @@ for app in base_data.get('apps', []):
             "downloadURL": str(url), 
             "size": int(info['size']),
             "buildVersion": "",
-            "localizedDescription": "NightFox Build", 
+            "localizedDescription": "NightFox", 
             "minOSVersion": ""
         }
         

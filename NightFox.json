@@ -356,9 +356,9 @@
     {
       "name": "Infuse Plus",
       "bundleIdentifier": "com.firecore.infuse",
-      "developerName": "Example Developer",
-      "subtitle": "An awesome app.",
-      "localizedDescription": "This is an awesome app only available on AltStore.",
+      "developerName": "NightFox",
+      "subtitle": "NightFox",
+      "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/V76nbJd.png",
       "tintColor": "#fc6c04",
       "category": "other",
@@ -369,7 +369,7 @@
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.8/Infuse_Plus_8.3.9.ipa",
           "size": 74592875,
           "buildVersion": "",
-          "localizedDescription": "NightFox Build",
+          "localizedDescription": "NightFox",
           "minOSVersion": ""
         }
       ],

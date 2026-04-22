@@ -27,11 +27,11 @@
         },
         {
           "version": "21.13.6",
-          "date": "2026-04-15T18:50:18+09:00",
-          "localizedDescription": "NightFox Build",
+          "date": "2026-04-22T06:24:20+09:00",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
           "size": 126776343,
           "buildVersion": "",
+          "localizedDescription": "NightFox",
           "minOSVersion": ""
         },
         {
@@ -365,7 +365,7 @@
       "versions": [
         {
           "version": "8.3.9",
-          "date": "2026-04-21T23:09:32+09:00",
+          "date": "2026-04-22T06:24:21+09:00",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.8/Infuse_Plus_8.3.9.ipa",
           "size": 74592875,
           "buildVersion": "",

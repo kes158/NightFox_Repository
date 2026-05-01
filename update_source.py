@@ -80,8 +80,8 @@ def sync_external_source(base_data, url):
                 bid = ext_app.get("bundleIdentifier")
                 if not bid: continue
                 if bid not in existing_bids:
-                    # [수정] 새로운 외부 앱을 리스트 맨 앞에 추가
-                    base_data["apps"].insert(0, ext_app)
+                    # 새로운 앱은 리스트 끝에 추가하여 기존 앱 순서를 방해하지 않음
+                    base_data["apps"].append(ext_app)
                 else:
                     for i, app in enumerate(base_data["apps"]):
                         if app.get("bundleIdentifier") == bid:
@@ -93,10 +93,11 @@ def sync_external_source(base_data, url):
 # 외부 소스 병합 실행
 sync_external_source(base_data, EXTERNAL_SOURCE_URL)
 
-# --- 3. 업데이트 및 데이터 동기화 (누적 및 정렬 로직) ---
+# --- 3. 업데이트 및 데이터 동기화 (버전만 최신순 정렬) ---
 ipa_files = sorted([f for f in os.listdir('.') if f.lower().endswith('.ipa')])
 assets = {asset.name: asset.browser_download_url for r in repo.get_releases() for asset in r.get_assets()}
 
+# [앱 순환] base_data['apps']의 순서는 그대로 유지하면서 내부 데이터만 업데이트
 for app in base_data.get('apps', []):
     bid = app.get("bundleIdentifier")
     ipa_match = next((f for f in ipa_files if extract_ipa_info(f) and extract_ipa_info(f)['bundleID'] == bid), None)
@@ -121,39 +122,37 @@ for app in base_data.get('apps', []):
         version_exists = False
         for i, v in enumerate(app["versions"]):
             if v.get("version") == info['version']:
+                # 이미 동일 버전이 있으면 최신 정보로 업데이트
                 app["versions"][i] = new_v
                 version_exists = True
                 break
         
         if not version_exists:
+            # 새로운 버전이면 일단 맨 앞에 추가
             app["versions"].insert(0, new_v)
 
-    # [정렬] 버전 번호를 숫자 배열로 변환하여 내림차순 정렬 (21.13.6 > 21.8.3 보장)
-    if "versions" in app and len(app["versions"]) > 0:
+    # [버전 정렬] 버전 번호를 숫자로 분리하여 정확하게 내림차순 정렬 (최신 버전이 맨 위로)[cite: 2]
+    # 이 과정을 통해 JSON 파일에 기록될 때 항상 최신 버전이 가장 먼저 작성됨[cite: 2]
+    if "versions" in app and len(app["versions"]) > 1:
         app["versions"].sort(
             key=lambda x: [int(part) if part.isdigit() else 0 for part in x.get("version", "0").split('.')],
             reverse=True
         )
-        # 정렬된 최신 정보를 상위 필드에 동기화
-        latest_v = app["versions"][0]
+        
+    # 최상위 앱 정보(대표 버전) 동기화
+    if "versions" in app and len(app["versions"]) > 0:
+        latest_v = app["versions"][0] # 정렬된 버전 중 가장 첫 번째(최신)[cite: 2]
         app["version"] = str(latest_v.get("version", ""))
         app["downloadURL"] = str(latest_v.get("downloadURL", ""))
         app["size"] = int(latest_v.get("size", 0))
 
-# [추가] 전체 앱 목록 정렬: 최신 버전 날짜를 기준으로 전체 앱 순서를 최신순으로 정렬
-# 이 로직을 통해 유튜브 21.17.3과 같이 최근 업데이트된 앱이 JSON 파일의 최상단에 위치하게 됩니다.
-base_data['apps'].sort(
-    key=lambda x: x.get('versions', [{}])[0].get('date', '0000-00-00') if x.get('versions') else '0000-00-00',
-    reverse=True
-)
-
 # --- 4. 최종 클리닝 및 저장 (필요 없는 필드 제거) ---
 
-# [정당화] 최상위(Root) 레벨에서 불필요한 필드 삭제 (featuredApps 등 차단)
+# 최상위(Root) 레벨 클리닝
 for root_key in ["featuredApps", "marketplaceID", "patreonURL"]:
     base_data.pop(root_key, None)
 
-# 각 앱 레벨에서 불필요한 필드 삭제
+# 각 앱 레벨 클리닝
 for app in base_data.get('apps', []):
     for key in ["appPermissions", "patreon", "screenshots", "marketplaceID", "featuredApps"]:
         app.pop(key, None)
@@ -162,6 +161,7 @@ for app in base_data.get('apps', []):
 base_data = clean_for_sidestore(base_data)
 
 with open(JSON_FILE, 'w', encoding='utf-8') as f:
+    # indent=2 설정을 통해 사람이 읽기 좋은 형태로 저장[cite: 2]
     json.dump(base_data, f, ensure_ascii=False, indent=2)
 
-print("🎉 NightFox.json 업데이트 및 최신순 정렬 완료!")
+print("🎉 NightFox.json 업데이트 완료! (앱 순서 유지 및 버전별 최신순 정렬 적용)")

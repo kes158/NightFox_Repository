@@ -151,6 +151,11 @@
       "iconURL": "https://i.imgur.com/j51OrKn.png",
       "tintColor": "#1cd464",
       "category": "other",
+      "screenshots": [],
+      "version": "9.1.34",
+      "versionDate": "2026-04-07",
+      "size": 98723618,
+      "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289733435/download",
       "versions": [
         {
           "version": "9.1.34",
@@ -206,11 +211,7 @@
           "buildVersion": "904800415",
           "minOSVersion": "15.0"
         }
-      ],
-      "version": "9.1.34",
-      "versionDate": "2026-04-07",
-      "size": 98723618,
-      "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289733435/download"
+      ]
     },
     {
       "name": "Spotify (Patched)",
@@ -221,6 +222,11 @@
       "iconURL": "https://i.imgur.com/j51OrKn.png",
       "tintColor": "#1cd464",
       "category": "other",
+      "screenshots": [],
+      "version": "9.1.34",
+      "versionDate": "2026-04-07",
+      "size": 104414955,
+      "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289733485/download",
       "versions": [
         {
           "version": "9.1.34",
@@ -276,11 +282,7 @@
           "buildVersion": "904800415",
           "minOSVersion": "15.0"
         }
-      ],
-      "version": "9.1.34",
-      "versionDate": "2026-04-07",
-      "size": 104414955,
-      "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289733485/download"
+      ]
     },
     {
       "name": "YouTubeMusic",

@@ -19,44 +19,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0
+          fetch-depth: 0[cite: 4]
 
-      # 1. 타 저장소에서 가장 최근에 생성된 릴리즈 복제
-      - name: Sync Multiple Upstreams
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          UPSTREAM_LIST: |
-            diarrhea3/YTLiteDiarrhea
-            
-        run: |
-          for UPSTREAM in $UPSTREAM_LIST; do
-            [[ "$UPSTREAM" =~ ^#.* ]] && continue
-            echo "[$UPSTREAM] 최신 릴리즈 확인 중..."
-
-            # 날짜 기준 가장 최신 릴리즈 태그 추출
-            LATEST_TAG=$(gh release list --repo "$UPSTREAM" --limit 1 --json tagName --jq '.[0].tagName')
-            
-            if [ -z "$LATEST_TAG" ]; then
-              echo "릴리즈를 찾을 수 없습니다."
-              continue
-            fi
-            
-            echo "발견된 최신 태그: $LATEST_TAG"
-            
-            # IPA 다운로드
-            gh release download "$LATEST_TAG" --repo "$UPSTREAM" --pattern "*.ipa" --clobber || echo "IPA 없음"
-            
-            # 내 저장소 'latest' 릴리즈에 업로드 (창고 역할)
-            if ! gh release view latest > /dev/null 2>&1; then
-              gh release create latest --title "NightFox Builds" --notes "Latest synced apps"
-            fi
-            
-            for file in *.ipa; do
-              [ -f "$file" ] && gh release upload latest "$file" --clobber
-            done
-          done
-
-      # [핵심 추가] 내 저장소의 모든 릴리즈(과거 버전 포함)에서 IPA 다운로드
+      # 1. 내 저장소의 모든 릴리즈(과거 버전 포함)에서 IPA 다운로드
       # 파이썬 스크립트가 IPA를 직접 뜯어서 정보를 추출해야 하므로 이 단계가 필수입니다.
       - name: Download My Current IPAs
         env:
@@ -64,25 +29,25 @@ jobs:
         run: |
           echo "내 저장소의 IPA들을 가져오는 중..."
           # 모든 릴리즈에서 *.ipa 파일을 현재 폴더로 다운로드
-          gh release download --pattern "*.ipa" --clobber || echo "다운로드할 파일이 없습니다."
+          gh release download --pattern "*.ipa" --clobber || echo "다운로드할 파일이 없습니다."[cite: 4]
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.10'[cite: 4]
 
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install PyGithub requests
+          pip install PyGithub requests[cite: 4]
 
-      # 2. Python 실행 (업로드하신 정렬/클리닝 로직이 포함된 update_source.py)
+      # 2. Python 실행 (수정된 정렬/클리닝 로직 및 Spotify 동기화 포함)[cite: 4]
       - name: Run Script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python update_source.py
+        run: python update_source.py[cite: 4]
 
-      # 3. 변경된 NightFox.json을 저장소에 푸시
+      # 3. 변경된 NightFox.json을 저장소에 푸시[cite: 4]
       - name: Commit and Push Changes
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -94,4 +59,4 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "chore: sync releases and update NightFox.json [skip ci]"
             git push origin HEAD:main
-          fi
+          fi[cite: 4]

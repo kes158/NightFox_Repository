@@ -4,7 +4,7 @@ on:
     paths:
       - 'NightFox.json'
   release:
-    types: [published, created, edited] # 내 저장소에 릴리즈가 올라오거나 수정될 때 실행
+    types: [published, created, edited]
   schedule:
     - cron: '0 */3 * * *'
   workflow_dispatch:
@@ -19,35 +19,33 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0[cite: 4]
+          fetch-depth: 0
 
-      # 1. 내 저장소의 모든 릴리즈(과거 버전 포함)에서 IPA 다운로드
-      # 파이썬 스크립트가 IPA를 직접 뜯어서 정보를 추출해야 하므로 이 단계가 필수입니다.
+      # 1. 내 저장소의 모든 릴리즈에서 IPA 다운로드
       - name: Download My Current IPAs
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "내 저장소의 IPA들을 가져오는 중..."
-          # 모든 릴리즈에서 *.ipa 파일을 현재 폴더로 다운로드
-          gh release download --pattern "*.ipa" --clobber || echo "다운로드할 파일이 없습니다."[cite: 4]
+          gh release download --pattern "*.ipa" --clobber || echo "다운로드할 파일이 없습니다."
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'[cite: 4]
+          python-version: '3.10'
 
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install PyGithub requests[cite: 4]
+          pip install PyGithub requests
 
-      # 2. Python 실행 (수정된 정렬/클리닝 로직 및 Spotify 동기화 포함)[cite: 4]
+      # 2. Python 실행 (Spotify 동기화 및 버전 정렬 로직 포함)
       - name: Run Script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python update_source.py[cite: 4]
+        run: python update_source.py
 
-      # 3. 변경된 NightFox.json을 저장소에 푸시[cite: 4]
+      # 3. 변경된 NightFox.json을 저장소에 푸시
       - name: Commit and Push Changes
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -59,4 +57,4 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "chore: sync releases and update NightFox.json [skip ci]"
             git push origin HEAD:main
-          fi[cite: 4]
+          fi

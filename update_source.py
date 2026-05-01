@@ -80,7 +80,8 @@ def sync_external_source(base_data, url):
                 bid = ext_app.get("bundleIdentifier")
                 if not bid: continue
                 if bid not in existing_bids:
-                    base_data["apps"].append(ext_app)
+                    # [수정] 새로운 외부 앱을 리스트 맨 앞에 추가
+                    base_data["apps"].insert(0, ext_app)
                 else:
                     for i, app in enumerate(base_data["apps"]):
                         if app.get("bundleIdentifier") == bid:
@@ -139,6 +140,13 @@ for app in base_data.get('apps', []):
         app["downloadURL"] = str(latest_v.get("downloadURL", ""))
         app["size"] = int(latest_v.get("size", 0))
 
+# [추가] 전체 앱 목록 정렬: 최신 버전 날짜를 기준으로 전체 앱 순서를 최신순으로 정렬
+# 이 로직을 통해 유튜브 21.17.3과 같이 최근 업데이트된 앱이 JSON 파일의 최상단에 위치하게 됩니다.
+base_data['apps'].sort(
+    key=lambda x: x.get('versions', [{}])[0].get('date', '0000-00-00') if x.get('versions') else '0000-00-00',
+    reverse=True
+)
+
 # --- 4. 최종 클리닝 및 저장 (필요 없는 필드 제거) ---
 
 # [정당화] 최상위(Root) 레벨에서 불필요한 필드 삭제 (featuredApps 등 차단)
@@ -156,4 +164,4 @@ base_data = clean_for_sidestore(base_data)
 with open(JSON_FILE, 'w', encoding='utf-8') as f:
     json.dump(base_data, f, ensure_ascii=False, indent=2)
 
-print("🎉 NightFox.json 업데이트 및 정렬, 최상위 클리닝 완료!")
+print("🎉 NightFox.json 업데이트 및 최신순 정렬 완료!")

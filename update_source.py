@@ -11,7 +11,7 @@ GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
 REPO_NAME = "kes158/NightFox_Repository" 
 JSON_FILE = "NightFox.json" 
 
-# 병합할 외부 소스 URL (Spotify 미러 등)
+# [유지] 스포티파이 외부 소스 URL
 EXTERNAL_SOURCE_URL = "https://raw.githubusercontent.com/titouan336/Spotify-AltStoreRepo-mirror/refs/heads/main/source.json"
 
 auth = Auth.Token(GITHUB_TOKEN)
@@ -32,7 +32,6 @@ def extract_ipa_info(ipa_path):
                 }
     except: return None
 
-# [정당화] 사이드스토어 규격 준수: size는 Int, 나머지는 String 강제
 def clean_for_sidestore(obj):
     if isinstance(obj, list):
         return [clean_for_sidestore(x) for x in obj]
@@ -40,20 +39,19 @@ def clean_for_sidestore(obj):
         new_dict = {}
         for k, v in obj.items():
             if k == "size":
-                try:
-                    new_dict[k] = int(v) if v is not None else 0
-                except:
-                    new_dict[k] = 0
-            else:
-                new_dict[k] = clean_for_sidestore(v)
+                try: new_dict[k] = int(v) if v is not None else 0
+                except: new_dict[k] = 0
+            else: new_dict[k] = clean_for_sidestore(v)
         return new_dict
     return str(obj) if obj is not None else ""
 
-# --- 2. 데이터 로드 및 헤더 설정 ---
+# --- 2. 데이터 로드 (파일 경로 명확화) ---
+# GitHub Actions 환경에서 파일 경로를 확실히 잡기 위해 절대 경로를 사용하거나 존재 여부를 더 꼼꼼히 체크합니다.
 if os.path.exists(JSON_FILE):
     with open(JSON_FILE, 'r', encoding='utf-8') as f:
         try:
             base_data = json.load(f)
+            if "apps" not in base_data: base_data["apps"] = []
         except:
             base_data = {"name": "NightFox", "apps": []}
 else:
@@ -67,9 +65,9 @@ else:
         "apps": []
     }
 
+# --- 3. 외부 소스 동기화 (기존 앱 보호 로직) ---
 def sync_external_source(base_data, url):
     try:
-        print(f"🌐 외부 소스 동기화 중: {url}")
         response = requests.get(url, timeout=15)
         if response.status_code == 200:
             external_data = response.json()
@@ -80,88 +78,89 @@ def sync_external_source(base_data, url):
                 bid = ext_app.get("bundleIdentifier")
                 if not bid: continue
                 if bid not in existing_bids:
-                    # 새로운 앱은 리스트 끝에 추가하여 기존 앱 순서를 방해하지 않음
                     base_data["apps"].append(ext_app)
                 else:
                     for i, app in enumerate(base_data["apps"]):
                         if app.get("bundleIdentifier") == bid:
+                            # 기존 정보를 지우지 않고 외부 정보를 업데이트
                             base_data["apps"][i].update(ext_app)
                             break
-    except Exception as e:
-        print(f"❌ 외부 소스 로드 실패: {e}")
+    except Exception as e: print(f"❌ 외부 소스 로드 실패: {e}")
 
-# 외부 소스 병합 실행
 sync_external_source(base_data, EXTERNAL_SOURCE_URL)
 
-# --- 3. 업데이트 및 데이터 동기화 (버전만 최신순 정렬) ---
+# --- 4. 로컬 IPA 기반 앱 강제 보호 및 업데이트 ---
 ipa_files = sorted([f for f in os.listdir('.') if f.lower().endswith('.ipa')])
 assets = {asset.name: asset.browser_download_url for r in repo.get_releases() for asset in r.get_assets()}
 
-# [앱 순환] base_data['apps']의 순서는 그대로 유지하면서 내부 데이터만 업데이트
-for app in base_data.get('apps', []):
-    bid = app.get("bundleIdentifier")
-    ipa_match = next((f for f in ipa_files if extract_ipa_info(f) and extract_ipa_info(f)['bundleID'] == bid), None)
+# [중요] 로컬에 있는 IPA를 먼저 돌면서 JSON에 해당 앱이 없으면 새로 만듭니다.
+# 이렇게 하면 JSON이 비어있더라도 IPA 파일만 있다면 앱 정보가 사라지지 않습니다.
+for ipa_file in ipa_files:
+    info = extract_ipa_info(ipa_file)
+    if not info: continue
     
-    if ipa_match:
-        info = extract_ipa_info(ipa_match)
-        url = assets.get(ipa_match) or f"https://github.com/{REPO_NAME}/releases/download/latest/{ipa_match.replace(' ', '%20')}"
-        
-        new_v = {
-            "version": str(info['version']), 
-            "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+09:00"), 
-            "downloadURL": str(url), 
-            "size": int(info['size']),
-            "buildVersion": "",
-            "localizedDescription": "NightFox", 
-            "minOSVersion": ""
+    bid = info['bundleID']
+    # JSON에서 해당 번들 ID를 가진 앱 찾기
+    app = next((a for a in base_data['apps'] if a.get('bundleIdentifier') == bid), None)
+    
+    if not app:
+        # JSON에 앱이 없으면 새로 생성 (삭제 방지 핵심 로직)
+        app = {
+            "name": info['name'],
+            "bundleIdentifier": bid,
+            "developerName": "NightFox",
+            "iconURL": "https://i.imgur.com/Se6jHAj.png",
+            "localizedDescription": "NightFox",
+            "versions": []
         }
-        
-        if "versions" not in app:
-            app["versions"] = []
-            
-        version_exists = False
-        for i, v in enumerate(app["versions"]):
-            if v.get("version") == info['version']:
-                # 이미 동일 버전이 있으면 최신 정보로 업데이트
-                app["versions"][i] = new_v
-                version_exists = True
-                break
-        
-        if not version_exists:
-            # 새로운 버전이면 일단 맨 앞에 추가
-            app["versions"].insert(0, new_v)
+        base_data['apps'].append(app)
 
-    # [버전 정렬] 버전 번호를 숫자로 분리하여 정확하게 내림차순 정렬 (최신 버전이 맨 위로)[cite: 2]
-    # 이 과정을 통해 JSON 파일에 기록될 때 항상 최신 버전이 가장 먼저 작성됨[cite: 2]
-    if "versions" in app and len(app["versions"]) > 1:
+    # 버전 정보 업데이트[cite: 5]
+    url = assets.get(ipa_file) or f"https://github.com/{REPO_NAME}/releases/download/latest/{ipa_file.replace(' ', '%20')}"
+    new_v = {
+        "version": str(info['version']), 
+        "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+09:00"), 
+        "downloadURL": str(url), 
+        "size": int(info['size']),
+        "localizedDescription": "NightFox"
+    }
+    
+    if "versions" not in app: app["versions"] = []
+    
+    # 동일 버전 중복 체크[cite: 5]
+    version_exists = False
+    for i, v in enumerate(app["versions"]):
+        if v.get("version") == info['version']:
+            app["versions"][i] = new_v
+            version_exists = True
+            break
+    if not version_exists:
+        app["versions"].insert(0, new_v)
+
+    # 버전 내림차순 정렬 (최신이 위로)[cite: 2, 5]
+    if len(app["versions"]) > 1:
         app["versions"].sort(
             key=lambda x: [int(part) if part.isdigit() else 0 for part in x.get("version", "0").split('.')],
             reverse=True
         )
-        
-    # 최상위 앱 정보(대표 버전) 동기화
-    if "versions" in app and len(app["versions"]) > 0:
-        latest_v = app["versions"][0] # 정렬된 버전 중 가장 첫 번째(최신)[cite: 2]
-        app["version"] = str(latest_v.get("version", ""))
-        app["downloadURL"] = str(latest_v.get("downloadURL", ""))
-        app["size"] = int(latest_v.get("size", 0))
+    
+    # 최신 정보를 상위 필드에 동기화[cite: 5]
+    latest_v = app["versions"][0]
+    app["version"] = str(latest_v.get("version", ""))
+    app["downloadURL"] = str(latest_v.get("downloadURL", ""))
+    app["size"] = int(latest_v.get("size", 0))
 
-# --- 4. 최종 클리닝 및 저장 (필요 없는 필드 제거) ---
-
-# 최상위(Root) 레벨 클리닝
+# --- 5. 최종 클리닝 및 저장 ---
 for root_key in ["featuredApps", "marketplaceID", "patreonURL"]:
     base_data.pop(root_key, None)
 
-# 각 앱 레벨 클리닝
 for app in base_data.get('apps', []):
     for key in ["appPermissions", "patreon", "screenshots", "marketplaceID", "featuredApps"]:
         app.pop(key, None)
 
-# 최종 사이드스토어 규격 세척
 base_data = clean_for_sidestore(base_data)
 
 with open(JSON_FILE, 'w', encoding='utf-8') as f:
-    # indent=2 설정을 통해 사람이 읽기 좋은 형태로 저장[cite: 2]
     json.dump(base_data, f, ensure_ascii=False, indent=2)
 
-print("🎉 NightFox.json 업데이트 완료! (앱 순서 유지 및 버전별 최신순 정렬 적용)")
+print("🎉 NightFox.json 업데이트 완료! (로컬 앱 보호 및 스포티파이 병합)")

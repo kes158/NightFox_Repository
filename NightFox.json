@@ -4,42 +4,55 @@
   "description": "Welcome to NightFox's source!",
   "iconURL": "https://i.imgur.com/Se6jHAj.png",
   "website": "https://github.com/kes158/NightFox_Repository",
+  "patreonURL": "https://patreon.com/altstudio",
   "tintColor": "#00b39e",
+  "featuredApps": [],
   "apps": [
     {
       "name": "YouTube",
       "bundleIdentifier": "com.google.ios.youtube",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/uZI2Pyf.png",
       "tintColor": "#ff0002",
       "category": "other",
+      "screenshots": [],
       "versions": [
         {
-          "version": "21.14.4",
-          "date": "2026-04-21T23:09:30+09:00",
-          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.14.4_YouTubePlus_5.2b4.ipa",
-          "size": 126659293,
-          "buildVersion": "",
-          "localizedDescription": "NightFox",
-          "minOSVersion": ""
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.9/YouTubePlus_5.2.1_patch_zarzel.ipa",
+          "size": 132400000,
+          "version": "5.2.1_21.17.3",
+          "buildVersion": null,
+          "date": "2026-05-01T18:41:00+09:00",
+          "localizedDescription": null,
+          "minOSVersion": null
         },
         {
           "version": "21.13.6",
-          "date": "2026-05-01T18:42:19+09:00",
+          "date": "2026-05-01T18:15:50+09:00",
+          "localizedDescription": "NightFox",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
           "size": 126776343,
           "buildVersion": "",
-          "localizedDescription": "NightFox",
           "minOSVersion": ""
         },
         {
-          "version": "21.12.4",
-          "date": "2026-04-14T16:08:00+09:00",
-          "localizedDescription": "",
-          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.7/21.12.4_YouTubePlus_5.2b4.ipa",
-          "size": 126700000,
+          "version": "21.14.4",
+          "date": "2026-04-21T23:09:30+09:00",
+          "localizedDescription": "NightFox",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.14.4_YouTubePlus_5.2b4.ipa",
+          "size": 126659293,
+          "buildVersion": "",
+          "minOSVersion": ""
+        },
+        {
+          "version": "21.09.2",
+          "date": "2026-04-18T22:04:19+09:00",
+          "localizedDescription": "NightFox Build",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.7/21.09.2_YouTubePlus_5.2b4.ipa",
+          "size": 126235033,
           "buildVersion": "",
           "minOSVersion": ""
         },
@@ -62,11 +75,11 @@
           "minOSVersion": ""
         },
         {
-          "version": "21.09.2",
-          "date": "2026-04-18T22:04:19+09:00",
-          "localizedDescription": "NightFox Build",
-          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.7/21.09.2_YouTubePlus_5.2b4.ipa",
-          "size": 126235033,
+          "version": "21.12.4",
+          "date": "2026-04-14T16:08:00+09:00",
+          "localizedDescription": "",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.7/21.12.4_YouTubePlus_5.2b4.ipa",
+          "size": 126700000,
           "buildVersion": "",
           "minOSVersion": ""
         },
@@ -89,19 +102,23 @@
           "minOSVersion": ""
         }
       ],
-      "version": "21.14.4",
-      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.14.4_YouTubePlus_5.2b4.ipa",
-      "size": 126659293
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "patreon": {}
     },
     {
       "name": "StikDebug",
       "bundleIdentifier": "com.stik.stikdebug",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/JtyYEdh.png",
       "tintColor": "#24ccfc",
       "category": "other",
+      "screenshots": [],
       "versions": [
         {
           "version": "3.0.1",
@@ -113,19 +130,23 @@
           "minOSVersion": ""
         }
       ],
-      "version": "3.0.1",
-      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/StikDebug-3.0.1.ipa",
-      "size": 10500000
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "patreon": {}
     },
     {
       "name": "Instagram Theta",
       "bundleIdentifier": "com.burbn.instagram",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/W0sm7gJ.png",
       "tintColor": "#ffe000",
       "category": "other",
+      "screenshots": [],
       "versions": [
         {
           "version": "407.0.0",
@@ -137,19 +158,23 @@
           "minOSVersion": ""
         }
       ],
-      "version": "407.0.0",
-      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/Theta5.0Hotfix_407.0.0.ipa",
-      "size": 247400000
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "patreon": {}
     },
     {
       "name": "RedditDeluxe",
       "bundleIdentifier": "com.reddit.Reddit",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/ApnXe4K.png",
       "tintColor": "#fc4404",
       "category": "other",
+      "screenshots": [],
       "versions": [
         {
           "version": "2026.06.0",
@@ -161,19 +186,23 @@
           "minOSVersion": ""
         }
       ],
-      "version": "2026.06.0",
-      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.5.2/Reddit_2026_13_1.ipa",
-      "size": 159600000
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "patreon": {}
     },
     {
       "name": "NeoFreeBird",
       "bundleIdentifier": "com.atebits.Tweetie2",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/9MyLXvv.png",
       "tintColor": "#1c9cf4",
       "category": "other",
+      "screenshots": [],
       "versions": [
         {
           "version": "11.35",
@@ -185,19 +214,23 @@
           "minOSVersion": ""
         }
       ],
-      "version": "11.35",
-      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/NeoFreeBird-2.2-Twitter-11.35-noFixTwitterLogin.ipa",
-      "size": 158500000
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "patreon": {}
     },
     {
       "name": "Spotify",
       "bundleIdentifier": "com.spotify.client",
+      "marketplaceID": "",
       "developerName": "Skye/whoeevee",
       "subtitle": "Latest Eevee release",
       "localizedDescription": "This tweak only support Musixmatch custom lyrics at this time.\nUse original EeveeSpotify 9.1.0 for working lyrics.\n\nThis tweak makes Spotify think you have a Premium subscription, granting free listening, just like Spotilife, and provides some additional features like custom lyrics.",
       "iconURL": "https://i.imgur.com/j51OrKn.png",
       "tintColor": "#1cd464",
       "category": "other",
+      "screenshots": [],
       "versions": [
         {
           "version": "9.1.34",
@@ -254,20 +287,23 @@
           "minOSVersion": "15.0"
         }
       ],
-      "version": "9.1.34",
-      "versionDate": "2026-04-07",
-      "size": 98723618,
-      "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289733435/download"
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "patreon": {}
     },
     {
       "name": "Spotify (Patched)",
       "bundleIdentifier": "com.spotify.client.patched",
+      "marketplaceID": "",
       "developerName": "Skye/whoeevee",
       "subtitle": "Patched for paid certs",
       "localizedDescription": "Warning : Only use with Feather, ESign or KSign.\n\nThis tweak only support Musixmatch custom lyrics at this time.\nUse original EeveeSpotify 9.1.0 for working lyrics.\n\nUsing the patched IPA should fix any widgets issues had when sideloading with paid certs (with app groups entitlement). this fix does not work with free sideloading methods such as AltStore/Sideloadly, and TrollStore users do not need to use a patched IPA.\n\nfurther note: this IPA should be considered a beta test for now, so general support will not be provided for it.",
       "iconURL": "https://i.imgur.com/j51OrKn.png",
       "tintColor": "#1cd464",
       "category": "other",
+      "screenshots": [],
       "versions": [
         {
           "version": "9.1.34",
@@ -324,20 +360,23 @@
           "minOSVersion": "15.0"
         }
       ],
-      "version": "9.1.34",
-      "versionDate": "2026-04-07",
-      "size": 104414955,
-      "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289733485/download"
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "patreon": {}
     },
     {
       "name": "YouTubeMusic",
       "bundleIdentifier": "com.google.ios.youtubemusic",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/POQxyLq.png",
       "tintColor": "#fc0434",
       "category": "other",
+      "screenshots": [],
       "versions": [
         {
           "version": "9.13.3",
@@ -349,43 +388,51 @@
           "minOSVersion": ""
         }
       ],
-      "version": "9.13.3",
-      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.5.7/YTMusicUltimate.ipa",
-      "size": 98900000
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "patreon": {}
     },
     {
       "name": "Infuse Plus",
       "bundleIdentifier": "com.firecore.infuse",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/V76nbJd.png",
       "tintColor": "#fc6c04",
       "category": "other",
+      "screenshots": [],
       "versions": [
         {
           "version": "8.3.9",
           "date": "2026-05-01T18:15:52+09:00",
+          "localizedDescription": "NightFox",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.8/Infuse_Plus_8.3.9.ipa",
           "size": 74592875,
           "buildVersion": "",
-          "localizedDescription": "NightFox",
           "minOSVersion": ""
         }
       ],
-      "version": "8.3.9",
-      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.8/Infuse_Plus_8.3.9.ipa",
-      "size": 74592875
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "patreon": {}
     },
     {
       "name": "nPlayer",
       "bundleIdentifier": "com.newin.nplayer",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/IIY9hpH.png",
       "tintColor": "#fcec14",
       "category": "other",
+      "screenshots": [],
       "versions": [
         {
           "version": "3.13.0",
@@ -397,19 +444,23 @@
           "minOSVersion": ""
         }
       ],
-      "version": "3.13.0",
-      "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/nPlayer.Plus.3.13.0.ipa",
-      "size": 39400000
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "patreon": {}
     },
     {
       "name": "iTorrent",
       "bundleIdentifier": "com.xitrix.iTorrent2",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://user-images.githubusercontent.com/9553519/80646366-3d271680-8a75-11ea-8b60-9c5edd4ffd60.png",
       "tintColor": "#7100b3",
       "category": "other",
+      "screenshots": [],
       "versions": [
         {
           "version": "2.1.1",
@@ -421,19 +472,23 @@
           "minOSVersion": ""
         }
       ],
-      "version": "2.1.1",
-      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.1/iTorrent_2.1.1.ipa",
-      "size": 8700000
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "patreon": {}
     },
     {
       "name": "EnsWilde",
       "bundleIdentifier": "com.yangjiii.EnsWilde",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/CliGoqS.png",
       "tintColor": "#c0683c",
       "category": "other",
+      "screenshots": [],
       "versions": [
         {
           "version": "3.1.3",
@@ -445,9 +500,11 @@
           "minOSVersion": ""
         }
       ],
-      "version": "3.1.3",
-      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.3/EnsWilde_v3.1.3.ipa",
-      "size": 13600000
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "patreon": {}
     }
   ],
   "news": []

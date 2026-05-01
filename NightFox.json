@@ -17,24 +17,6 @@
       "category": "other",
       "versions": [
         {
-          "version": "21.17.3",
-          "date": "2026-05-01T19:24:45+09:00",
-          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.9/YouTubePlus_5.2.1_patch_zarzel.ipa",
-          "size": 132371636,
-          "buildVersion": "",
-          "localizedDescription": "NightFox",
-          "minOSVersion": ""
-        },
-        {
-          "version": "21.13.6",
-          "date": "2026-05-01T18:55:19+09:00",
-          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/latest/21.13.6_YouTubePlus_5.2b4.ipa",
-          "size": 126776343,
-          "buildVersion": "",
-          "localizedDescription": "NightFox",
-          "minOSVersion": ""
-        },
-        {
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.9/YouTubePlus_5.2.1_patch_zarzel.ipa",
           "size": 132400000,
           "version": "5.2.1_21.17.3",
@@ -44,10 +26,6 @@
           "minOSVersion": ""
         }
       ],
-      "version": "21.17.3",
-      "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.9/YouTubePlus_5.2.1_patch_zarzel.ipa",
-      "size": 132371636
-    },
     {
       "name": "StikDebug",
       "bundleIdentifier": "com.stik.stikdebug",

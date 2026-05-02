@@ -1,13 +1,11 @@
 {
   "name": "NightFox",
+  "identifier": "com.nightfox.repository",
   "subtitle": "NightFox's App Repository",
   "description": "Welcome to NightFox's source!",
-  "identifier": "com.nightfox.repository",
   "iconURL": "https://i.imgur.com/Se6jHAj.png",
   "website": "https://github.com/kes158/NightFox_Repository",
-  "patreonURL": "https://patreon.com/altstudio",
   "tintColor": "#00b39e",
-  "featuredApps": [],
   "apps": [
     {
       "name": "YouTube",
@@ -327,6 +325,5 @@
         }
       ]
     }
-  ],
-  "news": []
+  ]
 }

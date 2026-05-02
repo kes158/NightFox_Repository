@@ -91,8 +91,9 @@ for app in final_apps:
             # 버전 레벨 필터링 (공증 관련 필드 제거)
             new_v = {k: v_val for k, v_val in v.items() if k in ALLOWED_VER_KEYS}
             
-            # buildVersion 보완 (SideStore 필수 요구사항)
-            if not new_v.get("buildVersion") or new_v["buildVersion"] == "":
+            # [수정됨] buildVersion 보완: 값이 이미 존재하는 경우(인스타 등)는 보존하고, 비어있을 때만 version을 대입합니다.
+            current_build_ver = new_v.get("buildVersion")
+            if current_build_ver is None or str(current_build_ver).strip() == "":
                 new_v["buildVersion"] = new_v.get("version", "1.0.0")
             
             # null 값 방지

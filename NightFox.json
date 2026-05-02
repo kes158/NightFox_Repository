@@ -15,7 +15,7 @@
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
-      "iconURL": "https://i.imgur.com/tZgpOqE.png",
+      "iconURL": "https://i.imgur.com/GRUAxGw.png",
       "tintColor": "#fc0434",
       "category": "other",
       "screenshots": [],
@@ -25,18 +25,9 @@
           "size": 132800000,
           "version": "21.17.3",
           "buildVersion": null,
-          "date": "2026-05-02T16:06:00+09:00",
+          "date": "2026-05-02T16:09:00+09:00",
           "localizedDescription": null,
           "minOSVersion": null
-        },
-        {
-          "version": "5.2.1_21.17.3",
-          "date": "2026-05-01T18:41:00+09:00",
-          "localizedDescription": "",
-          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.0/YTPlus_5.2.1_21.17.3.ipa",
-          "size": 132400000,
-          "buildVersion": "",
-          "minOSVersion": ""
         }
       ],
       "appPermissions": {

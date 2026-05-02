@@ -1,7 +1,6 @@
 import os
 import json
 import requests
-from packaging import version # 버전 비교를 위해 필요할 수 있음
 
 # --- 설정 ---
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))

@@ -19,10 +19,11 @@ else:
     base_data = {"name": "NightFox", "apps": []}
 
 # --- 2. 최상위 필드 정리 (SideStore 호환성 강화) ---
+# SideStore가 오해하지 않도록 필수 필드만 정확히 세팅합니다.
 base_data["name"] = "NightFox"
 base_data["identifier"] = "com.nightfox.repository"
-# 공증 오류 방지를 위해 최상단에 관련 필드가 있다면 제거합니다.
 base_data.pop("notarized", None) 
+base_data.pop("sourceURL", None)
 
 # --- 3. 스포티파이 외부 소스 미러링 ---
 spotify_apps = []
@@ -35,12 +36,12 @@ try:
                 spotify_apps.append(app)
 except Exception as e:
     print(f"❌ 외부 소스 로드 실패: {e}")
-    spotify_apps = [app for app in base_data["apps"] if app.get("bundleIdentifier") in SPOTIFY_BUNDLE_IDS]
+    spotify_apps = [app for app in base_data.get("apps", []) if app.get("bundleIdentifier") in SPOTIFY_BUNDLE_IDS]
 
 # --- 4. 앱 목록 조합 (순서 유지) ---
 final_apps = []
 spotify_inserted = set()
-for app in base_data["apps"]:
+for app in base_data.get("apps", []):
     bid = app.get("bundleIdentifier")
     if bid in SPOTIFY_BUNDLE_IDS:
         new_spotify = next((s for s in spotify_apps if s.get("bundleIdentifier") == bid), None)
@@ -57,39 +58,46 @@ for s_app in spotify_apps:
     if s_app.get("bundleIdentifier") not in spotify_inserted:
         final_apps.append(s_app)
 
-base_data["apps"] = final_apps
+# --- 5. "Notarized" 오인 방지 및 데이터 정제 (Whitelist 방식) ---
+# SideStore 구버전이 거부할 수 있는 비표준 필드를 모두 걸러냅니다.
+cleaned_apps = []
+ALLOWED_APP_KEYS = {"name", "bundleIdentifier", "developerName", "subtitle", "localizedDescription", "iconURL", "versions"}
+ALLOWED_VER_KEYS = {"version", "buildVersion", "date", "downloadURL", "localizedDescription", "size", "minOSVersion"}
 
-# --- 5. 데이터 정제 및 Notarized 오류 방지 (핵심) ---
-for app in base_data["apps"]:
-    # 앱 레벨에서 notarized 필드 강제 제거
-    app.pop("notarized", None)
+for app in final_apps:
+    # 앱 레벨 세척
+    new_app = {k: v for k, v in app.items() if k in ALLOWED_APP_KEYS}
     
-    if app.get("localizedDescription") is None:
-        app["localizedDescription"] = ""
-
     if "versions" in app:
+        new_versions = []
         for v in app["versions"]:
-            # SideStore 호환을 위해 단순 버전 문자열만 사용
-            current_ver = v.get("version", "1.0.0")
+            # 버전 레벨 세척 (notarized, appID, isNotarized 등 자동 제거)
+            new_v = {k: v_val for k, v_val in v.items() if k in ALLOWED_VER_KEYS}
             
-            # buildVersion이 비어있으면 공증 관련 오류를 유발할 수 있으므로 version으로 채움
-            if not v.get("buildVersion") or v["buildVersion"] == "":
-                v["buildVersion"] = current_ver
+            # buildVersion 필수 보완 (없으면 SideStore에서 오류 발생)
+            if not new_v.get("buildVersion"):
+                new_v["buildVersion"] = new_v.get("version", "1.0.0")
             
-            # 버전 레벨에서도 notarized 관련 필드 삭제
-            v.pop("notarized", None)
-            v.pop("isNotarized", None)
-
             # null 값 방지
             for key in ["localizedDescription", "minOSVersion"]:
-                if v.get(key) is None:
-                    v[key] = ""
+                if new_v.get(key) is None:
+                    new_v[key] = ""
+            
+            new_versions.append(new_v)
+        
+        # 버전 날짜순 정렬
+        new_app["versions"] = sorted(new_versions, key=lambda x: x.get("date", ""), reverse=True)
+    
+    # 설명글 null 방지
+    if new_app.get("localizedDescription") is None:
+        new_app["localizedDescription"] = ""
+        
+    cleaned_apps.append(new_app)
 
-        # 버전 정렬
-        app["versions"].sort(key=lambda x: x.get("date", ""), reverse=True)
+base_data["apps"] = cleaned_apps
 
 # --- 6. 저장 ---
 with open(JSON_FILE, 'w', encoding='utf-8') as f:
     json.dump(base_data, f, ensure_ascii=False, indent=2)
 
-print(f"🎉 Notarized 필드 제거 및 SideStore 호환성 패치 완료!")
+print(f"🎉 SideStore 호환성 강제 패치 및 데이터 정제 완료!")

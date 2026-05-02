@@ -18,12 +18,11 @@ if os.path.exists(JSON_FILE):
 else:
     base_data = {"name": "NightFox", "apps": []}
 
-# --- 2. 필수 최상위 필드 보완 (Code 101 해결 핵심) ---
-# SideStore 소스 인식을 위해 identifier가 반드시 필요합니다.
-if "identifier" not in base_data or not base_data["identifier"]:
-    base_data["identifier"] = "com.nightfox.repository" # 고유 식별자 추가
-if "apps" not in base_data:
-    base_data["apps"] = []
+# --- 2. 최상위 필드 정리 (SideStore 호환성 강화) ---
+base_data["name"] = "NightFox"
+base_data["identifier"] = "com.nightfox.repository"
+# 공증 오류 방지를 위해 최상단에 관련 필드가 있다면 제거합니다.
+base_data.pop("notarized", None) 
 
 # --- 3. 스포티파이 외부 소스 미러링 ---
 spotify_apps = []
@@ -60,30 +59,37 @@ for s_app in spotify_apps:
 
 base_data["apps"] = final_apps
 
-# --- 5. 데이터 정제 (SideStore 호환성 작업) ---
+# --- 5. 데이터 정제 및 Notarized 오류 방지 (핵심) ---
 for app in base_data["apps"]:
+    # 앱 레벨에서 notarized 필드 강제 제거
+    app.pop("notarized", None)
+    
     if app.get("localizedDescription") is None:
         app["localizedDescription"] = ""
 
     if "versions" in app:
         for v in app["versions"]:
+            # SideStore 호환을 위해 단순 버전 문자열만 사용
             current_ver = v.get("version", "1.0.0")
             
-            # SideStore는 buildVersion에 실제 값이 있어야 합니다 (Code 4865 방지)
+            # buildVersion이 비어있으면 공증 관련 오류를 유발할 수 있으므로 version으로 채움
             if not v.get("buildVersion") or v["buildVersion"] == "":
                 v["buildVersion"] = current_ver
             
-            # 모든 null 값을 빈 문자열로 치환
+            # 버전 레벨에서도 notarized 관련 필드 삭제
+            v.pop("notarized", None)
+            v.pop("isNotarized", None)
+
+            # null 값 방지
             for key in ["localizedDescription", "minOSVersion"]:
                 if v.get(key) is None:
                     v[key] = ""
 
-        # 버전 날짜순 정렬
+        # 버전 정렬
         app["versions"].sort(key=lambda x: x.get("date", ""), reverse=True)
 
 # --- 6. 저장 ---
 with open(JSON_FILE, 'w', encoding='utf-8') as f:
-    # indent=2를 유지하여 가독성을 높이고 문법 오류를 방지합니다.
     json.dump(base_data, f, ensure_ascii=False, indent=2)
 
-print(f"🎉 작업 완료! identifier 추가 및 모든 데이터 정제가 끝났습니다.")
+print(f"🎉 Notarized 필드 제거 및 SideStore 호환성 패치 완료!")

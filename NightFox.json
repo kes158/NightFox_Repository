@@ -185,7 +185,7 @@
           "buildVersion": "914001487",
           "date": "2026-05-03T02:47:00+09:00",
           "localizedDescription": "EeveeSpotify 9.1.40\n—Updated to Spotify v9.1.40\n—Improved Ad-Blocking,(may still have a bit ads for some regions, will improve in next ver.)",
-          "minOSVersion": null
+          "minOSVersion": "16.1"
         },
         {
           "version": "9.1.34",
@@ -267,7 +267,7 @@
           "buildVersion": "914001487",
           "date": "2026-05-03T11:49:00+09:00",
           "localizedDescription": "EeveeSpotify 9.1.40\n\n—Updated to Spotify v9.1.40\n—Improved Ad-Blocking,(may still have a bit ads for some regions, will improve in next ver.)\n\nPatched vs Unpatched\nUnpatched: Free cert, sidestore/altstore, etc\nPatched: Paid Cert\n\nNote:\n—EveeSpotify Settings-> Patching -> Overwrite Configuration if you suddenly can't play songs in any order\n\n—You can't download songs, it's server sided\n\nTested on Feather, Esign, Ksign, GBox and SideStore\n\nBC Catbox doesn't wanna work, will place the files right here only for this release\n\nEnjoy!",
-          "minOSVersion": null
+          "minOSVersion": "16.1"
         },
         {
           "version": "9.1.34",

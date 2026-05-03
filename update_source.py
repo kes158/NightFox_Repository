@@ -29,6 +29,7 @@ clean_base = {
     "iconURL": base_data.get("iconURL", "https://i.imgur.com/Se6jHAj.png"),
     "website": base_data.get("website", "https://github.com/kes158/NightFox_Repository"),
     "tintColor": base_data.get("tintColor", "#00b39e"),
+    "headerURL": base_data.get("headerURL", ""),
     "apps": []
 }
 

@@ -60,13 +60,21 @@ ALLOWED_VER_KEYS = {
 }
 
 def clean_version(v):
+    # 허용된 키들로 딕셔너리 생성
     new_v = {k: v_val for k, v_val in v.items() if k in ALLOWED_VER_KEYS}
+    
+    # buildVersion이 비어있으면 version 값으로 채워줌 (사이드스토어 호환성)
     current_build_ver = new_v.get("buildVersion")
     if current_build_ver is None or str(current_build_ver).strip() == "":
         new_v["buildVersion"] = new_v.get("version", "1.0.0")
-    for key in ["localizedDescription", "minOSVersion"]:
-        if new_v.get(key) is None:
-            new_v[key] = ""
+    
+    # --- 수정된 부분: minOSVersion 16.1 고정 ---
+    new_v["minOSVersion"] = "16.1"
+    
+    # 설명 필드가 없을 경우 빈 문자열로 처리[cite: 5]
+    if new_v.get("localizedDescription") is None:
+        new_v["localizedDescription"] = ""
+        
     return new_v
 
 def clean_app(app, cleaned_versions):
@@ -77,10 +85,6 @@ def clean_app(app, cleaned_versions):
     return new_app
 
 # --- 5. 앱 목록 조합 ---
-#   - 스포티파이: 내 JSON 버전 기준으로 보존 + 미러에만 있는 버전만 추가
-#   - 스포티파이 외: 내 JSON 그대로 보존
-#   - 미러에 새로 생긴 스포티파이 bundleId → 통째로 추가
-
 original_apps = base_data.get("apps", [])
 final_apps = []
 spotify_inserted = set()
@@ -92,7 +96,7 @@ for app in original_apps:
         if bid in spotify_inserted:
             continue
 
-        # 내 JSON 버전 목록 (version 문자열을 키로)
+        # 내 JSON 버전 목록 (version 문자열을 키로)[cite: 5]
         my_versions = {v.get("version"): clean_version(v) for v in app.get("versions", [])}
 
         if not mirror_failed:
@@ -103,7 +107,7 @@ for app in original_apps:
                 for v in mirror_app.get("versions", []):
                     ver_str = v.get("version")
                     if ver_str and ver_str not in my_versions:
-                        # 내 JSON에 없는 버전만 미러에서 가져옴
+                        # 내 JSON에 없는 버전만 미러에서 가져옴[cite: 5]
                         my_versions[ver_str] = clean_version(v)
                         print(f"  ➕ [{bid}] 새 버전 추가: {ver_str}")
                     else:
@@ -114,11 +118,11 @@ for app in original_apps:
         spotify_inserted.add(bid)
 
     else:
-        # 스포티파이 외 앱은 그대로 보존
+        # 스포티파이 외 앱은 그대로 보존[cite: 5]
         cleaned_versions = [clean_version(v) for v in app.get("versions", [])]
         final_apps.append(clean_app(app, cleaned_versions))
 
-# 미러에만 있고 내 JSON에 없는 새 스포티파이 앱 → 통째로 추가
+# 미러에만 있고 내 JSON에 없는 새 스포티파이 앱 → 통째로 추가[cite: 5]
 if not mirror_failed:
     for mirror_app in spotify_apps_from_mirror:
         bid = mirror_app.get("bundleIdentifier")

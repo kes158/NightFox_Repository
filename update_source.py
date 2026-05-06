@@ -1,12 +1,17 @@
 import os
 import json
 import requests
+import re
 
 # --- 설정 ---
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 JSON_FILE = os.path.join(SCRIPT_DIR, "NightFox.json")
 SPOTIFY_SOURCE_URL = "https://raw.githubusercontent.com/titouan336/Spotify-AltStoreRepo-mirror/refs/heads/main/source.json"
 SPOTIFY_BUNDLE_IDS = {"com.spotify.client", "com.spotify.client.patched"}
+
+# YouTube 릴리즈 미러링 설정
+YTPLUS_RELEASES_API = "https://api.github.com/repos/kes158/YTPlus/releases"
+YOUTUBE_BUNDLE_ID = "com.google.ios.youtube"
 
 # --- 1. JSON 로드 ---
 if os.path.exists(JSON_FILE):
@@ -18,7 +23,7 @@ if os.path.exists(JSON_FILE):
 else:
     base_data = {"name": "NightFox", "apps": []}
 
-# --- 2. 최상위 필드 보존 로직 (identifier 및 tintColor 유지) ---
+# --- 2. 최상위 필드 보존 로직 ---
 current_identifier = base_data.get("identifier") or "com.nightfox.repository"
 
 clean_base = {
@@ -33,109 +38,104 @@ clean_base = {
     "apps": []
 }
 
-# --- 3. 스포티파이 외부 소스 미러링 ---
+# --- 3. 외부 소스 데이터 가져오기 (Spotify & YouTube) ---
+# 3-1. 스포티파이 미러링 데이터
 spotify_apps_from_mirror = []
-mirror_failed = False
 try:
     response = requests.get(SPOTIFY_SOURCE_URL, timeout=15)
     if response.status_code == 200:
         external_data = response.json()
-        for app in external_data.get("apps", []):
-            if app.get("bundleIdentifier") in SPOTIFY_BUNDLE_IDS:
-                spotify_apps_from_mirror.append(app)
-    else:
-        mirror_failed = True
+        spotify_apps_from_mirror = [app for app in external_data.get("apps", []) if app.get("bundleIdentifier") in SPOTIFY_BUNDLE_IDS]
 except Exception as e:
-    print(f"❌ 외부 소스 로드 실패: {e}")
-    mirror_failed = True
+    print(f"❌ 스포티파이 소스 로드 실패: {e}")
 
-# --- 4. 버전/앱 정제 함수 ---
-ALLOWED_APP_KEYS = {
-    "name", "bundleIdentifier", "developerName", "subtitle",
-    "localizedDescription", "iconURL", "versions", "tintColor"
-}
-ALLOWED_VER_KEYS = {
-    "version", "buildVersion", "date", "downloadURL",
-    "localizedDescription", "size", "minOSVersion"
-}
+# 3-2. YouTube GitHub 릴리즈 데이터 가져오기
+yt_releases_from_github = []
+try:
+    headers = {"Accept": "application/vnd.github.v3+json"}
+    # 환경 변수에 GH_TOKEN이 있으면 사용 (API 제한 방지)
+    if os.getenv("GH_TOKEN"):
+        headers["Authorization"] = f"token {os.getenv('GH_TOKEN')}"
+        
+    response = requests.get(YTPLUS_RELEASES_API, headers=headers, timeout=15)
+    if response.status_code == 200:
+        for release in response.json():
+            # .ipa 파일이 포함된 에셋 찾기
+            ipa_asset = next((a for a in release.get("assets", []) if a.get("name", "").endswith(".ipa")), None)
+            if ipa_asset:
+                # 버전 정보 추출 (예: YTPlus_5.2.1_21.18.4 -> 21.18.4)
+                tag = release.get("tag_name", "")
+                version_match = re.search(r'(\d+\.\d+\.\d+)$', tag)
+                version_str = version_match.group(1) if version_match else tag
+                
+                yt_releases_from_github.append({
+                    "version": version_str,
+                    "buildVersion": version_str,
+                    "date": release.get("created_at"),
+                    "downloadURL": ipa_asset.get("browser_download_url"),
+                    "size": ipa_asset.get("size"),
+                    "localizedDescription": release.get("body", "")
+                })
+except Exception as e:
+    print(f"❌ YouTube 릴리즈 로드 실패: {e}")
+
+# --- 4. 정제 함수 ---
+ALLOWED_APP_KEYS = {"name", "bundleIdentifier", "developerName", "subtitle", "localizedDescription", "iconURL", "versions", "tintColor"}
+ALLOWED_VER_KEYS = {"version", "buildVersion", "date", "downloadURL", "localizedDescription", "size", "minOSVersion"}
 
 def clean_version(v):
-    # 허용된 키들로 딕셔너리 생성
     new_v = {k: v_val for k, v_val in v.items() if k in ALLOWED_VER_KEYS}
-    
-    # buildVersion이 비어있으면 version 값으로 채워줌 (사이드스토어 호환성)
-    current_build_ver = new_v.get("buildVersion")
-    if current_build_ver is None or str(current_build_ver).strip() == "":
+    if not new_v.get("buildVersion"):
         new_v["buildVersion"] = new_v.get("version", "1.0.0")
     
-    # --- 수정된 부분: minOSVersion 16.1 고정 ---
+    # minOSVersion 16.1 고정
     new_v["minOSVersion"] = "16.1"
     
-    # 설명 필드가 없을 경우 빈 문자열로 처리[cite: 5]
     if new_v.get("localizedDescription") is None:
         new_v["localizedDescription"] = ""
-        
     return new_v
 
 def clean_app(app, cleaned_versions):
     new_app = {k: v for k, v in app.items() if k in ALLOWED_APP_KEYS}
     new_app["versions"] = sorted(cleaned_versions, key=lambda x: x.get("date", ""), reverse=True)
-    if new_app.get("localizedDescription") is None:
-        new_app["localizedDescription"] = ""
     return new_app
 
-# --- 5. 앱 목록 조합 ---
+# --- 5. 앱 목록 조합 및 미러링 병합 ---[cite: 6]
 original_apps = base_data.get("apps", [])
 final_apps = []
-spotify_inserted = set()
+processed_bids = set()
 
 for app in original_apps:
     bid = app.get("bundleIdentifier")
+    if bid in processed_bids: continue
 
-    if bid in SPOTIFY_BUNDLE_IDS:
-        if bid in spotify_inserted:
-            continue
+    # 내 JSON의 현재 버전들 저장
+    my_versions = {v.get("version"): clean_version(v) for v in app.get("versions", [])}
 
-        # 내 JSON 버전 목록 (version 문자열을 키로)[cite: 5]
-        my_versions = {v.get("version"): clean_version(v) for v in app.get("versions", [])}
+    # 5-1. YouTube 미러링 처리 (com.google.ios.youtube)[cite: 6]
+    if bid == YOUTUBE_BUNDLE_ID and yt_releases_from_github:
+        for rel in yt_releases_from_github:
+            v_str = rel.get("version")
+            if v_str not in my_versions:
+                my_versions[v_str] = clean_version(rel)
+                print(f"  ➕ [YouTube] 새 릴리즈 추가: {v_str}")
 
-        if not mirror_failed:
-            mirror_app = next(
-                (s for s in spotify_apps_from_mirror if s.get("bundleIdentifier") == bid), None
-            )
-            if mirror_app:
-                for v in mirror_app.get("versions", []):
-                    ver_str = v.get("version")
-                    if ver_str and ver_str not in my_versions:
-                        # 내 JSON에 없는 버전만 미러에서 가져옴[cite: 5]
-                        my_versions[ver_str] = clean_version(v)
-                        print(f"  ➕ [{bid}] 새 버전 추가: {ver_str}")
-                    else:
-                        print(f"  ✅ [{bid}] 기존 버전 유지: {ver_str}")
+    # 5-2. Spotify 미러링 처리[cite: 5]
+    elif bid in SPOTIFY_BUNDLE_IDS:
+        mirror_app = next((s for s in spotify_apps_from_mirror if s.get("bundleIdentifier") == bid), None)
+        if mirror_app:
+            for v in mirror_app.get("versions", []):
+                v_str = v.get("version")
+                if v_str not in my_versions:
+                    my_versions[v_str] = clean_version(v)
+                    print(f"  ➕ [Spotify] 새 버전 추가: {v_str}")
 
-        merged_versions = list(my_versions.values())
-        final_apps.append(clean_app(app, merged_versions))
-        spotify_inserted.add(bid)
-
-    else:
-        # 스포티파이 외 앱은 그대로 보존[cite: 5]
-        cleaned_versions = [clean_version(v) for v in app.get("versions", [])]
-        final_apps.append(clean_app(app, cleaned_versions))
-
-# 미러에만 있고 내 JSON에 없는 새 스포티파이 앱 → 통째로 추가[cite: 5]
-if not mirror_failed:
-    for mirror_app in spotify_apps_from_mirror:
-        bid = mirror_app.get("bundleIdentifier")
-        if bid not in spotify_inserted:
-            cleaned_versions = [clean_version(v) for v in mirror_app.get("versions", [])]
-            final_apps.append(clean_app(mirror_app, cleaned_versions))
-            spotify_inserted.add(bid)
-            print(f"  🆕 새 스포티파이 앱 추가: {bid}")
-
-clean_base["apps"] = final_apps
+    final_apps.append(clean_app(app, list(my_versions.values())))
+    processed_bids.add(bid)
 
 # --- 6. 저장 ---
+clean_base["apps"] = final_apps
 with open(JSON_FILE, 'w', encoding='utf-8') as f:
     json.dump(clean_base, f, ensure_ascii=False, indent=2)
 
-print(f"🎉 수동 버전 보존 + 미러 병합 완료! (총 앱 수: {len(final_apps)})")
+print(f"🎉 YouTube 릴리즈 및 Spotify 미러링 병합 완료! (총 앱 수: {len(final_apps)})")

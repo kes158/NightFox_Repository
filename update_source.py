@@ -103,8 +103,12 @@ def clean_version(v):
 
 def clean_app(app, cleaned_versions):
     new_app = {k: v for k, v in app.items() if k in ALLOWED_APP_KEYS}
-    # 날짜 기준 최신순 정렬[cite: 7]
-    new_app["versions"] = sorted(cleaned_versions, key=lambda x: x.get("date", ""), reverse=True)
+    # 버전 번호 기준 최신순 정렬
+    new_app["versions"] = sorted(
+        cleaned_versions,
+        key=lambda x: [int(p) for p in x.get("version", "0").split(".")],
+        reverse=True
+    )
     if new_app.get("localizedDescription") is None:
         new_app["localizedDescription"] = ""
     return new_app

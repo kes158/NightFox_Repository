@@ -41,11 +41,14 @@ jobs:
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           
+          git fetch origin
+          git reset --hard origin/main
+          
           git add "NightFox.json"
           
           if ! git diff --cached --quiet; then
             git commit -m "chore: sync mirror and update minOSVersion [skip ci]"
-            git push origin HEAD:main --force-with-lease     # ← 이 부분만 수정
+            git push origin HEAD:main --force
           else
             echo "변경 사항 없음, 푸시 스킵"
           fi

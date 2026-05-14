@@ -68,7 +68,7 @@
           "version": "3.0.1",
           "date": "2026-04-12T07:59:00+09:00",
           "localizedDescription": "NightFox",
-          "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/StikDebug-3.0.1.ipa",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.5/StikDebug-3.0.1.ipa",
           "size": 10500000,
           "buildVersion": "1",
           "minOSVersion": "16.1"
@@ -97,7 +97,7 @@
           "version": "407.0.0",
           "date": "2026-04-13T17:48:00+09:00",
           "localizedDescription": "NightFox",
-          "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.1/Theta5.0Hotfix_407.0.0.ipa",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.5/Theta5.0Hotfix_407.0.0.ipa",
           "size": 247400000,
           "buildVersion": "826175880",
           "minOSVersion": "16.1"
@@ -120,15 +120,6 @@
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.2/Reddit_v2026.17.0.ipa",
           "size": 156200000,
           "buildVersion": "628480",
-          "minOSVersion": "16.1"
-        },
-        {
-          "version": "2026.06.0",
-          "date": "2026-04-12T07:52:00+09:00",
-          "localizedDescription": "NightFox",
-          "downloadURL": "https://github.com/kes159/NightFox-Repository/releases/download/1.5.2/Reddit_2026_13_1.ipa",
-          "size": 159600000,
-          "buildVersion": "622197",
           "minOSVersion": "16.1"
         }
       ]

@@ -166,9 +166,9 @@
           "version": "9.1.46",
           "buildVersion": "9.1.46",
           "date": "2026-05-14T18:53:33Z",
-          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.3/EeveeSpotify_v9.1.46.ipa",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.4/EeveeSpotify_v9.1.46.ipa",
           "size": 114654818,
-          "localizedDescription": "EeveeSpotify 9.1.46",
+          "localizedDescription": "-Updated to Spotify v9.1.46\n\n-Fixed \"uneeveed\" issue for users who faced them\n\n-Added a full reset option\n\nPatched vs Not Patched\n\nUse patched if you use a paid cert or troll store\n\nUse the non patched one for other methods like Sideloadly",
           "minOSVersion": "16.1"
         },
         {
@@ -249,9 +249,9 @@
           "version": "9.1.46",
           "buildVersion": "9.1.46",
           "date": "2026-05-14T18:53:33Z",
-          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.3/EeveeSpotify_v9.1.46_Patched.ipa",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.4/EeveeSpotify_v9.1.46_Patched.ipa",
           "size": 116256893,
-          "localizedDescription": "EeveeSpotify 9.1.46 (Patched)",
+          "localizedDescription": "-Updated to Spotify v9.1.46\n\n-Fixed \"uneeveed\" issue for users who faced them\n\n-Added a full reset option\n\nPatched vs Not Patched\n\nUse patched if you use a paid cert or troll store\n\nUse the non patched one for other methods like Sideloadly",
           "minOSVersion": "16.1"
         },
         {

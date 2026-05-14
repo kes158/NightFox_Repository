@@ -15,7 +15,7 @@ SPOTIFY_BUNDLE_IDS = {"com.spotify.client", "com.spotify.client.patched"}
 YTPLUS_RELEASES_API = "https://api.github.com/repos/kes158/YT_5.2.1/releases"
 YOUTUBE_BUNDLE_ID = "com.google.ios.youtube"
 
-# === 새로 추가: 본인 릴리즈에서 Spotify 가져오기 ===
+# 본인 릴리즈
 NIGHTFOX_REPO = "kes158/NightFox_Repository"
 NIGHTFOX_RELEASES_API = f"https://api.github.com/repos/{NIGHTFOX_REPO}/releases"
 
@@ -48,7 +48,7 @@ clean_base = {
 
 # --- 3. 외부 데이터 수집 ---
 
-# 3-1. Spotify 미러 (기존)
+# 3-1. Spotify 미러 (기존 유지)
 spotify_apps_from_mirror = []
 try:
     response = requests.get(SPOTIFY_SOURCE_URL, timeout=15)
@@ -61,7 +61,7 @@ try:
 except Exception as e:
     print(f"❌ 스포티파이 미러 로드 실패: {e}")
 
-# 3-2. YouTube (기존)
+# 3-2. YouTube (기존 유지)
 yt_releases_from_github = []
 try:
     headers = {"Accept": "application/vnd.github.v3+json"}
@@ -89,7 +89,7 @@ except Exception as e:
     print(f"❌ YouTube 릴리즈 로드 실패: {e}")
 
 
-# === 3-3. 본인 릴리즈에서 Spotify 감지 (새로 추가) ===
+# === 3-3. 본인 릴리즈에서 Spotify 가져오기 (개선됨) ===
 nightfox_spotify = {"com.spotify.client": [], "com.spotify.client.patched": []}
 
 try:
@@ -108,21 +108,32 @@ try:
                         ver = version_match.group(1)
                         is_patched = "_Patched" in name or "_patched" in name
                         bid = "com.spotify.client.patched" if is_patched else "com.spotify.client"
-                        
+
+                        # === 개선된 부분: 릴리즈 노트(body) 처리 ===
+                        body = release.get("body") or ""
+                        body = body.strip().replace('\r\n', '\n').replace('\r', '\n')
+
+                        if body:
+                            localized_desc = body
+                            print(f"  ✅ [NightFox] 릴리즈 노트 감지됨 (길이: {len(body)}자)")
+                        else:
+                            localized_desc = f"EeveeSpotify {ver}" + (" (Patched)" if is_patched else "")
+                            print(f"  ⚠️ [NightFox] 릴리즈 노트 없음 → 기본 메시지 사용")
+
                         nightfox_spotify[bid].append({
                             "version": ver,
                             "buildVersion": ver,
                             "date": release.get("created_at") or datetime.now().isoformat(),
                             "downloadURL": asset.get("browser_download_url"),
                             "size": asset.get("size"),
-                            "localizedDescription": release.get("body", "") or f"EeveeSpotify {ver}" + (" (Patched)" if is_patched else "")
+                            "localizedDescription": localized_desc
                         })
-                        print(f"  ➕ [NightFox Release] {name} 감지 → {bid}")
+                        print(f"  ➕ [NightFox Release] {name} 추가 완료 → {bid}")
 except Exception as e:
     print(f"❌ NightFox 본인 릴리즈 로드 실패: {e}")
 
 
-# --- 4. 정제 함수 (기존과 동일) ---
+# --- 4. 정제 함수 ---
 ALLOWED_APP_KEYS = {"name", "bundleIdentifier", "developerName", "subtitle", "localizedDescription", "iconURL", "versions", "tintColor"}
 ALLOWED_VER_KEYS = {"version", "buildVersion", "date", "downloadURL", "localizedDescription", "size", "minOSVersion"}
 
@@ -147,7 +158,7 @@ def clean_app(app, cleaned_versions):
     return new_app
 
 
-# --- 5. 앱 병합 (여기서 본인 릴리즈도 함께 병합) ---
+# --- 5. 앱 병합 ---
 original_apps = base_data.get("apps", [])
 final_apps = []
 processed_bids = set()
@@ -158,7 +169,7 @@ for app in original_apps:
 
     my_versions = {v.get("version"): clean_version(v) for v in app.get("versions", [])}
 
-    # YouTube (기존)
+    # YouTube
     if bid == YOUTUBE_BUNDLE_ID and yt_releases_from_github:
         for rel in yt_releases_from_github:
             v_str = rel.get("version")
@@ -168,7 +179,7 @@ for app in original_apps:
 
     # Spotify (미러 + 본인 릴리즈)
     elif bid in SPOTIFY_BUNDLE_IDS:
-        # 미러 데이터 병합
+        # 미러 데이터
         mirror_app = next((s for s in spotify_apps_from_mirror if s.get("bundleIdentifier") == bid), None)
         if mirror_app:
             for v in mirror_app.get("versions", []):
@@ -177,7 +188,7 @@ for app in original_apps:
                     my_versions[v_str] = clean_version(v)
                     print(f"  ➕ [Spotify Mirror] 새 버전 추가: {v_str}")
 
-        # 본인 릴리즈 데이터 병합 (우선순위 높음)
+        # 본인 릴리즈 (개선된 부분)
         for v in nightfox_spotify.get(bid, []):
             v_str = v.get("version")
             if v_str not in my_versions:
@@ -192,4 +203,4 @@ clean_base["apps"] = final_apps
 with open(JSON_FILE, 'w', encoding='utf-8') as f:
     json.dump(clean_base, f, ensure_ascii=False, indent=2)
 
-print(f"🎉 통합 업데이트 완료! (총 앱 수: {len(final_apps)})")
+print(f"\n🎉 통합 업데이트 완료! (총 앱 수: {len(final_apps)})")

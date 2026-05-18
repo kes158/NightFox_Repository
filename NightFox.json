@@ -22,6 +22,7 @@
           "buildVersion": "21.20.4",
           "date": "2026-05-18T01:34:54Z",
           "downloadURL": "https://github.com/kes158/YT_5.2.1/releases/download/YTPlus_5.2.1_21.20.4/YTPlus_5.2.1_21.20.4.ipa",
+          "buildVersion": "21.20.4",
           "size": 127260673,
           "localizedDescription": "Updated to YouTube v21.20.4\n\nIncluded Tweaks:\n\nYTPlus\nYTABConfig\nYouQuality\nYouChooseQuality\nReturn YouTube Dislikes\nDontEatMyContent\nYouPiP\nYTUHD\nYouLoop\nYouSpeed",
           "minOSVersion": "16.1"

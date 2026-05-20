@@ -177,7 +177,7 @@
           "localizedDescription": "-Updated to Spotify v9.1.46\n\n-Fixed \"uneeveed\" issue for users who faced them\n\n-Added a full reset option\n\nPatched vs Not Patched\n\nUse patched if you use a paid cert or troll store\n\nUse the non patched one for other methods like Sideloadly",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.4/EeveeSpotify_v9.1.46.ipa",
           "size": 114654818,
-          "buildVersion": "9.1.46",
+          "buildVersion": "914601934",
           "minOSVersion": "16.1"
         },
         {

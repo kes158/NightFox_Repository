@@ -172,6 +172,15 @@
       "tintColor": "#1cd464",
       "versions": [
         {
+          "version": "9.1.48",
+          "date": "2026-05-11",
+          "localizedDescription": "- Updated to Spotify v9.1.48\n- Fix crashes\n\nCredits:\nfarokbmiledzx\nPluginsInject",
+          "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/303874879/download",
+          "size": 111225012,
+          "buildVersion": "914801659",
+          "minOSVersion": "16.1"
+        },
+        {
           "version": "9.1.46",
           "date": "2026-05-14T18:53:33Z",
           "localizedDescription": "-Updated to Spotify v9.1.46\n\n-Fixed \"uneeveed\" issue for users who faced them\n\n-Added a full reset option\n\nPatched vs Not Patched\n\nUse patched if you use a paid cert or troll store\n\nUse the non patched one for other methods like Sideloadly",
@@ -254,6 +263,15 @@
       "iconURL": "https://i.imgur.com/j51OrKn.png",
       "tintColor": "#1cd464",
       "versions": [
+        {
+          "version": "9.1.48",
+          "date": "2026-05-11",
+          "localizedDescription": "- Updated to Spotify v9.1.48\n- Fix crashes\n\nCredits:\nfarokbmiledzx\nPluginsInject",
+          "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/303874951/download",
+          "size": 113640523,
+          "buildVersion": "914801659",
+          "minOSVersion": "16.1"
+        },
         {
           "version": "9.1.46",
           "date": "2026-05-14T18:53:33Z",

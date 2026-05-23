@@ -14,6 +14,10 @@ SPOTIFY_BUNDLE_IDS = {"com.spotify.client", "com.spotify.client.patched"}
 YTPLUS_RELEASES_API = "https://api.github.com/repos/kes158/YT_5.2.1/releases"
 YOUTUBE_BUNDLE_ID = "com.google.ios.youtube"
 
+YTMUSIC_RELEASES_API = "https://api.github.com/repos/kes158/YTMusicUltimate/releases"
+YTMUSIC_BUNDLE_ID = "com.google.ios.youtubemusic"
+
+
 NIGHTFOX_REPO = "kes158/NightFox_Repository"
 NIGHTFOX_RELEASES_API = f"https://api.github.com/repos/{NIGHTFOX_REPO}/releases"
 

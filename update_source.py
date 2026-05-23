@@ -93,6 +93,36 @@ except Exception as e:
     print(f"❌ YouTube 릴리즈 로드 실패: {e}")
 
 
+# 3-3. YouTube Music
+ytmusic_releases_from_github = []
+try:
+    headers = {"Accept": "application/vnd.github.v3+json"}
+    if os.getenv("GITHUB_TOKEN"):
+        headers["Authorization"] = f"token {os.getenv('GITHUB_TOKEN')}"
+    response = requests.get(YTMUSIC_RELEASES_API, headers=headers, timeout=15)
+    if response.status_code == 200:
+        for release in response.json():
+            ipa_asset = next((a for a in release.get("assets", []) if a.get("name", "").lower().endswith(".ipa")), None)
+            if ipa_asset:
+                tag = release.get("tag_name", "")
+                version_match = re.search(r'(\d+\.\d+\.\d+)$', tag)
+                version_str = version_match.group(1) if version_match else tag.lstrip("v")
+                release_date = get_release_date(release)
+                print(f"  📅 [YouTube Music] {version_str} → published_at: {release.get('published_at')} / created_at: {release.get('created_at')} → 사용: {release_date}")
+                ytmusic_releases_from_github.append({
+                    "version": version_str,
+                    "buildVersion": version_str,
+                    "date": release_date,
+                    "downloadURL": ipa_asset.get("browser_download_url"),
+                    "size": ipa_asset.get("size"),
+                    "localizedDescription": release.get("body", "")
+                })
+    else:
+        print(f"❌ YouTube Music 릴리즈 로드 실패: HTTP {response.status_code}")
+except Exception as e:
+    print(f"❌ YouTube Music 릴리즈 로드 실패: {e}")
+
+
 # === 3-3. 본인 릴리즈 Spotify (NightFox fallback 적용) ===
 nightfox_spotify = {"com.spotify.client": [], "com.spotify.client.patched": []}
 
@@ -175,6 +205,13 @@ for app in original_apps:
             if v_str not in my_versions:
                 my_versions[v_str] = clean_version(rel)
                 print(f"  ➕ [YouTube] 새 릴리즈 추가: {v_str}")
+
+    elif bid == YTMUSIC_BUNDLE_ID and ytmusic_releases_from_github:
+        for rel in ytmusic_releases_from_github:
+            v_str = rel.get("version")
+            if v_str not in my_versions:
+                my_versions[v_str] = clean_version(rel)
+                print(f"  ➕ [YouTube Music] 새 릴리즈 추가: {v_str}")
 
     elif bid in SPOTIFY_BUNDLE_IDS:
         mirror_app = next((s for s in spotify_apps_from_mirror if s.get("bundleIdentifier") == bid), None)

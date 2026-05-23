@@ -2,7 +2,7 @@ import os
 import json
 import requests
 import re
-from datetime import datetime
+from datetime import datetime, timezone
 
 # --- 설정 ---
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -16,6 +16,11 @@ YOUTUBE_BUNDLE_ID = "com.google.ios.youtube"
 
 NIGHTFOX_REPO = "kes158/NightFox_Repository"
 NIGHTFOX_RELEASES_API = f"https://api.github.com/repos/{NIGHTFOX_REPO}/releases"
+
+
+def get_release_date(release):
+    """published_at을 우선 사용, 없으면 created_at 폴백"""
+    return release.get("published_at") or release.get("created_at")
 
 
 # --- 1. JSON 로드 ---
@@ -70,10 +75,12 @@ try:
                 tag = release.get("tag_name", "")
                 version_match = re.search(r'(\d+\.\d+\.\d+)$', tag)
                 version_str = version_match.group(1) if version_match else tag
+                release_date = get_release_date(release)
+                print(f"  📅 [YouTube] {version_str} → published_at: {release.get('published_at')} / created_at: {release.get('created_at')} → 사용: {release_date}")
                 yt_releases_from_github.append({
                     "version": version_str,
                     "buildVersion": version_str,
-                    "date": release.get("created_at"),
+                    "date": release_date,
                     "downloadURL": ipa_asset.get("browser_download_url"),
                     "size": ipa_asset.get("size"),
                     "localizedDescription": release.get("body", "")
@@ -89,7 +96,7 @@ try:
     headers = {"Accept": "application/vnd.github.v3+json"}
     if os.getenv("GITHUB_TOKEN"):
         headers["Authorization"] = f"token {os.getenv('GITHUB_TOKEN')}"
-    
+
     response = requests.get(NIGHTFOX_RELEASES_API, headers=headers, timeout=15)
     if response.status_code == 200:
         for release in response.json():
@@ -109,13 +116,14 @@ try:
                             localized_desc = body
                             print(f"  ✅ [NightFox] 릴리즈 노트 감지됨")
                         else:
-                            localized_desc = "NightFox"          # ← 여기 수정!
+                            localized_desc = "NightFox"
                             print(f"  ⚠️ [NightFox] 릴리즈 노트 없음 → 'NightFox' 적용")
 
+                        release_date = get_release_date(release)
                         nightfox_spotify[bid].append({
                             "version": ver,
                             "buildVersion": ver,
-                            "date": release.get("created_at") or datetime.now().isoformat(),
+                            "date": release_date,
                             "downloadURL": asset.get("browser_download_url"),
                             "size": asset.get("size"),
                             "localizedDescription": localized_desc

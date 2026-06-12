@@ -1,7 +1,7 @@
 {
   "name": "NightFox",
   "subtitle": "NightFox's App Repository",
-  "description": "kes159999@gmail.com",
+  "description": "Welcome to NightFox's source!",
   "iconURL": "https://i.imgur.com/Se6jHAj.png",
   "website": "https://github.com/kes158/NightFox_Repository",
   "patreonURL": "https://patreon.com/altstudio",
@@ -15,7 +15,7 @@
       "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "YTPlus",
-      "localizedDescription": "현재 트윅 버전 : YTPlus 5.2.1(우회 버전)\n현재 최신 유튜브 버전 : 21.22.4",
+      "localizedDescription": "현재 트윅 버전 : YTPlus 5.2.1(패트리온 우회 버전)\n현재 최신 유튜브 버전 : 21.22.4",
       "iconURL": "https://i.imgur.com/GRUAxGw.png",
       "tintColor": "#fc0434",
       "category": "other",
@@ -580,17 +580,5 @@
       "patreon": {}
     }
   ],
-  "news": [
-    {
-      "title": "YTPlus 5.2.1",
-      "identifier": "news_yysw2toe3p",
-      "caption": "현재 최신 버전 21.22.4",
-      "date": "2026-05-30T14:52",
-      "tintColor": "#fc0434",
-      "imageURL": "",
-      "notify": true,
-      "url": null,
-      "appID": "com.google.ios.youtube"
-    }
-  ]
+  "news": []
 }

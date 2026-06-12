@@ -587,6 +587,7 @@
       "caption": "현재 최신 버전 21.22.4",
       "date": "2026-05-30T14:52",
       "tintColor": "#fc0434",
+      "imageURL": "",
       "notify": true,
       "url": null,
       "appID": "com.google.ios.youtube"

@@ -6,7 +6,9 @@
   "website": "https://github.com/kes158/NightFox_Repository",
   "patreonURL": "https://patreon.com/altstudio",
   "tintColor": "#00b39e",
-  "featuredApps": [],
+  "featuredApps": [
+    "com.google.ios.youtube"
+  ],
   "headerURL": "https://i.imgur.com/Se6jHAj.png",
   "apps": [
     {

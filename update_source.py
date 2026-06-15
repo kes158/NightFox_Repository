@@ -49,6 +49,7 @@ clean_base = {
     "website": base_data.get("website", "https://github.com/kes158/NightFox_Repository"),
     "tintColor": base_data.get("tintColor", "#00b39e"),
     "headerURL": base_data.get("headerURL", ""),
+    "news": base_data.get("news", []),
     "apps": []
 }
 
@@ -233,7 +234,16 @@ for app in original_apps:
 
 # --- 6. 저장 ---
 clean_base["apps"] = final_apps
+
+# news/headerURL이 빈 값이면 키 자체를 제거 (불필요한 빈 필드 방지)
+if not clean_base.get("news"):
+    clean_base.pop("news", None)
+if not clean_base.get("headerURL"):
+    clean_base.pop("headerURL", None)
+
 with open(JSON_FILE, 'w', encoding='utf-8') as f:
     json.dump(clean_base, f, ensure_ascii=False, indent=2)
 
 print(f"\n🎉 통합 업데이트 완료! (총 앱 수: {len(final_apps)})")
+if "news" in clean_base:
+    print(f"📰 news 항목 수: {len(clean_base['news'])}")

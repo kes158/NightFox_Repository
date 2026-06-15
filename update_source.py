@@ -40,6 +40,15 @@ else:
 
 # --- 2. 최상위 필드 보존 ---
 current_identifier = base_data.get("identifier") or "com.nightfox.repository"
+
+# news는 list일 때만 그대로 사용, 아니면 빈 리스트
+_news_value = base_data.get("news")
+preserved_news = _news_value if isinstance(_news_value, list) else []
+
+# headerURL은 문자열일 때만 사용
+_header_value = base_data.get("headerURL")
+preserved_header = _header_value if isinstance(_header_value, str) else ""
+
 clean_base = {
     "name": base_data.get("name", "NightFox"),
     "identifier": current_identifier,
@@ -48,8 +57,8 @@ clean_base = {
     "iconURL": base_data.get("iconURL", "https://i.imgur.com/Se6jHAj.png"),
     "website": base_data.get("website", "https://github.com/kes158/NightFox_Repository"),
     "tintColor": base_data.get("tintColor", "#00b39e"),
-    "headerURL": base_data.get("headerURL", ""),
-    "news": base_data.get("news", []),
+    "headerURL": preserved_header,
+    "news": preserved_news,
     "apps": []
 }
 
@@ -235,9 +244,7 @@ for app in original_apps:
 # --- 6. 저장 ---
 clean_base["apps"] = final_apps
 
-# news/headerURL이 빈 값이면 키 자체를 제거 (불필요한 빈 필드 방지)
-if not clean_base.get("news"):
-    clean_base.pop("news", None)
+# headerURL이 빈 문자열이면 키 제거 (news는 항상 보존)
 if not clean_base.get("headerURL"):
     clean_base.pop("headerURL", None)
 
@@ -245,5 +252,4 @@ with open(JSON_FILE, 'w', encoding='utf-8') as f:
     json.dump(clean_base, f, ensure_ascii=False, indent=2)
 
 print(f"\n🎉 통합 업데이트 완료! (총 앱 수: {len(final_apps)})")
-if "news" in clean_base:
-    print(f"📰 news 항목 수: {len(clean_base['news'])}")
+print(f"📰 news 항목 수: {len(clean_base['news'])}")

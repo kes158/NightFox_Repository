@@ -42,8 +42,25 @@ else:
 current_identifier = base_data.get("identifier") or "com.nightfox.repository"
 
 # news는 list일 때만 그대로 사용, 아니면 빈 리스트
+# AltStore/SideStore의 News 항목에서 imageURL은 필수 필드이므로,
+# 비어있으면 키를 제거하지 말고 기본 아이콘으로 채운다.
+# url은 옵셔널이므로 빈 문자열이면 키 제거.
+def clean_news_item(item, default_image_url):
+    if not isinstance(item, dict):
+        return item
+    new_item = dict(item)
+    if not new_item.get("imageURL"):
+        new_item["imageURL"] = default_image_url
+    if new_item.get("url") == "":
+        new_item.pop("url", None)
+    return new_item
+
 _news_value = base_data.get("news")
-preserved_news = _news_value if isinstance(_news_value, list) else []
+_default_icon = base_data.get("iconURL", "https://i.imgur.com/Se6jHAj.png")
+if isinstance(_news_value, list):
+    preserved_news = [clean_news_item(n, _default_icon) for n in _news_value]
+else:
+    preserved_news = []
 
 # headerURL은 문자열일 때만 사용
 _header_value = base_data.get("headerURL")

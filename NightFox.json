@@ -476,7 +476,7 @@
       "bundleIdentifier": "com.yangjiii.EnsWilde",
       "developerName": "NightFox",
       "subtitle": "EnsWilde",
-      "localizedDescription": "EnsWilde는 카메라 무음&통화녹음안내음 제거 기능 및 여러가지 기능이 있는데\n기술적으로 현재 iOS 26.1 까지만 지원하고 그 이후 버전에서는 작동안함\niOS 26.1 이상 버전인 사람들은 무슨짓을해도 사용 못하니 해당되는 사람들만 사용하세요.",
+      "localizedDescription": "EnsWilde는 카메라 무음&통화녹음안내음 제거 기능 및 여러가지 기능이 있는데\n기술적으로 현재 iOS 26.1 까지만 지원하고 그 이후 버전에서는 작동안합니다.\niOS 26.1 이상 버전인 사람들은 무슨짓을해도 사용 못하니 해당되는 사람들만 사용하세요.",
       "iconURL": "https://i.imgur.com/CliGoqS.png",
       "tintColor": "#c0683c",
       "versions": [

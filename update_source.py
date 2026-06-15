@@ -58,8 +58,8 @@ clean_base = {
     "website": base_data.get("website", "https://github.com/kes158/NightFox_Repository"),
     "tintColor": base_data.get("tintColor", "#00b39e"),
     "headerURL": preserved_header,
-    "news": preserved_news,
-    "apps": []
+    "apps": [],
+    "news": preserved_news
 }
 
 

@@ -491,7 +491,8 @@
       "date": "2026-06-15T10:12",
       "tintColor": "#fe0134",
       "notify": true,
-      "appID": "com.google.ios.youtube"
+      "appID": "com.google.ios.youtube",
+      "imageURL": "https://i.imgur.com/Se6jHAj.png"
     }
   ]
 }

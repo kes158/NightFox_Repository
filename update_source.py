@@ -262,12 +262,13 @@ for app in original_apps:
                         my_versions[v_str] = clean_version(v)
                         print(f"  ➕ [Spotify Mirror] 새 버전 추가: {v_str}")
 
-        # NightFox 본인 릴리즈는 미러 ON/OFF 무관하게 항상 반영
-        for v in nightfox_spotify.get(bid, []):
-            v_str = v.get("version")
-            if v_str not in my_versions:
-                my_versions[v_str] = clean_version(v)
-                print(f"  ➕ [NightFox Release] 새 버전 추가: {v_str} → {bid}")
+        # NightFox 본인 릴리즈도 USE_SPOTIFY_MIRROR가 True일 때만 반영
+        if USE_SPOTIFY_MIRROR:
+            for v in nightfox_spotify.get(bid, []):
+                v_str = v.get("version")
+                if v_str not in my_versions:
+                    my_versions[v_str] = clean_version(v)
+                    print(f"  ➕ [NightFox Release] 새 버전 추가: {v_str} → {bid}")
 
     final_apps.append(clean_app(app, list(my_versions.values())))
     processed_bids.add(bid)

@@ -6,6 +6,11 @@ on:
   schedule:
     - cron: '0 */6 * * *'
   workflow_dispatch:
+    inputs:
+      use_spotify_mirror:
+        description: 'Spotify 미러 소스 동기화 (titouan336)'
+        type: boolean
+        default: true
 
 jobs:
   update:
@@ -43,6 +48,8 @@ jobs:
       - name: Run Script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # workflow_dispatch일 때는 입력값 사용, 그 외(schedule/release)는 항상 true
+          USE_SPOTIFY_MIRROR: ${{ github.event_name == 'workflow_dispatch' && inputs.use_spotify_mirror || 'true' }}
         run: python update_source.py
 
       - name: Commit and Push Changes

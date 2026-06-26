@@ -17,9 +17,19 @@ YOUTUBE_BUNDLE_ID = "com.google.ios.youtube"
 YTMUSIC_RELEASES_API = "https://api.github.com/repos/kes158/YTMusicUltimate/releases"
 YTMUSIC_BUNDLE_ID = "com.google.ios.youtubemusic"
 
-
 NIGHTFOX_REPO = "kes158/NightFox_Repository"
 NIGHTFOX_RELEASES_API = f"https://api.github.com/repos/{NIGHTFOX_REPO}/releases"
+
+# --- Spotify 미러 동기화 여부 (환경변수로 제어) ---
+# workflow_dispatch 체크박스 → USE_SPOTIFY_MIRROR 환경변수로 전달됨
+# schedule / release 트리거일 때는 워크플로에서 'true'로 강제 설정됨
+_mirror_env = os.getenv("USE_SPOTIFY_MIRROR", "true").strip().lower()
+USE_SPOTIFY_MIRROR = _mirror_env not in ("false", "0", "no")
+
+if USE_SPOTIFY_MIRROR:
+    print("✅ Spotify 미러 동기화: ON")
+else:
+    print("⏭️  Spotify 미러 동기화: OFF (현재 소스 JSON 그대로 유지)")
 
 
 def get_release_date(release):
@@ -41,8 +51,6 @@ else:
 # --- 2. 최상위 필드 보존 ---
 current_identifier = base_data.get("identifier") or "com.nightfox.repository"
 
-# news는 list일 때만 그대로 사용, 아니면 빈 리스트
-# url/imageURL이 빈 문자열이면 키 제거, 없으면 없는 채로 유지
 def clean_news_item(item):
     if not isinstance(item, dict):
         return item
@@ -59,7 +67,6 @@ if isinstance(_news_value, list):
 else:
     preserved_news = []
 
-# headerURL은 문자열일 때만 사용
 _header_value = base_data.get("headerURL")
 preserved_header = _header_value if isinstance(_header_value, str) else ""
 
@@ -79,15 +86,22 @@ clean_base = {
 
 # --- 3. 외부 데이터 수집 ---
 
-# 3-1. Spotify 미러
+# 3-1. Spotify 미러 (USE_SPOTIFY_MIRROR가 True일 때만 fetch)
 spotify_apps_from_mirror = []
-try:
-    response = requests.get(SPOTIFY_SOURCE_URL, timeout=15)
-    if response.status_code == 200:
-        external_data = response.json()
-        spotify_apps_from_mirror = [app for app in external_data.get("apps", []) if app.get("bundleIdentifier") in SPOTIFY_BUNDLE_IDS]
-except Exception as e:
-    print(f"❌ 스포티파이 미러 로드 실패: {e}")
+if USE_SPOTIFY_MIRROR:
+    try:
+        response = requests.get(SPOTIFY_SOURCE_URL, timeout=15)
+        if response.status_code == 200:
+            external_data = response.json()
+            spotify_apps_from_mirror = [
+                app for app in external_data.get("apps", [])
+                if app.get("bundleIdentifier") in SPOTIFY_BUNDLE_IDS
+            ]
+            print(f"  📦 [Spotify Mirror] {len(spotify_apps_from_mirror)}개 앱 로드됨")
+    except Exception as e:
+        print(f"❌ 스포티파이 미러 로드 실패: {e}")
+else:
+    print("  📦 [Spotify Mirror] 스킵 — 기존 소스 JSON 유지")
 
 # 3-2. YouTube
 yt_releases_from_github = []
@@ -147,7 +161,7 @@ except Exception as e:
     print(f"❌ YouTube Music 릴리즈 로드 실패: {e}")
 
 
-# === 3-3. 본인 릴리즈 Spotify (NightFox fallback 적용) ===
+# === 3-4. 본인 릴리즈 Spotify (NightFox fallback 적용) ===
 nightfox_spotify = {"com.spotify.client": [], "com.spotify.client.patched": []}
 
 try:
@@ -238,14 +252,17 @@ for app in original_apps:
                 print(f"  ➕ [YouTube Music] 새 릴리즈 추가: {v_str}")
 
     elif bid in SPOTIFY_BUNDLE_IDS:
-        mirror_app = next((s for s in spotify_apps_from_mirror if s.get("bundleIdentifier") == bid), None)
-        if mirror_app:
-            for v in mirror_app.get("versions", []):
-                v_str = v.get("version")
-                if v_str not in my_versions:
-                    my_versions[v_str] = clean_version(v)
-                    print(f"  ➕ [Spotify Mirror] 새 버전 추가: {v_str}")
+        # Spotify 미러: USE_SPOTIFY_MIRROR가 True일 때만 병합
+        if USE_SPOTIFY_MIRROR:
+            mirror_app = next((s for s in spotify_apps_from_mirror if s.get("bundleIdentifier") == bid), None)
+            if mirror_app:
+                for v in mirror_app.get("versions", []):
+                    v_str = v.get("version")
+                    if v_str not in my_versions:
+                        my_versions[v_str] = clean_version(v)
+                        print(f"  ➕ [Spotify Mirror] 새 버전 추가: {v_str}")
 
+        # NightFox 본인 릴리즈는 미러 ON/OFF 무관하게 항상 반영
         for v in nightfox_spotify.get(bid, []):
             v_str = v.get("version")
             if v_str not in my_versions:
@@ -258,7 +275,6 @@ for app in original_apps:
 # --- 6. 저장 ---
 clean_base["apps"] = final_apps
 
-# headerURL이 빈 문자열이면 키 제거 (news는 항상 보존)
 if not clean_base.get("headerURL"):
     clean_base.pop("headerURL", None)
 

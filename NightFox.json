@@ -484,7 +484,7 @@
       "tintColor": "#1cd464",
       "notify": true,
       "url": "https://example.com/new_feature_details",
-      "appID": null
+      "appID": ""
     }
   ]
 }

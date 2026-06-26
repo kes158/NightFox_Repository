@@ -473,7 +473,6 @@
       "date": "2026-06-15T10:12",
       "tintColor": "#fe0134",
       "notify": true,
-      "url": "",
       "appID": "com.google.ios.youtube"
     },
     {
@@ -483,7 +482,6 @@
       "date": "2026-06-26T22:30",
       "tintColor": "#1cd464",
       "notify": true,
-      "url": "",
       "appID": ""
     }
   ]

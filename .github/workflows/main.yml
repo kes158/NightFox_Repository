@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       use_spotify_mirror:
-        description: 'Spotify 미러 소스 동기화 (titouan336)'
+        description: 'Spotify 미러 소스 동기화'
         type: boolean
         default: true
 

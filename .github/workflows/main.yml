@@ -48,8 +48,8 @@ jobs:
       - name: Run Script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # workflow_dispatch일 때는 입력값 사용, 그 외(schedule/release)는 항상 true
-          USE_SPOTIFY_MIRROR: ${{ github.event_name == 'workflow_dispatch' && inputs.use_spotify_mirror || 'true' }}
+          # workflow_dispatch에서 체크박스를 직접 체크했을 때만 true
+          USE_SPOTIFY_MIRROR: ${{ github.event_name == 'workflow_dispatch' && inputs.use_spotify_mirror == true }}
         run: python update_source.py
 
       - name: Commit and Push Changes

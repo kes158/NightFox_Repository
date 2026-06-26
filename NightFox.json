@@ -187,9 +187,26 @@
       "subtitle": "Latest Eevee release",
       "localizedDescription": "EeveeSpotify TG: https://t.me/compiledipas\n\n이 트윅은 현재로서는 뮤직스매치(Msixmath) 커스텀 가사만 지원합니다.\n가사 기능이 정상적으로 작동하게 하려면 오리지날 EeveeSpotify 9.1.0 버전을 사용하세요.\n이 트윅은 스포티파이(Spotify)가 사용자를 프리미엄 구독 상태인 것처럼 인식하게 만들어, 스포티라이프(Spotilife)와 마찬가지로 무료 음악 감상이 가능하게 해 주며, 커스텀 가사와 같은 몇 가지 추가 기능을 제공합니다.",
       "iconURL": "https://i.imgur.com/j51OrKn.png",
-      "iconURL": "https://i.imgur.com/j51OrKn.png",
       "tintColor": "#1cd464",
       "versions": [
+        {
+          "version": "9.1.48",
+          "date": "2026-05-11",
+          "localizedDescription": "- Updated to Spotify v9.1.48\n- Fix crashes\n\nCredits:\nfarokbmiledzx\nPluginsInject",
+          "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/303874879/download",
+          "size": 111225012,
+          "buildVersion": "914801659",
+          "minOSVersion": "16.1"
+        },
+        {
+          "version": "9.1.46",
+          "buildVersion": "9.1.46",
+          "date": "2026-05-14T19:30:35Z",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.4/EeveeSpotify_v9.1.46.ipa",
+          "size": 114654818,
+          "localizedDescription": "Release Notes:\n\n-Updated to Spotify v9.1.46\n\n-Fixed \"uneeveed\" issue for users who faced them\n\n-Added a full reset option\n\nPatched vs Not Patched\n\nUse patched if you use a paid cert or troll store\n\nUse the non patched one for other methods like Sideloadly",
+          "minOSVersion": "16.1"
+        },
         {
           "version": "9.1.34",
           "date": "2026-04-07",
@@ -255,6 +272,24 @@
       "iconURL": "https://i.imgur.com/j51OrKn.png",
       "tintColor": "#1cd464",
       "versions": [
+        {
+          "version": "9.1.48",
+          "date": "2026-05-11",
+          "localizedDescription": "- Updated to Spotify v9.1.48\n- Fix crashes\n\nCredits:\nfarokbmiledzx\nPluginsInject",
+          "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/303874951/download",
+          "size": 113640523,
+          "buildVersion": "914801659",
+          "minOSVersion": "16.1"
+        },
+        {
+          "version": "9.1.46",
+          "buildVersion": "9.1.46",
+          "date": "2026-05-14T19:30:35Z",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.4/EeveeSpotify_v9.1.46_Patched.ipa",
+          "size": 116256893,
+          "localizedDescription": "Release Notes:\n\n-Updated to Spotify v9.1.46\n\n-Fixed \"uneeveed\" issue for users who faced them\n\n-Added a full reset option\n\nPatched vs Not Patched\n\nUse patched if you use a paid cert or troll store\n\nUse the non patched one for other methods like Sideloadly",
+          "minOSVersion": "16.1"
+        },
         {
           "version": "9.1.34",
           "date": "2026-04-07",

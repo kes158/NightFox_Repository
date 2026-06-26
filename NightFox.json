@@ -446,7 +446,7 @@
       "date": "2026-06-26T22:30",
       "tintColor": "#1cd464",
       "notify": true,
-      "appID": ""
+      "appID": "com.spotify.client"
     }
   ]
 }

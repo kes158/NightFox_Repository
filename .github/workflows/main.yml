@@ -10,7 +10,7 @@ on:
       use_spotify_mirror:
         description: 'Spotify 미러 소스 동기화'
         type: boolean
-        default: true
+        default: false
 
 jobs:
   update:

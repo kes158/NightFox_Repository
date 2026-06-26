@@ -185,7 +185,7 @@
       "bundleIdentifier": "com.spotify.client",
       "developerName": "Skye/whoeevee",
       "subtitle": "Latest Eevee release",
-      "localizedDescription": "This tweak only support Musixmatch custom lyrics at this time.\nUse original EeveeSpotify 9.1.0 for working lyrics.\n\nThis tweak makes Spotify think you have a Premium subscription, granting free listening, just like Spotilife, and provides some additional features like custom lyrics.",
+      "localizedDescription": "EeveeSpotify TG: https://t.me/compiledipas\\이 트윅은 현재로서는 뮤직스매치(Musixmatch) 커스텀 가사만 지원합니다.\가사 기능이 정상적으로 작동하게 하려면 오리지널 EeveeSpotify 9.1.0 버전을 사용하세요.\이 트윅은 스포티파이(Spotify)가 사용자를 프리미엄 구독 상태인 것처럼 인식하게 만들어, 스포티라이프(Spotilife)와 마찬가지로 무료 음악 감상이 가능하게 해 주며, 커스텀 가사와 같은 몇 가지 추가 기능을 제공합니다.”,
       "iconURL": "https://i.imgur.com/j51OrKn.png",
       "tintColor": "#1cd464",
       "versions": [

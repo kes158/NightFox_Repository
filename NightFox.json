@@ -249,7 +249,7 @@
       "name": "Spotify (Patched)",
       "bundleIdentifier": "com.spotify.client.patched",
       "developerName": "Skye/whoeevee",
-      "subtitle": "Patched for paid certs",
+      "subtitle": "유료인증서 전용으로 패치됨",
       "localizedDescription": "⚠️경고⚠️ Patched버전은 유료 인증서 유저를 위한 IPA라서 Feather, ESign, KSign에서만 사용하세요.\n일반 유저는 소스에서 Spotify 일반버전 사용하면 됩니다.\n\n이 트윅은 현재로서는 뮤직스매치(Musixmatch) 커스텀 가사만 지원합니다.\n가사 기능이 정상적으로 작동하게 하려면 오리지널 EeveeSpotify 9.1.0 버전을 사용하세요.\n\n패치된 IPA를 사용하면 유료 인증서로 사이드로딩할 때 발생하던 모든 위젯 문제(앱 그룹 권한 관련)가 해결될 것입니다. 이 해결책은 AltStore/Sideloadly 같은 무료 사이드로딩 방식에서는 작동하지 않으며, TrollStore 사용자는 패치된 IPA를 사용할 필요가 없습니다.\n\n추가 참고 사항: 이 IPA는 현재로서는 베타 테스트로 간주되어야 하므로, 이에 대한 일반적인 기술 지원은 제공되지 않습니다.",
       "iconURL": "https://i.imgur.com/j51OrKn.png",
       "tintColor": "#1cd464",

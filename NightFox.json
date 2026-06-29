@@ -1,25 +1,21 @@
 {
   "name": "NightFox",
+  "identifier": "com.nightfox.repository",
   "subtitle": "NightFox's App Repository",
   "description": "❤️",
   "iconURL": "https://i.imgur.com/Se6jHAj.png",
   "website": "https://github.com/kes158/NightFox_Repository",
-  "patreonURL": "https://patreon.com/altstudio",
   "tintColor": "#00b39e",
-  "featuredApps": [],
   "headerURL": "https://i.imgur.com/Se6jHAj.png",
   "apps": [
     {
       "name": "YouTube",
       "bundleIdentifier": "com.google.ios.youtube",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "YTPlus",
       "localizedDescription": "현재 트윅 버전 : 5.2.1(패트리온 우회 버전)\n현재 유튜브 최신 버전 : 21.22.4\n\n최신 유튜브버전 21.24.3에서 숏츠 스폰서광고가 새어나오고 있고 21.24.3 버전부터 유튜브 앱 자체의 광고삽입 방식이 조금 달라진거로 보임. 21.22.4버전으로 다시 받아서 사용하고 있길 강력히 권장함. ",
       "iconURL": "https://i.imgur.com/GRUAxGw.png",
       "tintColor": "#fc0434",
-      "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "21.22.4",
@@ -58,15 +54,6 @@
           "minOSVersion": "16.1"
         },
         {
-          "version": "21.16.2",
-          "date": "2026-05-06T12:23:43Z",
-          "localizedDescription": "",
-          "downloadURL": "https://github.com/kes158/YT_5.2.1/releases/download/YTPlus_5.2.1_21.16.2/YTPlus_5.2.1_21.16.2.ipa",
-          "size": 131913163,
-          "buildVersion": "21.16.2",
-          "minOSVersion": "16.1"
-        },
-        {
           "version": "21.18.4",
           "date": "2026-05-06T13:33:00+09:00",
           "localizedDescription": "",
@@ -83,25 +70,26 @@
           "size": 132800000,
           "buildVersion": "21.17.3",
           "minOSVersion": "16.1"
+        },
+        {
+          "version": "21.16.2",
+          "date": "2026-05-06T12:23:43Z",
+          "localizedDescription": "",
+          "downloadURL": "https://github.com/kes158/YT_5.2.1/releases/download/YTPlus_5.2.1_21.16.2/YTPlus_5.2.1_21.16.2.ipa",
+          "size": 131913163,
+          "buildVersion": "21.16.2",
+          "minOSVersion": "16.1"
         }
-      ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      ]
     },
     {
       "name": "StikDebug",
       "bundleIdentifier": "com.stik.stikdebug",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/JtyYEdh.png",
       "tintColor": "#24ccfc",
-      "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "3.0.1",
@@ -112,24 +100,16 @@
           "buildVersion": "1",
           "minOSVersion": "16.1"
         }
-      ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      ]
     },
     {
       "name": "Instagram Theta",
       "bundleIdentifier": "com.burbn.instagram",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/mJsqnx5.png",
       "tintColor": "#ffe000",
-      "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "426.0.0",
@@ -149,34 +129,17 @@
           "buildVersion": "826175880",
           "minOSVersion": "16.1"
         }
-      ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      ]
     },
     {
       "name": "Reddit",
       "bundleIdentifier": "com.reddit.Reddit",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/UKnszP5.png",
       "tintColor": "#fc4404",
-      "category": "other",
-      "screenshots": [],
       "versions": [
-        {
-          "version": "2026.13.1",
-          "date": "2026-05-14T20:50:00+09:00",
-          "localizedDescription": "",
-          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.5/Reddit_2026_13_1.ipa",
-          "size": 156400000,
-          "buildVersion": "626918",
-          "minOSVersion": "16.1"
-        },
         {
           "version": "2026.17.0",
           "date": "2026-05-02T20:29:00+09:00",
@@ -185,25 +148,26 @@
           "size": 156200000,
           "buildVersion": "628480",
           "minOSVersion": "16.1"
+        },
+        {
+          "version": "2026.13.1",
+          "date": "2026-05-14T20:50:00+09:00",
+          "localizedDescription": "",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.5/Reddit_2026_13_1.ipa",
+          "size": 156400000,
+          "buildVersion": "626918",
+          "minOSVersion": "16.1"
         }
-      ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      ]
     },
     {
       "name": "NeoFreeBird",
       "bundleIdentifier": "com.atebits.Tweetie2",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/9MyLXvv.png",
       "tintColor": "#1c9cf4",
-      "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "11.35",
@@ -214,24 +178,16 @@
           "buildVersion": "12",
           "minOSVersion": "16.1"
         }
-      ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      ]
     },
     {
       "name": "TikTok",
       "bundleIdentifier": "com.zhiliaoapp.musically",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "TikTok",
       "localizedDescription": "TikTok은 SideStore에 설치할 시 App IDs 10개 소모합니다",
       "iconURL": "https://i.imgur.com/giiYvBI.png",
       "tintColor": "#fd2d55",
-      "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.5/Tiktok_45.7.0.ipa",
@@ -242,39 +198,16 @@
           "localizedDescription": "NightFox",
           "minOSVersion": "16.1"
         }
-      ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {
-          "NSLocationWhenInUseUsageDescription": "If location services are enabled, TikTok will collect, store and use your device's approximate location to improve your experience.",
-          "NSBluetoothAlwaysUsageDescription": "This will allow \"TikTok\" to find and connect to Bluetooth accessories. This app may also use Bluetooth to connect with nearby devices.",
-          "NSFaceIDUsageDescription": "We'll use this to unlock features that require added security.",
-          "NSPhotoLibraryAddUsageDescription": "To upload from or download to your device, allow access to your photos in your phone settings.",
-          "NSContactsUsageDescription": "Sync your contacts to easily find people you know on TikTok. Your contacts will only be used to help you connect with friends.",
-          "NSAdvertisingAttributionReportEndpoint": "https://appsflyer-skadnetwork.com/",
-          "NSMicrophoneUsageDescription": "To record audio, allow us to access your Microphone.",
-          "NSCalendarsUsageDescription": "Add events to your device calendar to get reminders when events start.",
-          "NSLocalNetworkUsageDescription": "The TikTok app will be able to discover and connect with devices that have the TikTok app installed for camera and screen sharing.",
-          "NSPhotoLibraryUsageDescription": "To upload from or download to your device, allow access to your photos in your phone settings.",
-          "NSCameraUsageDescription": "You'll be able to record video.",
-          "NSAppleMusicUsageDescription": "To select sound from your library, allow us to access your Apple Music.",
-          "NSBluetoothPeripheralUsageDescription": "This will allow \"TikTok\" to find and connect to Bluetooth accessories. This app may also use Bluetooth to connect with nearby devices.",
-          "NSUserTrackingUsageDescription": "This allows TikTok to provide you with a better ads experience."
-        }
-      },
-      "patreon": {}
+      ]
     },
     {
       "name": "Threads",
       "bundleIdentifier": "com.burbn.barcelona",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "Threads",
       "localizedDescription": "Threads는 SideStore에 설치할 시 App IDs 1개 소모합니다",
       "iconURL": "https://i.imgur.com/td1CC1g.png",
       "tintColor": "#7f7f7f",
-      "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.5/Threads_435.0.0_ThreadSaver.ipa",
@@ -285,36 +218,16 @@
           "localizedDescription": "NightFox",
           "minOSVersion": "16.1"
         }
-      ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {
-          "NSAdvertisingAttributionReportEndpoint": "https://facebook.com",
-          "NSCameraUsageDescription": "Threads uses your camera to do things like help you take photos when posting.",
-          "NSContactsUsageDescription": "This helps you and others find your friends and more.",
-          "NSLocationAlwaysAndWhenInUseUsageDescription": "Select \"Always Allow\" to make some features work. You can change this anytime in Settings.",
-          "NSLocationAlwaysUsageDescription": "Select \"Always Allow\" to make some features work. You can change this anytime in Settings.",
-          "NSLocationUsageDescription": "Select ok to make some features work. You can change this anytime in Settings.",
-          "NSLocationWhenInUseUsageDescription": "Your location will be used to show places nearby, allowing you to tag a place on your post.",
-          "NSMicrophoneUsageDescription": "Threads uses your microphone to do things like help you record audio when posting.",
-          "NSMotionUsageDescription": "This makes some features work. You can always change this later in Settings.",
-          "NSPhotoLibraryAddUsageDescription": "This lets you save photos and videos to your Camera Roll.",
-          "NSPhotoLibraryUsageDescription": "This lets you share photos from your library and save photos to your Camera Roll."
-        }
-      },
-      "patreon": {}
+      ]
     },
     {
       "name": "Spotify",
       "bundleIdentifier": "com.spotify.client",
-      "marketplaceID": "",
       "developerName": "Skye/whoeevee",
       "subtitle": "일반 사이드스토어 사용자 IPA",
       "localizedDescription": "EeveeSpotify TG: https://t.me/compiledipas\n\n이 트윅은 현재로서는 뮤직스매치(Msixmath) 커스텀 가사만 지원합니다.\n가사 기능이 정상적으로 작동하게 하려면 오리지날 EeveeSpotify 9.1.0 버전을 사용하세요.\n이 트윅은 스포티파이(Spotify)가 사용자를 프리미엄 구독 상태인 것처럼 인식하게 만들어, 스포티라이프(Spotilife)와 마찬가지로 무료 음악 감상이 가능하게 해 주며, 커스텀 가사와 같은 몇 가지 추가 기능을 제공합니다.",
       "iconURL": "https://i.imgur.com/j51OrKn.png",
       "tintColor": "#1cd464",
-      "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "9.1.34",
@@ -370,24 +283,16 @@
           "buildVersion": "904800415",
           "minOSVersion": "16.1"
         }
-      ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      ]
     },
     {
       "name": "Spotify (Patched)",
       "bundleIdentifier": "com.spotify.client.patched",
-      "marketplaceID": "",
       "developerName": "Skye/whoeevee",
       "subtitle": "유료인증서 사용자 IPA로 패치됨",
       "localizedDescription": "⚠️경고⚠️ Patched버전은 유료 인증서 유저를 위한 IPA라서 Feather, ESign, KSign에서만 사용하세요.\n일반 유저는 소스에서 Spotify 일반버전 사용하면 됩니다.\n\n이 트윅은 현재로서는 뮤직스매치(Musixmatch) 커스텀 가사만 지원합니다.\n가사 기능이 정상적으로 작동하게 하려면 오리지널 EeveeSpotify 9.1.0 버전을 사용하세요.\n\n패치된 IPA를 사용하면 유료 인증서로 사이드로딩할 때 발생하던 모든 위젯 문제(앱 그룹 권한 관련)가 해결될 것입니다. 이 해결책은 AltStore/Sideloadly 같은 무료 사이드로딩 방식에서는 작동하지 않으며, TrollStore 사용자는 패치된 IPA를 사용할 필요가 없습니다.\n\n추가 참고 사항: 이 IPA는 현재로서는 베타 테스트로 간주되어야 하므로, 이에 대한 일반적인 기술 지원은 제공되지 않습니다.",
       "iconURL": "https://i.imgur.com/j51OrKn.png",
       "tintColor": "#1cd464",
-      "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "9.1.34",
@@ -443,24 +348,16 @@
           "buildVersion": "904800415",
           "minOSVersion": "16.1"
         }
-      ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      ]
     },
     {
       "name": "YouTubeMusic",
       "bundleIdentifier": "com.google.ios.youtubemusic",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/POQxyLq.png",
       "tintColor": "#fc0434",
-      "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "9.20.2",
@@ -489,24 +386,16 @@
           "buildVersion": "9.13.3",
           "minOSVersion": "16.1"
         }
-      ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      ]
     },
     {
       "name": "Infuse Plus",
       "bundleIdentifier": "com.firecore.infuse",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/V76nbJd.png",
       "tintColor": "#fc6c04",
-      "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "8.3.9",
@@ -517,24 +406,16 @@
           "buildVersion": "8.3.5560",
           "minOSVersion": "16.1"
         }
-      ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      ]
     },
     {
       "name": "nPlayer",
       "bundleIdentifier": "com.newin.nplayer",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/IIY9hpH.png",
       "tintColor": "#fcec14",
-      "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "3.13.0",
@@ -545,24 +426,16 @@
           "buildVersion": "5",
           "minOSVersion": "16.1"
         }
-      ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      ]
     },
     {
       "name": "iTorrent",
       "bundleIdentifier": "com.xitrix.iTorrent2",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
       "iconURL": "https://user-images.githubusercontent.com/9553519/80646366-3d271680-8a75-11ea-8b60-9c5edd4ffd60.png",
       "tintColor": "#7100b3",
-      "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "2.1.1",
@@ -573,24 +446,16 @@
           "buildVersion": "1",
           "minOSVersion": "16.1"
         }
-      ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      ]
     },
     {
       "name": "EnsWilde",
       "bundleIdentifier": "com.yangjiii.EnsWilde",
-      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "EnsWilde",
       "localizedDescription": "EnsWilde는 카메라 무음&통화녹음안내음 제거 기능 및 여러가지 기능이 있는데\n기술적으로 현재 iOS 26.1 까지만 지원하고 그 이후 버전에서는 작동안합니다.\niOS 26.1 이상 버전인 사람들은 무슨짓을해도 사용 못하니 해당되는 사람들만 사용하세요.",
       "iconURL": "https://i.imgur.com/CliGoqS.png",
       "tintColor": "#c0683c",
-      "category": "other",
-      "screenshots": [],
       "versions": [
         {
           "version": "3.1.3",
@@ -601,12 +466,7 @@
           "buildVersion": "3",
           "minOSVersion": "16.1"
         }
-      ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
+      ]
     }
   ],
   "news": [
@@ -616,7 +476,6 @@
       "caption": "최신 유튜브버전 21.24.3에서 숏츠 스폰서광고가 새어나오고 있고 21.24.3 버전부터 유튜브 앱 자체의 광고삽입 방식이 조금 달라진거로 보임. 21.22.4버전으로 다시 받아서 사용하고 있길 강력히 권장함.",
       "date": "2026-06-15T10:12",
       "tintColor": "#fe0134",
-      "imageURL": "",
       "notify": true,
       "url": "https://example.com/new_feature_details",
       "appID": "com.google.ios.youtube"
@@ -627,7 +486,6 @@
       "caption": "EeveeSpotify TG: https://t.me/compiledipas",
       "date": "2026-06-14T22:30",
       "tintColor": "#1cd464",
-      "imageURL": "",
       "notify": true,
       "url": "https://example.com/new_feature_details",
       "appID": "com.spotify.client"

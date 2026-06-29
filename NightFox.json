@@ -477,7 +477,6 @@
       "date": "2026-06-15T10:12",
       "tintColor": "#fe0134",
       "notify": true,
-      "url": "https://example.com/new_feature_details",
       "appID": "com.google.ios.youtube"
     },
     {
@@ -487,7 +486,6 @@
       "date": "2026-06-14T22:30",
       "tintColor": "#1cd464",
       "notify": true,
-      "url": "https://example.com/new_feature_details",
       "appID": "com.spotify.client"
     }
   ]

@@ -11,7 +11,7 @@ JSON_FILE = os.path.join(SCRIPT_DIR, "NightFox.json")
 SPOTIFY_SOURCE_URL = "https://raw.githubusercontent.com/titouan336/Spotify-AltStoreRepo-mirror/refs/heads/main/source.json"
 SPOTIFY_BUNDLE_IDS = {"com.spotify.client", "com.spotify.client.patched"}
 
-YTPLUS_RELEASES_API = "https://api.github.com/repos/kes158/YT_5.2.1/releases"
+YTPLUS_RELEASES_API = "https://api.github.com/repos/kes158/YT_/releases"
 YOUTUBE_BUNDLE_ID = "com.google.ios.youtube"
 
 YTMUSIC_RELEASES_API = "https://api.github.com/repos/kes158/YTMusicUltimate/releases"

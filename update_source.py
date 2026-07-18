@@ -243,6 +243,13 @@ for app in original_apps:
             if v_str not in my_versions:
                 my_versions[v_str] = clean_version(rel)
                 print(f"  ➕ [YouTube] 새 릴리즈 추가: {v_str}")
+            else:
+                # 같은 YT 버전이라도 downloadURL이 다르면 덮어쓰기 (YTPlus 버전 업 대응)
+                existing_url = my_versions[v_str].get("downloadURL", "")
+                new_url = rel.get("downloadURL", "")
+                if new_url and existing_url != new_url:
+                    my_versions[v_str] = clean_version(rel)
+                    print(f"  🔄 [YouTube] URL 변경으로 덮어쓰기: {v_str} ({existing_url} → {new_url})")
 
     elif bid == YTMUSIC_BUNDLE_ID and ytmusic_releases_from_github:
         for rel in ytmusic_releases_from_github:

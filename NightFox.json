@@ -444,6 +444,15 @@
   ],
   "news": [
     {
+      "title": "YTPlus_5.2.2 업데이트",
+      "identifier": "news_9g3qjyr7tc",
+      "caption": "YTPlus_5.2.2_21.21.3.ipa",
+      "date": "2026-07-18T18:22",
+      "tintColor": "#fe0134",
+      "notify": true,
+      "appID": "com.google.ios.youtube"
+    },
+    {
       "title": "⚠️v21.24.3에서 숏츠 스폰서광고 나오는중. 이전버전 21.21.3 사용하길 권장함⚠️",
       "identifier": "news_02eb8j3nhc",
       "caption": "최신 유튜브버전 21.24.3에서 숏츠 스폰서광고가 새어나오고 있고 21.24.3 버전부터 유튜브 앱 자체의 광고삽입 방식이 조금 달라진거로 보임. 21.21.3버전으로 다시 받아서 사용하고 있길 강력히 권장함.",

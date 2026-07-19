@@ -3,8 +3,6 @@ name: Update SideStore Source
 on:
   release:
     types: [published, created, edited]
-  schedule:
-    - cron: '0 */6 * * *'
   workflow_dispatch:
     inputs:
       use_spotify_mirror:

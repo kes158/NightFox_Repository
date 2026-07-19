@@ -18,19 +18,10 @@
       "tintColor": "#fc0434",
       "versions": [
         {
-          "version": "21.22.4",
-          "buildVersion": "21.22.4",
-          "date": "2026-05-30T03:31:03Z",
-          "downloadURL": "https://github.com/kes158/YT_/releases/download/YTPlus_5.2.1_21.22.4/YTPlus_5.2.1_21.22.4.ipa",
-          "size": 127992588,
-          "localizedDescription": "Updated to YouTube v21.22.4\r\n\r\nIncluded Tweaks:\r\n\r\nYTPlus\r\nYTABConfig\r\nYouQuality\r\nYouChooseQuality\r\nReturn YouTube Dislikes\r\nDontEatMyContent\r\nYouPiP\r\nYTUHD\r\nYouLoop\r\nYouSpeed\r\nOpenYouTubeSafariExtension",
-          "minOSVersion": "16.1"
-        },
-        {
           "version": "21.21.3",
           "buildVersion": "21.21.3",
-          "date": "2026-05-23T00:52:37Z",
-          "downloadURL": "https://github.com/kes158/YT_/releases/download/YTPlus_5.2.1_21.21.3/YTPlus_5.2.1_21.21.3.ipa",
+          "date": "2026-07-19T00:52:37Z",
+          "downloadURL": "https://github.com/kes158/YT_/releases/download/YTPlus_5.2.2_21.21.3/YTPlus_5.2.2_21.21.3.ipa",
           "size": 131938118,
           "localizedDescription": "Updated to YouTube v21.21.3\n\nIncluded Tweaks:\n\nYTPlus\nYTABConfig\nYouQuality\nYouChooseQuality\nReturn YouTube Dislikes\nDontEatMyContent\nYouPiP\nYTUHD\nYouLoop\nYouSpeed\nOpenYouTubeSafariExtension",
           "minOSVersion": "16.1"

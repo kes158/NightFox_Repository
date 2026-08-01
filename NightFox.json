@@ -103,15 +103,6 @@
       "tintColor": "#ffe000",
       "versions": [
         {
-          "version": "440.0.0",
-          "date": "2026-08-01T18:18:00+09:00",
-          "localizedDescription": "Theta 설정 키려고할때 인스타그램 켜고 하단탭에서 홈버튼 꾹 누르면 열림",
-          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.4/Instagram_Theta_v6.0_v440.0.0.ipa",
-          "size": 330500000,
-          "buildVersion": "946530071",
-          "minOSVersion": "16.1"
-        },
-        {
           "version": "426.0.0",
           "date": "2026-05-02T18:18:00+09:00",
           "localizedDescription": "",
@@ -452,15 +443,6 @@
     }
   ],
   "news": [
-    {
-      "title": "Instagram_Theta_v6.0_v440.0.0 업데이트",
-      "identifier": "news_c1h2q5emii",
-      "caption": "Instagram_Theta_v6.0_v440.0.0",
-      "date": "2026-08-02T01:08",
-      "tintColor": "#ffc900",
-      "notify": true,
-      "appID": "com.burbn.instagram"
-    },
     {
       "title": "YTPlus_5.2.2 업데이트",
       "identifier": "news_9g3qjyr7tk",

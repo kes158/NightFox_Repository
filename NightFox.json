@@ -444,6 +444,15 @@
   ],
   "news": [
     {
+      "title": "Instagram_Theta_v6.0_v440.0.0 업데이트",
+      "identifier": "news_c1h2q5emii",
+      "caption": "Instagram_Theta_v6.0_v440.0.0",
+      "date": "2026-08-02T01:08",
+      "tintColor": "#ffc900",
+      "notify": true,
+      "appID": "com.burbn.instagram"
+    },
+    {
       "title": "YTPlus_5.2.2 업데이트",
       "identifier": "news_9g3qjyr7tk",
       "caption": "YTPlus_5.2.2_21.21.3.ipa",

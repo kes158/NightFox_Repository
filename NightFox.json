@@ -103,6 +103,15 @@
       "tintColor": "#ffe000",
       "versions": [
         {
+          "version": "440.0.0",
+          "date": "2026-08-01T18:18:00+09:00",
+          "localizedDescription": "",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.4/Instagram_Theta_v6.0_v440.0.0.ipa",
+          "size": 330500000,
+          "buildVersion": "946530071",
+          "minOSVersion": "16.1"
+        },
+        {
           "version": "426.0.0",
           "date": "2026-05-02T18:18:00+09:00",
           "localizedDescription": "",

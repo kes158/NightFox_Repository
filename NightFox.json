@@ -152,26 +152,6 @@
       ]
     },
     {
-      "name": "NeoFreeBird",
-      "bundleIdentifier": "com.atebits.Tweetie2",
-      "developerName": "NightFox",
-      "subtitle": "NightFox",
-      "localizedDescription": "NightFox",
-      "iconURL": "https://i.imgur.com/9MyLXvv.png",
-      "tintColor": "#1c9cf4",
-      "versions": [
-        {
-          "version": "11.35",
-          "date": "2026-05-14T20:51:00+09:00",
-          "localizedDescription": "",
-          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.5/NeoFreeBird-2.2-Twitter-11.35-noFixTwitterLogin.ipa",
-          "size": 158500000,
-          "buildVersion": "12",
-          "minOSVersion": "16.1"
-        }
-      ]
-    },
-    {
       "name": "TikTok",
       "bundleIdentifier": "com.zhiliaoapp.musically",
       "developerName": "NightFox",

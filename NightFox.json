@@ -468,7 +468,6 @@
       "date": "2026-08-05T16:51",
       "tintColor": "#1cd464",
       "notify": true,
-      "url": "https://example.com/new_feature_details",
       "appID": null
     },
     {
@@ -478,7 +477,6 @@
       "date": "2026-07-19T03:37",
       "tintColor": "#fe0134",
       "notify": true,
-      "url": "https://example.com/new_feature_details",
       "appID": "com.google.ios.youtube"
     },
     {
@@ -488,7 +486,6 @@
       "date": "2026-06-15T10:12",
       "tintColor": "#fe0134",
       "notify": true,
-      "url": "https://example.com/new_feature_details",
       "appID": "com.google.ios.youtube"
     },
     {
@@ -498,7 +495,6 @@
       "date": "2026-06-14T22:30",
       "tintColor": "#1cd464",
       "notify": true,
-      "url": "https://example.com/new_feature_details",
       "appID": "com.spotify.client"
     }
   ]

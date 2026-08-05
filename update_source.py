@@ -55,8 +55,7 @@ def clean_news_item(item):
     if not isinstance(item, dict):
         return item
     new_item = dict(item)
-    if new_item.get("url") == "":
-        new_item.pop("url", None)
+    new_item.pop("url", None)
     if new_item.get("imageURL") == "":
         new_item.pop("imageURL", None)
     return new_item

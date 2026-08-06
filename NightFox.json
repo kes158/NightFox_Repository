@@ -207,6 +207,7 @@
           "buildVersion": "9.1.68",
           "date": "2026-08-04T22:49:00+09:00",
           "localizedDescription": "- 릴리스 노트\n새로운 기능: 없음(새로운 roothide 빌드가 중요한지 모르겠어요)(동기화된 가사는 아직 제공되지 않음)\nSpotify 9.1.66 및.68 지원\n\n",
+          "buildVersion": "916801889",
           "minOSVersion": "16.1"
         },
         {
@@ -272,6 +273,7 @@
           "buildVersion": "9.1.68",
           "date": "2026-08-04T22:50:00+09:00",
           "localizedDescription": "- 릴리스 노트\n새로운 기능: 없음(새로운 roothide 빌드가 중요한지 모르겠어요)(동기화된 가사는 아직 제공되지 않음)\nSpotify 9.1.66 및.68 지원",
+          "buildVersion": "916801889",
           "minOSVersion": "16.1"
         },
         {

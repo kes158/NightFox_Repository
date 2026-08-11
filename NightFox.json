@@ -23,7 +23,7 @@
           "date": "2026-08-11T07:42:00+09:00",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.6/YTKACE_0.8.3_21.32.4_bonus.ipa",
           "size": 126000000,
-          "localizedDescription": "Updated to YouTube v21.32.4\n\nIncluded Tweaks: YTKACE\n\nYTVideoErrorAlert\nDontEatMyContent\nGonerino\nYouGetCaption\nYouChooseQuality\nYouQuality\nYTABConfig\nYTVideoOverlay\nYouGroupSettings\nYouTubeDislikesReturn\nYouPiP\nOpenYouTubeInSafari",
+          "localizedDescription": "Updated to YouTube v21.32.4\n\nIncluded Tweaks:\nYTKACE\nYTVideoErrorAlert\nDontEatMyContent\nGonerino\nYouGetCaption\nYouChooseQuality\nYouQuality\nYTABConfig\nYTVideoOverlay\nYouGroupSettings\nYouTubeDislikesReturn\nYouPiP\nOpenYouTubeInSafari",
           "minOSVersion": "16.1"
         }
       ]

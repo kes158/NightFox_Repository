@@ -9,11 +9,11 @@
   "headerURL": "https://i.imgur.com/Se6jHAj.png",
   "apps": [
     {
-      "name": "YouTube",
+      "name": "YouTuBe_YTKACE",
       "bundleIdentifier": "com.google.ios.youtube",
       "developerName": "NightFox",
       "subtitle": "YTKACE",
-      "localizedDescription": "현재 트윅 버전 : 8.3.0)\n소스 유튜브 최신 버전 : 21.32.4\n\n유튜브는 앞으로 YTKACE로 대체되어 업데이트 될 예정임",
+      "localizedDescription": "현재 트윅 버전 : 8.3.0\n소스 유튜브 최신 버전 : 21.32.4\n\n유튜브는 앞으로 YTKACE로 대체되어 업데이트 될 예정임",
       "iconURL": "https://i.imgur.com/GRUAxGw.png",
       "tintColor": "#fc0434",
       "versions": [

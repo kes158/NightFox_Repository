@@ -12,63 +12,18 @@
       "name": "YouTube",
       "bundleIdentifier": "com.google.ios.youtube",
       "developerName": "NightFox",
-      "subtitle": "YTPlus",
-      "localizedDescription": "현재 트윅 버전 : 5.2.2(패트리온 우회 버전)\n소스 유튜브 최신 버전 : 21.21.3\n\n최신 유튜브버전 21.24.3에서 숏츠 스폰서광고가 새어나오고 있고 21.24.3 버전부터 유튜브 앱 자체의 광고삽입 방식이 조금 달라진거로 보임. 21.21.3버전으로 다시 받아서 사용하고 있길 강력히 권장함. ",
+      "subtitle": "YTKACE",
+      "localizedDescription": "현재 트윅 버전 : 8.3.0 소스 유튜브 최신 버전 : 21.32.4 유튜브는 앞으로 YTKACE로 대체되어 업데이트 될 예정임",
       "iconURL": "https://i.imgur.com/GRUAxGw.png",
       "tintColor": "#fc0434",
       "versions": [
         {
-          "version": "21.21.3",
-          "buildVersion": "21.21.3",
-          "date": "2026-05-23T00:52:37Z",
-          "downloadURL": "https://github.com/kes158/YT_/releases/download/YTPlus_5.2.1_21.21.3/YTPlus_5.2.1_21.21.3.ipa",
-          "size": 131938118,
-          "localizedDescription": "Updated to YouTube v21.21.3\n\nIncluded Tweaks:\n\nYTPlus\nYTABConfig\nYouQuality\nYouChooseQuality\nReturn YouTube Dislikes\nDontEatMyContent\nYouPiP\nYTUHD\nYouLoop\nYouSpeed\nOpenYouTubeSafariExtension",
-          "minOSVersion": "16.1"
-        },
-        {
-          "version": "21.20.4",
-          "date": "2026-05-18T01:34:54Z",
-          "localizedDescription": "Updated to YouTube v21.20.4\n\nIncluded Tweaks:\n\nYTPlus\nYTABConfig\nYouQuality\nYouChooseQuality\nReturn YouTube Dislikes\nDontEatMyContent\nYouPiP\nYTUHD\nYouLoop\nYouSpeed",
-          "downloadURL": "https://github.com/kes158/YT_/releases/download/YTPlus_5.2.1_21.20.4/YTPlus_5.2.1_21.20.4.ipa",
-          "size": 127260673,
-          "buildVersion": "21.20.4",
-          "minOSVersion": "16.1"
-        },
-        {
-          "version": "21.19.2",
-          "date": "2026-05-11T09:58:44Z",
-          "localizedDescription": "Updated to YouTube v21.19.2\n\nIncluded Tweaks:\n\nYTPlus\nYTABConfig\nYouQuality\nYouChooseQuality\nReturn YouTube Dislikes\nDontEatMyContent\nYouPiP\nYTUHD\nYouLoop\nYouSpeed",
-          "downloadURL": "https://github.com/kes158/YT_/releases/download/YTPlus_5.2.1_21.19.2/YTPlus_5.2.1_21.19.2.ipa",
-          "size": 130603009,
-          "buildVersion": "21.19.2",
-          "minOSVersion": "16.1"
-        },
-        {
-          "version": "21.18.4",
-          "date": "2026-05-06T13:33:00+09:00",
-          "localizedDescription": "",
-          "downloadURL": "https://github.com/kes158/YT_/releases/download/YTPlus_5.2.1_21.18.4/YTPlus_5.2.1_21.18.4.ipa",
-          "size": 125700000,
-          "buildVersion": "21.18.4",
-          "minOSVersion": "16.1"
-        },
-        {
-          "version": "21.17.3",
-          "date": "2026-05-02T16:09:00+09:00",
-          "localizedDescription": "",
-          "downloadURL": "https://github.com/kes158/YT_/releases/download/YTPlus_5.2.1_21.17.3/YTPlus_5.2.1_21.17.3.ipa",
-          "size": 132800000,
-          "buildVersion": "21.17.3",
-          "minOSVersion": "16.1"
-        },
-        {
-          "version": "21.16.2",
-          "date": "2026-05-06T12:23:43Z",
-          "localizedDescription": "",
-          "downloadURL": "https://github.com/kes158/YT_/releases/download/YTPlus_5.2.1_21.16.2/YTPlus_5.2.1_21.16.2.ipa",
-          "size": 131913163,
-          "buildVersion": "21.16.2",
+          "version": "21.32.4",
+          "buildVersion": "21.32.4",
+          "date": "2026-08-11T07:42:00+09:00",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.6/YTKACE_0.8.3_21.32.4_bonus.ipa",
+          "size": 126000000,
+          "localizedDescription": "Updated to YouTube v21.21.3 Included Tweaks: YTKACE YTVideoErrorAlert DontEatMyContent Gonerino YouGetCaption YouChooseQuality YouQuality YTABConfig YTVideoOverlay YouGroupSettings YouTubeDislikesReturn YouPiP OpenYouTubeInSafari",
           "minOSVersion": "16.1"
         }
       ]
@@ -442,6 +397,15 @@
   ],
   "news": [
     {
+      "title": "유튜브는 YTKACE로 변경되어 업데이트 될 예정",
+      "identifier": "news_2xqyppdsze",
+      "caption": "YTKACE_8.3.0_v21.32.4.ipa",
+      "date": "2026-08-12T01:39",
+      "tintColor": "#fe0134",
+      "notify": true,
+      "appID": "com.google.ios.youtube"
+    },
+    {
       "title": "EeveeSpotify 9.1.68 업데이트",
       "identifier": "news_g0fre90q6s",
       "caption": "EeveeSpotify 9.1.32가 재생 불가능해져서 9.1.68 버전을 소스에 업데이트함",
@@ -449,24 +413,6 @@
       "tintColor": "#1cd464",
       "notify": true,
       "appID": null
-    },
-    {
-      "title": "YTPlus_5.2.2 업데이트",
-      "identifier": "news_9g3qjyr7tk",
-      "caption": "YTPlus_5.2.2_21.21.3.ipa",
-      "date": "2026-07-19T03:37",
-      "tintColor": "#fe0134",
-      "notify": true,
-      "appID": "com.google.ios.youtube"
-    },
-    {
-      "title": "⚠️v21.24.3에서 숏츠 스폰서광고 나오는중. 이전버전 21.21.3 사용하길 권장함⚠️",
-      "identifier": "news_02eb8j3nhc",
-      "caption": "최신 유튜브버전 21.24.3에서 숏츠 스폰서광고가 새어나오고 있고 21.24.3 버전부터 유튜브 앱 자체의 광고삽입 방식이 조금 달라진거로 보임. 21.21.3버전으로 다시 받아서 사용하고 있길 강력히 권장함.",
-      "date": "2026-06-15T10:12",
-      "tintColor": "#fe0134",
-      "notify": true,
-      "appID": "com.google.ios.youtube"
     }
   ]
 }

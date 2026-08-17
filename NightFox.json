@@ -23,7 +23,7 @@
           "date": "2026-08-11T07:42:00+09:00",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.6/YTKACE_0.8.4_YouTube_21.32.4_bonus.ipa",
           "size": 126000000,
-          "localizedDescription": "Updated to YouTube v21.32.4\n\nIncluded Tweaks:\nYTKACE\nYTVideoErrorAlert\nDontEatMyContent\nGonerino\nYouGetCaption\nYouChooseQuality\nYouQuality\nYTABConfig\nYTVideoOverlay\nYouGroupSettings\nYouTubeDislikesReturn\nYouPiP\nOpenYouTubeInSafari",
+          "localizedDescription": "Updated to YouTube v21.32.4\n\n새로운 기능:\n\n• 기본 재생 속도 옵션이 추가되었습니다\n• 마지막으로 사용한 재생 속도 모드와 사용자 정의 재생 속도 모드가 추가되었습니다\n• 구성 가능한 밝기 및 볼륨 제스처가 추가되었습니다\n• 제스처 활성화 영역 및 HUD 옵션 추가\n• 커뮤니티 게시물, 믹스 및 플레이 가능한 항목을 제거하는 옵션이 추가되었습니다\n• 메시지 버튼을 숨기는 옵션이 추가되었습니다\n\n수정된 사항:\n• 추천 및 피드 내 광고에 대한 필터링 개선\n• 전체 화면에서 제스처 고정\n• 유튜브 기본 제스처와의 충돌을 수정\n• Short 다운로드 시 활성화된 Short를 찾지 못하는 문제 수정\n• 동영상 재생 중 반복적으로 발생하던 끊김 현상을 해결",
           "minOSVersion": "16.1"
         }
       ]

@@ -13,7 +13,7 @@
       "bundleIdentifier": "com.google.ios.youtube",
       "developerName": "NightFox",
       "subtitle": "YTKACE",
-      "localizedDescription": "현재 트윅 버전 : 8.3.0\n소스 유튜브 최신 버전 : 21.32.4\n\n유튜브는 앞으로 YTKACE로 대체되어 업데이트 될 예정임",
+      "localizedDescription": "현재 트윅 버전 : 8.4.0\n소스 유튜브 최신 버전 : 21.32.4\n\n유튜브는 앞으로 YTKACE로 대체되어 업데이트 될 예정임",
       "iconURL": "https://i.imgur.com/GRUAxGw.png",
       "tintColor": "#fc0434",
       "versions": [
@@ -21,7 +21,7 @@
           "version": "21.32.4",
           "buildVersion": "21.32.4",
           "date": "2026-08-11T07:42:00+09:00",
-          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.6/YTKACE_0.8.3_21.32.4_bonus.ipa",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.6/YTKACE_0.8.4_YouTube_21.32.4_bonus.ipa",
           "size": 126000000,
           "localizedDescription": "Updated to YouTube v21.32.4\n\nIncluded Tweaks:\nYTKACE\nYTVideoErrorAlert\nDontEatMyContent\nGonerino\nYouGetCaption\nYouChooseQuality\nYouQuality\nYTABConfig\nYTVideoOverlay\nYouGroupSettings\nYouTubeDislikesReturn\nYouPiP\nOpenYouTubeInSafari",
           "minOSVersion": "16.1"
@@ -399,8 +399,8 @@
     {
       "title": "유튜브는 YTKACE로 변경되어 업데이트 될 예정",
       "identifier": "news_2xqyppdsze",
-      "caption": "YTKACE_8.3.0_v21.32.4.ipa",
-      "date": "2026-08-12T01:39",
+      "caption": "YTKACE_8.4.0_v21.32.4.ipa",
+      "date": "2026-08-17T01:39",
       "tintColor": "#fe0134",
       "notify": true,
       "appID": "com.google.ios.youtube"

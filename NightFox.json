@@ -136,7 +136,7 @@
       "bundleIdentifier": "com.atebits.Tweetie2",
       "developerName": "NightFox",
       "subtitle": "X(Twitter)",
-      "localizedDescription": "",
+      "localizedDescription": "NightFox",
       "iconURL": "https://i.imgur.com/94QAL0I.png",
       "tintColor": "#000000",
       "versions": [
@@ -146,7 +146,7 @@
           "version": "12.3",
           "buildVersion": "10",
           "date": "2026-08-21T06:26:00+09:00",
-          "localizedDescription": "",
+          "localizedDescription": "NightFox",
           "minOSVersion": "16.1"
         }
       ]

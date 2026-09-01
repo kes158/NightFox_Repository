@@ -4,10 +4,6 @@ on:
   release:
     # created는 published와 함께 발생하므로 넣으면 릴리즈 1건에 두 번 돈다
     types: [published, edited]
-  # 기존 릴리즈에 에셋만 덧붙이면 release 이벤트가 발생하지 않는다.
-  # 위 트리거만으로는 새 IPA를 놓치므로 주기 실행이 필요하다.
-  schedule:
-    - cron: '0 */6 * * *'
   workflow_dispatch:
     inputs:
       use_spotify_mirror:

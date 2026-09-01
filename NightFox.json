@@ -45,6 +45,15 @@
           "minOSVersion": "16.1"
         },
         {
+          "version": "21.21.3",
+          "buildVersion": "21.21.3",
+          "date": "2026-07-18T17:55:55+09:00",
+          "downloadURL": "https://github.com/kes158/YT_/releases/download/YTPlus_5.2.2_21.21.3/YTPlus_5.2.2_21.21.3.ipa",
+          "size": 131725363,
+          "localizedDescription": "Updated to YouTube v21.21.3\n\nIncluded Tweaks:\n\nYTPlus\nYTABConfig\nYouQuality\nYouChooseQuality\nReturn YouTube Dislikes\nDontEatMyContent\nYouPiP\nYTUHD\nYouLoop\nYouSpeed\nOpenYouTubeSafariExtension",
+          "minOSVersion": "16.1"
+        },
+        {
           "version": "21.20.4",
           "date": "2026-05-18T10:35:27+09:00",
           "localizedDescription": "Updated to YouTube v21.20.4\n\nIncluded Tweaks:\n\nYTPlus\nYTABConfig\nYouQuality\nYouChooseQuality\nReturn YouTube Dislikes\nDontEatMyContent\nYouPiP\nYTUHD\nYouLoop\nYouSpeed",
@@ -87,26 +96,6 @@
           "downloadURL": "https://github.com/kes158/YT_/releases/download/YTPlus_5.2.1_21.16.2/YTPlus_5.2.1_21.16.2.ipa",
           "size": 131913163,
           "buildVersion": "21.16.2",
-          "minOSVersion": "16.1"
-        }
-      ]
-    },
-    {
-      "name": "YouTuBe_YTPlus",
-      "bundleIdentifier": "com.google.ios.youtube",
-      "developerName": "NightFox",
-      "subtitle": "YTPlus",
-      "localizedDescription": "현재 트윅 버전 : 5.2.2\n소스 유튜브 버전 : 21.21.3",
-      "iconURL": "https://i.imgur.com/GRUAxGw.png",
-      "tintColor": "#fc0434",
-      "versions": [
-        {
-          "downloadURL": "https://github.com/kes158/YT_/releases/download/YTPlus_5.2.2_21.21.3/YTPlus_5.2.2_21.21.3.ipa",
-          "size": 131725363,
-          "version": "21.21.3",
-          "buildVersion": "21.21.3",
-          "date": "2026-07-18T17:55:55+09:00",
-          "localizedDescription": "Updated to YouTube v21.21.3\n\nIncluded Tweaks:\n\nYTPlus\nYTABConfig\nYouQuality\nYouChooseQuality\nReturn YouTube Dislikes\nDontEatMyContent\nYouPiP\nYTUHD\nYouLoop\nYouSpeed\nOpenYouTubeSafariExtension",
           "minOSVersion": "16.1"
         }
       ]

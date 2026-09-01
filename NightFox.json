@@ -290,21 +290,21 @@
       "screenshots": [],
       "versions": [
         {
-          "version": "2026.13.1",
-          "date": "2026-05-14T20:50:00+09:00",
-          "localizedDescription": "",
-          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.5/Reddit_2026_13_1.ipa",
-          "size": 156400000,
-          "buildVersion": "626918",
-          "minOSVersion": "16.1"
-        },
-        {
           "version": "2026.17.0",
           "date": "2026-05-02T20:29:00+09:00",
           "localizedDescription": "",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.2/Reddit_v2026.17.0.ipa",
           "size": 156200000,
           "buildVersion": "628480",
+          "minOSVersion": "16.1"
+        },
+        {
+          "version": "2026.13.1",
+          "date": "2026-05-14T20:50:00+09:00",
+          "localizedDescription": "",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.5/Reddit_2026_13_1.ipa",
+          "size": 156400000,
+          "buildVersion": "626918",
           "minOSVersion": "16.1"
         }
       ],
@@ -652,23 +652,20 @@
       "title": "YTKACE_0.9.2_21.35.3 업데이트",
       "identifier": "news_2xqyppdsze",
       "caption": "YTKACE_0.9.2_YouTube_21.35.3_bonus.ipa",
-      "date": "2026-09-01T09:45",
+      "date": "2026-09-01T09:45:00+09:00",
       "tintColor": "#fe0134",
-      "imageURL": "",
       "notify": true,
-      "url": "https://example.com/new_feature_details",
       "appID": "com.google.ios.youtube.ytkace"
     },
     {
       "title": "EeveeSpotify 9.1.68 업데이트",
       "identifier": "news_g0fre90q6s",
       "caption": "EeveeSpotify 9.1.32가 재생 불가능해져서 9.1.68 버전을 소스에 업데이트함",
-      "date": "2026-08-05T16:51",
+      "date": "2026-08-05T16:51:00+09:00",
       "tintColor": "#1cd464",
-      "imageURL": "",
       "notify": true,
-      "url": "https://example.com/new_feature_details",
       "appID": null
     }
-  ]
+  ],
+  "identifier": "com.nightfox.repository"
 }

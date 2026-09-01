@@ -2,13 +2,20 @@ name: Update SideStore Source
 
 on:
   release:
-    types: [published, created, edited]
+    # created는 published와 함께 발생하므로 넣으면 릴리즈 1건에 두 번 돈다
+    types: [published, edited]
   workflow_dispatch:
     inputs:
       use_spotify_mirror:
         description: 'Spotify 미러 소스 동기화'
         type: boolean
         default: false
+
+# 동시에 두 개가 돌면 pull --ff-only 이후 push가 경합해 한쪽이 실패한다.
+# 취소하지 않고 순서대로 실행되도록 직렬화한다.
+concurrency:
+  group: update-source
+  cancel-in-progress: false
 
 jobs:
   update:
@@ -46,8 +53,8 @@ jobs:
       - name: Run Script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # workflow_dispatch에서 체크박스를 직접 체크했을 때만 true
-          USE_SPOTIFY_MIRROR: ${{ github.event_name == 'workflow_dispatch' && inputs.use_spotify_mirror == true }}
+          # 자동 트리거는 항상 true, workflow_dispatch는 체크박스 값을 따른다
+          USE_SPOTIFY_MIRROR: ${{ github.event_name != 'workflow_dispatch' || inputs.use_spotify_mirror }}
         run: python update_source.py
 
       - name: Commit and Push Changes

@@ -4,7 +4,7 @@
   "description": "❤️",
   "iconURL": "https://i.imgur.com/Se6jHAj.png",
   "website": "https://github.com/kes158/NightFox_Repository",
-  "patreonURL": "",
+  "patreonURL": "https://patreon.com/altstudio",
   "tintColor": "#00b39e",
   "featuredApps": [
     "com.google.ios.youtube",
@@ -18,6 +18,7 @@
     {
       "name": "YouTuBe_YTKACE",
       "bundleIdentifier": "com.google.ios.youtube",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "YTKACE",
       "localizedDescription": "현재 트윅 버전 : 0.9.2\n소스 유튜브 최신 버전 : 21.35.3\n\n유튜브는 앞으로 YTKACE로 대체되어 업데이트 될 예정임",
@@ -127,6 +128,7 @@
     {
       "name": "RyukGram",
       "bundleIdentifier": "com.burbn.instagram",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "RyukGram",
       "localizedDescription": "Instagram_v446.0.0\nRyukGram_v1.4.0\n\n⚠️설치하다 오류가 발생할때는 플로그인 미포함 버전으로 설치 권장함",
@@ -139,10 +141,10 @@
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.7/RyukGram_sideload_v1.4.0_IG446.0.0.ipa",
           "size": 332000000,
           "version": "446.0.0",
-          "buildVersion": "446.0.0",
+          "buildVersion": null,
           "date": "2026-09-10T02:31:00+09:00",
           "localizedDescription": "- Instagram_v446.0.0\n- RyukGram_v1.4.0\n",
-          "minOSVersion": "16.1"
+          "minOSVersion": null
         },
         {
           "version": "443.0.0",
@@ -198,6 +200,7 @@
     {
       "name": "RyukGram(플러그인 미포함)",
       "bundleIdentifier": "com.burbn.instagram.nplugin",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "RyukGram",
       "localizedDescription": "Instagram_v446.0.0\nRyukGram_v1.4.0\n\nRyukGram (플러그인 미포함)은 외부 플러그인 로더가 비활성화된 동일한 향상된 인스타그램 빌드로, RyukGram의 핵심 기능만 포함되어 더 가볍고 안정적인 설치 환경을 제공합니다. 개인정보 보호, 로그 기록, 기기 ID 마스킹, 미디어 다운로드, 사용자 지정 채팅 테마, 설정 가능한 탭 바 등의 기능이 내장되어 있습니다. 모든 기능은 기기 내에서 실행됩니다.",
@@ -210,10 +213,10 @@
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.7/RyukGram_noplugins_v1.4.0_IG446.0.0.ipa",
           "size": 258700000,
           "version": "446.0.0",
-          "buildVersion": "446.0.0",
+          "buildVersion": null,
           "date": "2026-09-10T11:51:00+09:00",
           "localizedDescription": "- Instagram_v446.0.0\n- RyukGram_v1.4.0",
-          "minOSVersion": "16.1"
+          "minOSVersion": null
         }
       ],
       "appPermissions": {
@@ -242,6 +245,7 @@
     {
       "name": "Spotify",
       "bundleIdentifier": "com.spotify.client",
+      "marketplaceID": "",
       "developerName": "Skye/whoeevee",
       "subtitle": "일반 사이드스토어 사용자 IPA",
       "localizedDescription": "EeveeSpotify TG: https://t.me/compiledipas\n\n이 트윅은 현재로서는 뮤직스매치(Msixmath) 커스텀 가사만 지원합니다.\n가사 기능이 정상적으로 작동하게 하려면 오리지날 EeveeSpotify 9.1.0 버전을 사용하세요.\n이 트윅은 스포티파이(Spotify)가 사용자를 프리미엄 구독 상태인 것처럼 인식하게 만들어, 스포티라이프(Spotilife)와 마찬가지로 무료 음악 감상이 가능하게 해 주며, 커스텀 가사와 같은 몇 가지 추가 기능을 제공합니다.",
@@ -331,6 +335,7 @@
     {
       "name": "Spotify (Patched)",
       "bundleIdentifier": "com.spotify.client.patched",
+      "marketplaceID": "",
       "developerName": "Skye/whoeevee",
       "subtitle": "탈옥or유료인증서 사용자 IPA로 패치됨",
       "localizedDescription": "⚠️경고⚠️ Patched버전은 유료 인증서 유저를 위한 IPA라서 Feather, ESign, KSign에서만 사용하세요.\n일반 유저는 소스에서 Spotify 일반버전 사용하면 됩니다.\n\n이 트윅은 현재로서는 뮤직스매치(Musixmatch) 커스텀 가사만 지원합니다.\n가사 기능이 정상적으로 작동하게 하려면 오리지널 EeveeSpotify 9.1.0 버전을 사용하세요.\n\n패치된 IPA를 사용하면 유료 인증서로 사이드로딩할 때 발생하던 모든 위젯 문제(앱 그룹 권한 관련)가 해결될 것입니다. 이 해결책은 AltStore/Sideloadly 같은 무료 사이드로딩 방식에서는 작동하지 않으며, TrollStore 사용자는 패치된 IPA를 사용할 필요가 없습니다.\n\n추가 참고 사항: 이 IPA는 현재로서는 베타 테스트로 간주되어야 하므로, 이에 대한 일반적인 기술 지원은 제공되지 않습니다.",
@@ -420,6 +425,7 @@
     {
       "name": "YouTubeMusic",
       "bundleIdentifier": "com.google.ios.youtubemusic",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "YTMUltimate+_v2.4.1\nYouTube Music_v9.36.1\n",
@@ -432,7 +438,7 @@
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.7/YTMUltimate_v9.36.1.ipa",
           "size": 109100000,
           "version": "9.36.1",
-          "buildVersion": "9.36.1",
+          "buildVersion": null,
           "date": "2026-09-10T20:59:00+09:00",
           "localizedDescription": "▪️ YouTube Music 9.36.1 버전으로 업데이트\n\n*추가된 트윅*\n▪️ ReturnYouTubeMusicDislike\n▪️ YTMABConfig\n▪️ YouMusicPIP (No PIP 빌드에는 미포함)\n▪️ VolumeBoostYT\n\n**음악 다운로드 방법:**\n1. 아무 곡이나 재생\n2. 도구 모음에서 오른쪽에서 왼쪽으로 스크롤해 ⬇️ 다운로드 버튼이 보일 때까지 넘긴 후 탭\n3. \"오디오 다운로드\" 탭\n4. 아래로 스와이프해서 곡 화면 종료\n5. 하단 탭바의 ⬇️ 다운로드 아이콘 탭\n6. 저장하려는 곡을 오른쪽에서 왼쪽으로 스와이프\n7. 파란색 공유 아이콘 ⬆️을 눌러 곡 저장",
           "minOSVersion": "16.0"
@@ -483,6 +489,7 @@
     {
       "name": "X(Twitter)",
       "bundleIdentifier": "com.atebits.Tweetie2",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "X(Twitter)",
       "localizedDescription": "NightFox",
@@ -523,6 +530,7 @@
     {
       "name": "Threads",
       "bundleIdentifier": "com.burbn.barcelona",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "Threads",
       "localizedDescription": "Threads는 SideStore에 설치할 시 App IDs 1개 소모합니다",
@@ -562,6 +570,7 @@
     {
       "name": "Reddit",
       "bundleIdentifier": "com.reddit.Reddit",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
@@ -571,21 +580,21 @@
       "screenshots": [],
       "versions": [
         {
-          "version": "2026.17.0",
-          "date": "2026-05-02T20:29:00+09:00",
-          "localizedDescription": "",
-          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.2/Reddit_v2026.17.0.ipa",
-          "size": 156200000,
-          "buildVersion": "628480",
-          "minOSVersion": "16.1"
-        },
-        {
           "version": "2026.13.1",
           "date": "2026-05-14T20:50:00+09:00",
           "localizedDescription": "",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.5/Reddit_2026_13_1.ipa",
           "size": 156400000,
           "buildVersion": "626918",
+          "minOSVersion": "16.1"
+        },
+        {
+          "version": "2026.17.0",
+          "date": "2026-05-02T20:29:00+09:00",
+          "localizedDescription": "",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.2/Reddit_v2026.17.0.ipa",
+          "size": 156200000,
+          "buildVersion": "628480",
           "minOSVersion": "16.1"
         }
       ],
@@ -606,6 +615,7 @@
     {
       "name": "TikTok",
       "bundleIdentifier": "com.zhiliaoapp.musically",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "TikTok",
       "localizedDescription": "TikTok은 SideStore에 설치할 시 App IDs 10개 소모합니다",
@@ -648,6 +658,7 @@
     {
       "name": "StikDebug",
       "bundleIdentifier": "com.stik.stikdebug",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
@@ -679,6 +690,7 @@
     {
       "name": "Infuse Plus",
       "bundleIdentifier": "com.firecore.infuse",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
@@ -715,6 +727,7 @@
     {
       "name": "nPlayer",
       "bundleIdentifier": "com.newin.nplayer",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
@@ -751,6 +764,7 @@
     {
       "name": "iTorrent",
       "bundleIdentifier": "com.xitrix.iTorrent2",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
@@ -780,6 +794,7 @@
     {
       "name": "EnsWilde",
       "bundleIdentifier": "com.yangjiii.EnsWilde",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "EnsWilde",
       "localizedDescription": "EnsWilde는 카메라 무음&통화녹음안내음 제거 기능 및 여러가지 기능이 있는데\n기술적으로 현재 iOS 26.1 까지만 지원하고 그 이후 버전에서는 작동안합니다.\niOS 26.1 이상 버전인 사람들은 무슨짓을해도 사용 못하니 해당되는 사람들만 사용하세요.",
@@ -812,20 +827,23 @@
       "title": "YTKACE_0.9.2_21.35.3 업데이트",
       "identifier": "news_2xqyppdsze",
       "caption": "YTKACE_0.9.2_YouTube_21.35.3_bonus.ipa",
-      "date": "2026-09-01T09:45:00+09:00",
+      "date": "2026-09-01T09:45",
       "tintColor": "#fe0134",
+      "imageURL": "",
       "notify": true,
+      "url": "https://example.com/new_feature_details",
       "appID": "com.google.ios.youtube"
     },
     {
       "title": "EeveeSpotify 9.1.68 업데이트",
       "identifier": "news_g0fre90q6s",
       "caption": "EeveeSpotify 9.1.32가 재생 불가능해져서 9.1.68 버전을 소스에 업데이트함",
-      "date": "2026-08-05T16:51:00+09:00",
+      "date": "2026-08-05T16:51",
       "tintColor": "#1cd464",
+      "imageURL": "",
       "notify": true,
+      "url": "https://example.com/new_feature_details",
       "appID": null
     }
-  ],
-  "identifier": "com.nightfox.repository"
+  ]
 }

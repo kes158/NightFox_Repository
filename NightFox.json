@@ -139,7 +139,7 @@
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.7/RyukGram_sideload_v1.4.0_IG446.0.0.ipa",
           "size": 332000000,
           "version": "446.0.0",
-          "buildVersion": "446.0.0",
+          "buildVersion": "1060018354",
           "date": "2026-09-11T02:31:00+09:00",
           "localizedDescription": "- Instagram_v446.0.0\n- RyukGram_v1.4.0\n",
           "minOSVersion": "16.1"
@@ -210,7 +210,7 @@
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.7/RyukGram_noplugins_v1.4.0_IG446.0.0.ipa",
           "size": 258700000,
           "version": "446.0.0",
-          "buildVersion": "446.0.0",
+          "buildVersion": "1060018354",
           "date": "2026-09-11T11:51:00+09:00",
           "localizedDescription": "- Instagram_v446.0.0\n- RyukGram_v1.4.0",
           "minOSVersion": "16.1"

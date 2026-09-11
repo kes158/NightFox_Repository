@@ -4,6 +4,7 @@
   "description": "❤️",
   "iconURL": "https://i.imgur.com/Se6jHAj.png",
   "website": "https://github.com/kes158/NightFox_Repository",
+  "patreonURL": "",
   "tintColor": "#00b39e",
   "featuredApps": [
     "com.google.ios.youtube",
@@ -17,6 +18,7 @@
     {
       "name": "YouTuBe_YTKACE",
       "bundleIdentifier": "com.google.ios.youtube",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "YTKACE",
       "localizedDescription": "현재 트윅 버전 : 0.9.2\n소스 유튜브 최신 버전 : 21.35.3\n\n유튜브는 앞으로 YTKACE로 대체되어 업데이트 될 예정임",
@@ -109,40 +111,24 @@
       ],
       "appPermissions": {
         "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
-    },
-    {
-      "name": "StikDebug",
-      "bundleIdentifier": "com.stik.stikdebug",
-      "developerName": "NightFox",
-      "subtitle": "NightFox",
-      "localizedDescription": "NightFox",
-      "iconURL": "https://i.imgur.com/JtyYEdh.png",
-      "tintColor": "#24ccfc",
-      "category": "other",
-      "screenshots": [],
-      "versions": [
-        {
-          "version": "3.0.1",
-          "date": "2026-05-14T20:49:00+09:00",
-          "localizedDescription": "",
-          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.5/StikDebug-3.0.1.ipa",
-          "size": 10500000,
-          "buildVersion": "1",
-          "minOSVersion": "16.1"
+        "privacy": {
+          "NSAppleMusicUsageDescription": "This lets you add your own audio files to your videos.",
+          "NSBluetoothPeripheralUsageDescription": "YouTube needs bluetooth access to scan for nearby Cast devices.",
+          "NSCameraUsageDescription": "This lets you create videos using the app.",
+          "NSContactsUsageDescription": "Your contacts will be sent to YouTube servers to help you find friends to share videos with.",
+          "NSLocalNetworkUsageDescription": "Access to your network allows YouTube to discover and connect to devices such as your TV.",
+          "NSLocationWhenInUseUsageDescription": "This enables local content discovery, improved recommendations, and enhanced search results.",
+          "NSMicrophoneUsageDescription": "This lets you include audio with your videos and search using your voice.",
+          "NSPhotoLibraryUsageDescription": "This lets you upload media you've already created.",
+          "NSUserTrackingUsageDescription": "To personalize ads and provide ad measurement, YouTube will link activity from this app with activity from non-Google apps and websites."
         }
-      ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
       },
       "patreon": {}
     },
     {
       "name": "RyukGram",
       "bundleIdentifier": "com.burbn.instagram",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "RyukGram",
       "localizedDescription": "Instagram_v446.0.0\nRyukGram_v1.4.0\n\n⚠️설치하다 오류가 발생할때는 플로그인 미포함 버전으로 설치 권장함",
@@ -155,10 +141,10 @@
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.7/RyukGram_sideload_v1.4.0_IG446.0.0.ipa",
           "size": 332000000,
           "version": "446.0.0",
-          "buildVersion": "446.0.0",
+          "buildVersion": null,
           "date": "2026-09-10T02:31:00+09:00",
           "localizedDescription": "- Instagram_v446.0.0\n- RyukGram_v1.4.0\n",
-          "minOSVersion": "16.1"
+          "minOSVersion": null
         },
         {
           "version": "443.0.0",
@@ -214,6 +200,7 @@
     {
       "name": "RyukGram(플러그인 미포함)",
       "bundleIdentifier": "com.burbn.instagram.nplugin",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "RyukGram",
       "localizedDescription": "Instagram_v446.0.0\nRyukGram_v1.4.0\n\nRyukGram (플러그인 미포함)은 외부 플러그인 로더가 비활성화된 동일한 향상된 인스타그램 빌드로, RyukGram의 핵심 기능만 포함되어 더 가볍고 안정적인 설치 환경을 제공합니다. 개인정보 보호, 로그 기록, 기기 ID 마스킹, 미디어 다운로드, 사용자 지정 채팅 테마, 설정 가능한 탭 바 등의 기능이 내장되어 있습니다. 모든 기능은 기기 내에서 실행됩니다.",
@@ -226,10 +213,10 @@
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.7/RyukGram_noplugins_v1.4.0_IG446.0.0.ipa",
           "size": 258700000,
           "version": "446.0.0",
-          "buildVersion": "446.0.0",
+          "buildVersion": null,
           "date": "2026-09-10T11:51:00+09:00",
           "localizedDescription": "- Instagram_v446.0.0\n- RyukGram_v1.4.0",
-          "minOSVersion": "16.1"
+          "minOSVersion": null
         }
       ],
       "appPermissions": {
@@ -256,125 +243,9 @@
       "patreon": {}
     },
     {
-      "name": "X(Twitter)",
-      "bundleIdentifier": "com.atebits.Tweetie2",
-      "developerName": "NightFox",
-      "subtitle": "X(Twitter)",
-      "localizedDescription": "NightFox",
-      "iconURL": "https://i.imgur.com/94QAL0I.png",
-      "tintColor": "#000000",
-      "category": "other",
-      "screenshots": [],
-      "versions": [
-        {
-          "version": "12.3",
-          "date": "2026-08-21T06:26:00+09:00",
-          "localizedDescription": "NightFox",
-          "downloadURL": "https://github.com/theacrat/NeoFreeBird/releases/download/v6.0.3/NeoFreeBird-sideloaded-X_6.0.3_12.3.ipa",
-          "size": 235700000,
-          "buildVersion": "10",
-          "minOSVersion": "16.1"
-        }
-      ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
-    },
-    {
-      "name": "Threads",
-      "bundleIdentifier": "com.burbn.barcelona",
-      "developerName": "NightFox",
-      "subtitle": "Threads",
-      "localizedDescription": "Threads는 SideStore에 설치할 시 App IDs 1개 소모합니다",
-      "iconURL": "https://i.imgur.com/td1CC1g.png",
-      "tintColor": "#959595",
-      "category": "other",
-      "screenshots": [],
-      "versions": [
-        {
-          "version": "435.0.0",
-          "date": "2026-06-29T08:06:00+09:00",
-          "localizedDescription": "NightFox",
-          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.5/Threads_435.0.0_ThreadSaver.ipa",
-          "size": 99600000,
-          "buildVersion": "999362854",
-          "minOSVersion": "16.1"
-        }
-      ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
-    },
-    {
-      "name": "Reddit",
-      "bundleIdentifier": "com.reddit.Reddit",
-      "developerName": "NightFox",
-      "subtitle": "NightFox",
-      "localizedDescription": "NightFox",
-      "iconURL": "https://i.imgur.com/UKnszP5.png",
-      "tintColor": "#fc4404",
-      "category": "other",
-      "screenshots": [],
-      "versions": [
-        {
-          "version": "2026.17.0",
-          "date": "2026-05-02T20:29:00+09:00",
-          "localizedDescription": "",
-          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.2/Reddit_v2026.17.0.ipa",
-          "size": 156200000,
-          "buildVersion": "628480",
-          "minOSVersion": "16.1"
-        },
-        {
-          "version": "2026.13.1",
-          "date": "2026-05-14T20:50:00+09:00",
-          "localizedDescription": "",
-          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.5/Reddit_2026_13_1.ipa",
-          "size": 156400000,
-          "buildVersion": "626918",
-          "minOSVersion": "16.1"
-        }
-      ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
-    },
-    {
-      "name": "TikTok",
-      "bundleIdentifier": "com.zhiliaoapp.musically",
-      "developerName": "NightFox",
-      "subtitle": "TikTok",
-      "localizedDescription": "TikTok은 SideStore에 설치할 시 App IDs 10개 소모합니다",
-      "iconURL": "https://i.imgur.com/giiYvBI.png",
-      "tintColor": "#fd2d55",
-      "category": "other",
-      "screenshots": [],
-      "versions": [
-        {
-          "version": "45.7.0",
-          "date": "2026-06-29T08:01:00+09:00",
-          "localizedDescription": "NightFox",
-          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.5/Tiktok_45.7.0.ipa",
-          "size": 462500000,
-          "buildVersion": "457030",
-          "minOSVersion": "16.1"
-        }
-      ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "patreon": {}
-    },
-    {
       "name": "Spotify",
       "bundleIdentifier": "com.spotify.client",
+      "marketplaceID": "",
       "developerName": "Skye/whoeevee",
       "subtitle": "일반 사이드스토어 사용자 IPA",
       "localizedDescription": "EeveeSpotify TG: https://t.me/compiledipas\n\n이 트윅은 현재로서는 뮤직스매치(Msixmath) 커스텀 가사만 지원합니다.\n가사 기능이 정상적으로 작동하게 하려면 오리지날 EeveeSpotify 9.1.0 버전을 사용하세요.\n이 트윅은 스포티파이(Spotify)가 사용자를 프리미엄 구독 상태인 것처럼 인식하게 만들어, 스포티라이프(Spotilife)와 마찬가지로 무료 음악 감상이 가능하게 해 주며, 커스텀 가사와 같은 몇 가지 추가 기능을 제공합니다.",
@@ -440,13 +311,31 @@
       ],
       "appPermissions": {
         "entitlements": [],
-        "privacy": {}
+        "privacy": {
+          "NSAppleMusicUsageDescription": "This will let you play your imported music on Spotify.",
+          "NSBluetoothAlwaysUsageDescription": "This lets you unlock new ways of interacting with other devices compatible with Spotify via Bluetooth.",
+          "NSCalendarsUsageDescription": "This lets Spotify view and add events to your calendar.",
+          "NSCalendarsWriteOnlyAccessUsageDescription": "This lets Spotify add events to your calendar.",
+          "NSCameraUsageDescription": "This lets you use your camera to scan or upload images.",
+          "NSContactsUsageDescription": "This lets Spotify access calendars you may have shared with your contacts.",
+          "NSFaceIDUsageDescription": "This lets you set access restrictions using Face ID.",
+          "NSHealthShareUsageDescription": "Spotify will use HealthKit data to provide personalised audio recommendations for your workouts.",
+          "NSHealthUpdateUsageDescription": "Spotify will use HealthKit data to provide personalised audio recommendations for your workouts.",
+          "NSLocalNetworkUsageDescription": "This lets you listen on different devices. Spotify will also get access to local audio files.",
+          "NSLocationWhenInUseUsageDescription": "Your location is used to improve your recommendations and experience on Spotify.",
+          "NSMicrophoneUsageDescription": "This lets you control Spotify using your voice.",
+          "NSMotionUsageDescription": "We will use this to understand which audio motivates you most.",
+          "NSPhotoLibraryAddUsageDescription": "This lets you save images to your Photo Library.",
+          "NSPhotoLibraryUsageDescription": "This lets you select images from your Photo Library.",
+          "NSUserTrackingUsageDescription": "Your data will be used to deliver personalized ads or content to you."
+        }
       },
       "patreon": {}
     },
     {
       "name": "Spotify (Patched)",
       "bundleIdentifier": "com.spotify.client.patched",
+      "marketplaceID": "",
       "developerName": "Skye/whoeevee",
       "subtitle": "탈옥or유료인증서 사용자 IPA로 패치됨",
       "localizedDescription": "⚠️경고⚠️ Patched버전은 유료 인증서 유저를 위한 IPA라서 Feather, ESign, KSign에서만 사용하세요.\n일반 유저는 소스에서 Spotify 일반버전 사용하면 됩니다.\n\n이 트윅은 현재로서는 뮤직스매치(Musixmatch) 커스텀 가사만 지원합니다.\n가사 기능이 정상적으로 작동하게 하려면 오리지널 EeveeSpotify 9.1.0 버전을 사용하세요.\n\n패치된 IPA를 사용하면 유료 인증서로 사이드로딩할 때 발생하던 모든 위젯 문제(앱 그룹 권한 관련)가 해결될 것입니다. 이 해결책은 AltStore/Sideloadly 같은 무료 사이드로딩 방식에서는 작동하지 않으며, TrollStore 사용자는 패치된 IPA를 사용할 필요가 없습니다.\n\n추가 참고 사항: 이 IPA는 현재로서는 베타 테스트로 간주되어야 하므로, 이에 대한 일반적인 기술 지원은 제공되지 않습니다.",
@@ -512,13 +401,31 @@
       ],
       "appPermissions": {
         "entitlements": [],
-        "privacy": {}
+        "privacy": {
+          "NSAppleMusicUsageDescription": "This will let you play your imported music on Spotify.",
+          "NSBluetoothAlwaysUsageDescription": "This lets you unlock new ways of interacting with other devices compatible with Spotify via Bluetooth.",
+          "NSCalendarsUsageDescription": "This lets Spotify view and add events to your calendar.",
+          "NSCalendarsWriteOnlyAccessUsageDescription": "This lets Spotify add events to your calendar.",
+          "NSCameraUsageDescription": "This lets you use your camera to scan or upload images.",
+          "NSContactsUsageDescription": "This lets Spotify access calendars you may have shared with your contacts.",
+          "NSFaceIDUsageDescription": "This lets you set access restrictions using Face ID.",
+          "NSHealthShareUsageDescription": "Spotify will use HealthKit data to provide personalised audio recommendations for your workouts.",
+          "NSHealthUpdateUsageDescription": "Spotify will use HealthKit data to provide personalised audio recommendations for your workouts.",
+          "NSLocalNetworkUsageDescription": "This lets you listen on different devices. Spotify will also get access to local audio files.",
+          "NSLocationWhenInUseUsageDescription": "Your location is used to improve your recommendations and experience on Spotify.",
+          "NSMicrophoneUsageDescription": "This lets you control Spotify using your voice.",
+          "NSMotionUsageDescription": "We will use this to understand which audio motivates you most.",
+          "NSPhotoLibraryAddUsageDescription": "This lets you save images to your Photo Library.",
+          "NSPhotoLibraryUsageDescription": "This lets you select images from your Photo Library.",
+          "NSUserTrackingUsageDescription": "Your data will be used to deliver personalized ads or content to you."
+        }
       },
       "patreon": {}
     },
     {
       "name": "YouTubeMusic",
       "bundleIdentifier": "com.google.ios.youtubemusic",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "YTMUltimate+_v2.4.1\nYouTube Music_v9.36.1\n",
@@ -531,7 +438,7 @@
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.7/YTMUltimate_v9.36.1.ipa",
           "size": 109100000,
           "version": "9.36.1",
-          "buildVersion": "9.36.1",
+          "buildVersion": null,
           "date": "2026-09-10T20:59:00+09:00",
           "localizedDescription": "▪️ YouTube Music 9.36.1 버전으로 업데이트\n\n*추가된 트윅*\n▪️ ReturnYouTubeMusicDislike\n▪️ YTMABConfig\n▪️ YouMusicPIP (No PIP 빌드에는 미포함)\n▪️ VolumeBoostYT\n\n**음악 다운로드 방법:**\n1. 아무 곡이나 재생\n2. 도구 모음에서 오른쪽에서 왼쪽으로 스크롤해 ⬇️ 다운로드 버튼이 보일 때까지 넘긴 후 탭\n3. \"오디오 다운로드\" 탭\n4. 아래로 스와이프해서 곡 화면 종료\n5. 하단 탭바의 ⬇️ 다운로드 아이콘 탭\n6. 저장하려는 곡을 오른쪽에서 왼쪽으로 스와이프\n7. 파란색 공유 아이콘 ⬆️을 눌러 곡 저장",
           "minOSVersion": "16.0"
@@ -566,13 +473,224 @@
       ],
       "appPermissions": {
         "entitlements": [],
-        "privacy": {}
+        "privacy": {
+          "NSBluetoothAlwaysUsageDescription": "YouTube Music uses Bluetooth to locate and connect to Chromecast and other devices.",
+          "NSBluetoothPeripheralUsageDescription": "YouTube Music uses Bluetooth to locate and connect to Chromecast and other devices.",
+          "NSCameraUsageDescription": "To take a profile picture, allow YouTube Music to access your camera.",
+          "NSContactsUsageDescription": "This will allow you to invite your family into your membership plan.",
+          "NSLocalNetworkUsageDescription": "Access to your network allows YouTube Music to discover and connect to devices such as your TV.",
+          "NSMicrophoneUsageDescription": "This lets you include audio with your videos.",
+          "NSPhotoLibraryAddUsageDescription": "To save images, allow YouTube Music to access your photo library.",
+          "NSPhotoLibraryUsageDescription": "To choose a profile picture, allow YouTube Music to access your photos."
+        }
+      },
+      "patreon": {}
+    },
+    {
+      "name": "X(Twitter)",
+      "bundleIdentifier": "com.atebits.Tweetie2",
+      "marketplaceID": "",
+      "developerName": "NightFox",
+      "subtitle": "X(Twitter)",
+      "localizedDescription": "NightFox",
+      "iconURL": "https://i.imgur.com/94QAL0I.png",
+      "tintColor": "#000000",
+      "category": "other",
+      "screenshots": [],
+      "versions": [
+        {
+          "version": "12.3",
+          "date": "2026-08-21T06:26:00+09:00",
+          "localizedDescription": "NightFox",
+          "downloadURL": "https://github.com/theacrat/NeoFreeBird/releases/download/v6.0.3/NeoFreeBird-sideloaded-X_6.0.3_12.3.ipa",
+          "size": 235700000,
+          "buildVersion": "10",
+          "minOSVersion": "16.1"
+        }
+      ],
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {
+          "NSAdvertisingAttributionReportEndpoint": "https://singular-bi.net",
+          "NSCameraUsageDescription": "Capture and post photos and videos from X.",
+          "NSUserTrackingUsageDescription": "This helps X show you more relevant ads.",
+          "NSPhotoLibraryAddUsageDescription": "This lets you download photos and videos to your Photos.",
+          "NSSpeechRecognitionUsageDescription": "Going forward, whenever you choose to share captions on this device, Apple will provide the service. Doing so helps make sure people of all hearing abilities can access your content.",
+          "NSLocationUsageDescription": "Enjoy the X experience tailored to your location.",
+          "NSCalendarsUsageDescription": "Add events to your calendar from X.",
+          "NSMicrophoneUsageDescription": "Capture and post videos with sound from X.",
+          "NSLocationWhenInUseUsageDescription": "Enjoy the X experience tailored to your location.",
+          "NSFaceIDUsageDescription": "Use FaceID to authenticate on X.",
+          "NSContactsUsageDescription": "We will securely upload your contacts to our servers to help you connect with friends and suggest users to follow on X.",
+          "NSPhotoLibraryUsageDescription": "Allow access to share photos from your camera roll."
+        }
+      },
+      "patreon": {}
+    },
+    {
+      "name": "Threads",
+      "bundleIdentifier": "com.burbn.barcelona",
+      "marketplaceID": "",
+      "developerName": "NightFox",
+      "subtitle": "Threads",
+      "localizedDescription": "Threads는 SideStore에 설치할 시 App IDs 1개 소모합니다",
+      "iconURL": "https://i.imgur.com/td1CC1g.png",
+      "tintColor": "#959595",
+      "category": "other",
+      "screenshots": [],
+      "versions": [
+        {
+          "version": "435.0.0",
+          "date": "2026-06-29T08:06:00+09:00",
+          "localizedDescription": "NightFox",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.5/Threads_435.0.0_ThreadSaver.ipa",
+          "size": 99600000,
+          "buildVersion": "999362854",
+          "minOSVersion": "16.1"
+        }
+      ],
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {
+          "NSAdvertisingAttributionReportEndpoint": "https://facebook.com",
+          "NSCameraUsageDescription": "Threads uses your camera to do things like help you take photos when posting.",
+          "NSContactsUsageDescription": "This helps you and others find your friends and more.",
+          "NSLocationAlwaysAndWhenInUseUsageDescription": "Select \"Always Allow\" to make some features work. You can change this anytime in Settings.",
+          "NSLocationAlwaysUsageDescription": "Select \"Always Allow\" to make some features work. You can change this anytime in Settings.",
+          "NSLocationUsageDescription": "Select ok to make some features work. You can change this anytime in Settings.",
+          "NSLocationWhenInUseUsageDescription": "Your location will be used to show places nearby, allowing you to tag a place on your post.",
+          "NSMicrophoneUsageDescription": "Threads uses your microphone to do things like help you record audio when posting.",
+          "NSMotionUsageDescription": "This makes some features work. You can always change this later in Settings.",
+          "NSPhotoLibraryAddUsageDescription": "This lets you save photos and videos to your Camera Roll.",
+          "NSPhotoLibraryUsageDescription": "This lets you share photos from your library and save photos to your Camera Roll."
+        }
+      },
+      "patreon": {}
+    },
+    {
+      "name": "Reddit",
+      "bundleIdentifier": "com.reddit.Reddit",
+      "marketplaceID": "",
+      "developerName": "NightFox",
+      "subtitle": "NightFox",
+      "localizedDescription": "NightFox",
+      "iconURL": "https://i.imgur.com/UKnszP5.png",
+      "tintColor": "#fc4404",
+      "category": "other",
+      "screenshots": [],
+      "versions": [
+        {
+          "version": "2026.13.1",
+          "date": "2026-05-14T20:50:00+09:00",
+          "localizedDescription": "",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.5/Reddit_2026_13_1.ipa",
+          "size": 156400000,
+          "buildVersion": "626918",
+          "minOSVersion": "16.1"
+        },
+        {
+          "version": "2026.17.0",
+          "date": "2026-05-02T20:29:00+09:00",
+          "localizedDescription": "",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.2/Reddit_v2026.17.0.ipa",
+          "size": 156200000,
+          "buildVersion": "628480",
+          "minOSVersion": "16.1"
+        }
+      ],
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {
+          "NSCalendarsUsageDescription": "Reddit needs access to your calendar to operate the community calendar widget.",
+          "NSCameraUsageDescription": "Use your camera to record videos. See our Privacy Policy for more information.",
+          "NSFaceIDUsageDescription": "Reddit needs access to Face ID to unlock your Vault.",
+          "NSMicrophoneUsageDescription": "Reddit needs access to your microphone to post videos with audio.",
+          "NSPhotoLibraryAddUsageDescription": "Reddit needs access to your photo library to post, save, and upload photos or videos.",
+          "NSPhotoLibraryUsageDescription": "Reddit needs access to your photo library to post, save, and upload photos or videos.",
+          "NSUserTrackingUsageDescription": "This allows Reddit to provide you with a better ads experience."
+        }
+      },
+      "patreon": {}
+    },
+    {
+      "name": "TikTok",
+      "bundleIdentifier": "com.zhiliaoapp.musically",
+      "marketplaceID": "",
+      "developerName": "NightFox",
+      "subtitle": "TikTok",
+      "localizedDescription": "TikTok은 SideStore에 설치할 시 App IDs 10개 소모합니다",
+      "iconURL": "https://i.imgur.com/giiYvBI.png",
+      "tintColor": "#fd2d55",
+      "category": "other",
+      "screenshots": [],
+      "versions": [
+        {
+          "version": "45.7.0",
+          "date": "2026-06-29T08:01:00+09:00",
+          "localizedDescription": "NightFox",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.0.5/Tiktok_45.7.0.ipa",
+          "size": 462500000,
+          "buildVersion": "457030",
+          "minOSVersion": "16.1"
+        }
+      ],
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {
+          "NSLocationWhenInUseUsageDescription": "If location services are enabled, TikTok will collect, store and use your device's approximate location to improve your experience.",
+          "NSBluetoothAlwaysUsageDescription": "This will allow \"TikTok\" to find and connect to Bluetooth accessories. This app may also use Bluetooth to connect with nearby devices.",
+          "NSFaceIDUsageDescription": "We'll use this to unlock features that require added security.",
+          "NSPhotoLibraryAddUsageDescription": "To upload from or download to your device, allow access to your photos in your phone settings.",
+          "NSContactsUsageDescription": "Sync your contacts to easily find people you know on TikTok. Your contacts will only be used to help you connect with friends.",
+          "NSAdvertisingAttributionReportEndpoint": "https://appsflyer-skadnetwork.com/",
+          "NSMicrophoneUsageDescription": "To record audio, allow us to access your Microphone.",
+          "NSCalendarsUsageDescription": "Add events to your device calendar to get reminders when events start.",
+          "NSLocalNetworkUsageDescription": "The TikTok app will be able to discover and connect with devices that have the TikTok app installed for camera and screen sharing.",
+          "NSPhotoLibraryUsageDescription": "To upload from or download to your device, allow access to your photos in your phone settings.",
+          "NSCameraUsageDescription": "You'll be able to record video.",
+          "NSAppleMusicUsageDescription": "To select sound from your library, allow us to access your Apple Music.",
+          "NSBluetoothPeripheralUsageDescription": "This will allow \"TikTok\" to find and connect to Bluetooth accessories. This app may also use Bluetooth to connect with nearby devices.",
+          "NSUserTrackingUsageDescription": "This allows TikTok to provide you with a better ads experience."
+        }
+      },
+      "patreon": {}
+    },
+    {
+      "name": "StikDebug",
+      "bundleIdentifier": "com.stik.stikdebug",
+      "marketplaceID": "",
+      "developerName": "NightFox",
+      "subtitle": "NightFox",
+      "localizedDescription": "NightFox",
+      "iconURL": "https://i.imgur.com/JtyYEdh.png",
+      "tintColor": "#24ccfc",
+      "category": "other",
+      "screenshots": [],
+      "versions": [
+        {
+          "version": "3.0.1",
+          "date": "2026-05-14T20:49:00+09:00",
+          "localizedDescription": "",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.5/StikDebug-3.0.1.ipa",
+          "size": 10500000,
+          "buildVersion": "1",
+          "minOSVersion": "16.1"
+        }
+      ],
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {
+          "NSLocalNetworkUsageDescription": "StikDebug needs access to devices on your local network so it can connect to the targets you add to the Device Library.",
+          "NSLocationAlwaysAndWhenInUseUsageDescription": "StikDebug uses location to stay running in the background and maintain your JIT connection.",
+          "NSLocationWhenInUseUsageDescription": "StikDebug uses location to stay running in the background and maintain your JIT connection."
+        }
       },
       "patreon": {}
     },
     {
       "name": "Infuse Plus",
       "bundleIdentifier": "com.firecore.infuse",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
@@ -593,13 +711,23 @@
       ],
       "appPermissions": {
         "entitlements": [],
-        "privacy": {}
+        "privacy": {
+          "NSBluetoothAlwaysUsageDescription": "Used to discover nearby Cast devices",
+          "NSCameraUsageDescription": "Used for scanning QR codes",
+          "NSBluetoothPeripheralUsageDescription": "Used for streaming media to external devices",
+          "NSPhotoLibraryAddUsageDescription": "Used for saving QR code",
+          "NSLocalNetworkUsageDescription": "Used to discover network shares and Google Cast devices in your local network",
+          "NSAppleMusicUsageDescription": "Please allow access in order to show iTunes videos.",
+          "NSMicrophoneUsageDescription": "Used for pairing with external devices",
+          "NSFaceIDUsageDescription": "Used for unlocking your device when restrictions are enabled"
+        }
       },
       "patreon": {}
     },
     {
       "name": "nPlayer",
       "bundleIdentifier": "com.newin.nplayer",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
@@ -620,13 +748,23 @@
       ],
       "appPermissions": {
         "entitlements": [],
-        "privacy": {}
+        "privacy": {
+          "NSAppleMusicUsageDescription": "nPlayer needs access to your Media Library to play audios and videos in the App.",
+          "NSBluetoothAlwaysUsageDescription": "nPlayer needs bluetooth access to be able to find bluetooth devices in the app.",
+          "NSBluetoothPeripheralUsageDescription": "nPlayer needs bluetooth access to be able to find bluetooth devices in the app.",
+          "NSFaceIDUsageDescription": "nPlayer needs access to your Face ID to identify the access permissions in the app.",
+          "NSLocalNetworkUsageDescription": "nPlayer uses the local network to discover Cast-enabled devices on your WiFi\nnetwork.",
+          "NSMicrophoneUsageDescription": "The app will access your microphone.",
+          "NSPhotoLibraryAddUsageDescription": "nPlayer needs access to your Photo Library to save photos in the App.",
+          "NSPhotoLibraryUsageDescription": "nPlayer needs access to your Photo Library to show photos in the App."
+        }
       },
       "patreon": {}
     },
     {
       "name": "iTorrent",
       "bundleIdentifier": "com.xitrix.iTorrent2",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "NightFox",
       "localizedDescription": "NightFox",
@@ -647,13 +785,16 @@
       ],
       "appPermissions": {
         "entitlements": [],
-        "privacy": {}
+        "privacy": {
+          "NSAccentColorName": "AccentColor"
+        }
       },
       "patreon": {}
     },
     {
       "name": "EnsWilde",
       "bundleIdentifier": "com.yangjiii.EnsWilde",
+      "marketplaceID": "",
       "developerName": "NightFox",
       "subtitle": "EnsWilde",
       "localizedDescription": "EnsWilde는 카메라 무음&통화녹음안내음 제거 기능 및 여러가지 기능이 있는데\n기술적으로 현재 iOS 26.1 까지만 지원하고 그 이후 버전에서는 작동안합니다.\niOS 26.1 이상 버전인 사람들은 무슨짓을해도 사용 못하니 해당되는 사람들만 사용하세요.",
@@ -674,7 +815,9 @@
       ],
       "appPermissions": {
         "entitlements": [],
-        "privacy": {}
+        "privacy": {
+          "NSAccentColorName": "AccentColor"
+        }
       },
       "patreon": {}
     }
@@ -684,20 +827,23 @@
       "title": "YTKACE_0.9.2_21.35.3 업데이트",
       "identifier": "news_2xqyppdsze",
       "caption": "YTKACE_0.9.2_YouTube_21.35.3_bonus.ipa",
-      "date": "2026-09-01T09:45:00+09:00",
+      "date": "2026-09-01T09:45",
       "tintColor": "#fe0134",
+      "imageURL": "",
       "notify": true,
+      "url": "https://example.com/new_feature_details",
       "appID": "com.google.ios.youtube"
     },
     {
       "title": "EeveeSpotify 9.1.68 업데이트",
       "identifier": "news_g0fre90q6s",
       "caption": "EeveeSpotify 9.1.32가 재생 불가능해져서 9.1.68 버전을 소스에 업데이트함",
-      "date": "2026-08-05T16:51:00+09:00",
+      "date": "2026-08-05T16:51",
       "tintColor": "#1cd464",
+      "imageURL": "",
       "notify": true,
+      "url": "https://example.com/new_feature_details",
       "appID": null
     }
-  ],
-  "identifier": "com.nightfox.repository"
+  ]
 }

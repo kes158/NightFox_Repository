@@ -153,10 +153,10 @@
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.7/RyukGram_sideload_v1.4.0_IG446.0.0.ipa",
           "size": 332000000,
           "version": "446.0.0",
-          "buildVersion": null,
+          "buildVersion": "446.0.0",
           "date": "2026-09-10T02:31:00+09:00",
           "localizedDescription": "- Instagram_v446.0.0\n- RyukGram_v1.4.0\n",
-          "minOSVersion": null
+          "minOSVersion": "16.1"
         },
         {
           "version": "443.0.0",
@@ -208,10 +208,10 @@
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.7/RyukGram_noplugins_v1.4.0_IG446.0.0.ipa",
           "size": 258700000,
           "version": "446.0.0",
-          "buildVersion": null,
+          "buildVersion": "446.0.0",
           "date": "2026-09-10T11:51:00+09:00",
           "localizedDescription": "- Instagram_v446.0.0\n- RyukGram_v1.4.0",
-          "minOSVersion": null
+          "minOSVersion": "16.1"
         }
       ],
       "appPermissions": {
@@ -306,21 +306,21 @@
       "screenshots": [],
       "versions": [
         {
-          "version": "2026.13.1",
-          "date": "2026-05-14T20:50:00+09:00",
-          "localizedDescription": "",
-          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.5/Reddit_2026_13_1.ipa",
-          "size": 156400000,
-          "buildVersion": "626918",
-          "minOSVersion": "16.1"
-        },
-        {
           "version": "2026.17.0",
           "date": "2026-05-02T20:29:00+09:00",
           "localizedDescription": "",
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.2/Reddit_v2026.17.0.ipa",
           "size": 156200000,
           "buildVersion": "628480",
+          "minOSVersion": "16.1"
+        },
+        {
+          "version": "2026.13.1",
+          "date": "2026-05-14T20:50:00+09:00",
+          "localizedDescription": "",
+          "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.5/Reddit_2026_13_1.ipa",
+          "size": 156400000,
+          "buildVersion": "626918",
           "minOSVersion": "16.1"
         }
       ],
@@ -520,7 +520,7 @@
           "downloadURL": "https://github.com/kes158/NightFox_Repository/releases/download/1.1.7/YTMUltimate_v9.36.1.ipa",
           "size": 109100000,
           "version": "9.36.1",
-          "buildVersion": null,
+          "buildVersion": "9.36.1",
           "date": "2026-09-10T20:59:00+09:00",
           "localizedDescription": "▪️ YouTube Music 9.36.1 버전으로 업데이트\n\n*추가된 트윅*\n▪️ ReturnYouTubeMusicDislike\n▪️ YTMABConfig\n▪️ YouMusicPIP (No PIP 빌드에는 미포함)\n▪️ VolumeBoostYT\n\n**음악 다운로드 방법:**\n1. 아무 곡이나 재생\n2. 도구 모음에서 오른쪽에서 왼쪽으로 스크롤해 ⬇️ 다운로드 버튼이 보일 때까지 넘긴 후 탭\n3. \"오디오 다운로드\" 탭\n4. 아래로 스와이프해서 곡 화면 종료\n5. 하단 탭바의 ⬇️ 다운로드 아이콘 탭\n6. 저장하려는 곡을 오른쪽에서 왼쪽으로 스와이프\n7. 파란색 공유 아이콘 ⬆️을 눌러 곡 저장",
           "minOSVersion": "16.0"
@@ -677,23 +677,20 @@
       "title": "YTKACE_0.9.2_21.35.3 업데이트",
       "identifier": "news_2xqyppdsze",
       "caption": "YTKACE_0.9.2_YouTube_21.35.3_bonus.ipa",
-      "date": "2026-09-01T09:45",
+      "date": "2026-09-01T09:45:00+09:00",
       "tintColor": "#fe0134",
-      "imageURL": "",
       "notify": true,
-      "url": "https://example.com/new_feature_details",
       "appID": "com.google.ios.youtube"
     },
     {
       "title": "EeveeSpotify 9.1.68 업데이트",
       "identifier": "news_g0fre90q6s",
       "caption": "EeveeSpotify 9.1.32가 재생 불가능해져서 9.1.68 버전을 소스에 업데이트함",
-      "date": "2026-08-05T16:51",
+      "date": "2026-08-05T16:51:00+09:00",
       "tintColor": "#1cd464",
-      "imageURL": "",
       "notify": true,
-      "url": "https://example.com/new_feature_details",
       "appID": null
     }
-  ]
+  ],
+  "identifier": "com.nightfox.repository"
 }

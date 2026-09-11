@@ -346,6 +346,10 @@ def clean_version(v):
 
 def clean_app(app, cleaned_versions):
     new_app = dict(app)
+    # SideStore는 marketplaceID(빈 문자열 포함)나 Build 필드가 있으면 "notarized source"로
+    # 오인해 소스 추가 자체를 거부한다. 수동 편집으로 다시 섞여 들어와도 매 실행마다 제거한다.
+    new_app.pop("marketplaceID", None)
+    new_app.pop("Build", None)
     new_app["versions"] = sorted(cleaned_versions, key=version_sort_key, reverse=True)
     if new_app.get("localizedDescription") is None:
         new_app["localizedDescription"] = ""

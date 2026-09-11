@@ -199,7 +199,7 @@
       "name": "RyukGram(플러그인 미포함)",
       "bundleIdentifier": "com.burbn.instagram.nplugin",
       "developerName": "NightFox",
-      "subtitle": "SideStore용 IPA",
+      "subtitle": "‼️SideStore용 IPA‼️",
       "localizedDescription": "Instagram_v446.0.0\nRyukGram_v1.4.0\n‼️플러그인이 없는 App IDs 1개짜리 SideStore용 IPA‼️\n\nRyukGram (플러그인 미포함)은 외부 플러그인 로더가 비활성화된 동일한 향상된 인스타그램 빌드로, RyukGram의 핵심 기능만 포함되어 더 가볍고 안정적인 설치 환경을 제공합니다. 개인정보 보호, 로그 기록, 기기 ID 마스킹, 미디어 다운로드, 사용자 지정 채팅 테마, 설정 가능한 탭 바 등의 기능이 내장되어 있습니다. 모든 기능은 기기 내에서 실행됩니다.",
       "iconURL": "https://i.imgur.com/fWl4VE6.png",
       "tintColor": "#ffe000",

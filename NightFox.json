@@ -266,6 +266,24 @@
           "minOSVersion": "16.1"
         },
         {
+          "version": "9.1.48",
+          "date": "2026-05-11T00:00:00+09:00",
+          "localizedDescription": "- Updated to Spotify v9.1.48\n- Fix crashes\n\nCredits:\nfarokbmiledzx\nPluginsInject",
+          "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/303874879/download",
+          "size": 111225012,
+          "buildVersion": "914801659",
+          "minOSVersion": "15.0"
+        },
+        {
+          "version": "9.1.34",
+          "date": "2026-04-07T00:00:00+09:00",
+          "localizedDescription": "- Updated to Spotify v9.1.34\n- More Adblocking for visual pop-ups and Ads\n- As always, thanks to blatants for his patch bot\nDISABLE ANY VPN BEFORE OPENING AFTER INSTALL",
+          "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289733435/download",
+          "size": 98723618,
+          "buildVersion": "913402053",
+          "minOSVersion": "16.1"
+        },
+        {
           "version": "9.1.32",
           "date": "2026-04-01T00:00:00+09:00",
           "localizedDescription": "로그아웃 문제가 수정되었습니다\n\n- EeveeSpotifyRevived 퍼블릭 v9.1.32 크래시(튕김) 오류 수정\n— 홈 화면 광고 차단을 위한 광고 차단 기능 개선\n— 로그아웃 및 크래시 오류 수정\n패치 봇을 지원해 준 blatant에게 감사드립니다",
@@ -329,6 +347,24 @@
           "size": 130500000,
           "buildVersion": "916801889",
           "minOSVersion": "16.1"
+        },
+        {
+          "version": "9.1.48",
+          "date": "2026-05-11T00:00:00+09:00",
+          "localizedDescription": "- Updated to Spotify v9.1.48\n- Fix crashes\n\nCredits:\nfarokbmiledzx\nPluginsInject",
+          "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/303874951/download",
+          "size": 113640523,
+          "buildVersion": "914801659",
+          "minOSVersion": "15.0"
+        },
+        {
+          "version": "9.1.34",
+          "date": "2026-04-07T00:00:00+09:00",
+          "localizedDescription": "- Updated to Spotify v9.1.34\n- More Adblocking for visual pop-ups and Ads\n- As always, thanks to blatants for his patch bot\nDISABLE ANY VPN BEFORE OPENING AFTER INSTALL",
+          "downloadURL": "https://gitlab.com/titouan336/Spotify-AltStoreRepo/-/package_files/289733485/download",
+          "size": 104414955,
+          "buildVersion": "913402053",
+          "minOSVersion": "15.0"
         },
         {
           "version": "9.1.32",

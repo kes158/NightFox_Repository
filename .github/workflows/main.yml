@@ -57,6 +57,23 @@ jobs:
           USE_SPOTIFY_MIRROR: ${{ github.event_name != 'workflow_dispatch' || inputs.use_spotify_mirror }}
         run: python update_source.py
 
+      - name: Remove patreonURL
+        run: |
+          python3 -c "
+          import json
+
+          with open('NightFox.json', 'r', encoding='utf-8') as f:
+              data = json.load(f)
+
+          if 'patreonURL' in data:
+              removed = data.pop('patreonURL')
+              print(f'🚫 patreonURL 제거됨: {removed}')
+              with open('NightFox.json', 'w', encoding='utf-8') as f:
+                  json.dump(data, f, ensure_ascii=False, indent=2)
+          else:
+              print('patreonURL 없음 — 변경 사항 없음')
+          "
+
       - name: Commit and Push Changes
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"

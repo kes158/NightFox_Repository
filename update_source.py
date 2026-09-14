@@ -133,6 +133,12 @@ clean_base.update({
     "news": preserved_news
 })
 
+# patreonURL은 값에 관계없이 무조건 제거한다.
+# 상위 소스나 수동 편집으로 다시 섞여 들어와도 매 실행마다 지운다.
+if "patreonURL" in clean_base:
+    removed_patreon_url = clean_base.pop("patreonURL")
+    print(f"  🚫 [정제] patreonURL 제거됨: {removed_patreon_url}")
+
 
 # --- 3. 외부 데이터 수집 ---
 # 수집 실패를 모아 두었다가 마지막에 한 번에 알린다.

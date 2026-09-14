@@ -150,7 +150,7 @@
           "size": 130000000,
           "version": "21.37.4",
           "buildVersion": "21.37.4",
-          "date": "2026-09-13T00:53:00+09:00",
+          "date": "2026-09-14T15:53:00+09:00",
           "localizedDescription": "Updated to YouTube v21.37.4\nUpdated to YouMod v2.0.0\nby Tonwalter888\n\n업데이트 내역:\nhttps://github.com/Tonwalter888/YouMod/releases/tag/v2.0.0",
           "minOSVersion": "16.1"
         }
@@ -859,7 +859,7 @@
       "title": "새롭게 추가 된 YouMod_v2.0.0",
       "identifier": "news_gy4qna3igi",
       "caption": "설정 한글화를 마친 YouMod_v2.0.0을 앞으로 YTKACE와 같이 소스에서 제공하기로 하였으며, 번들 ID를 수정한 IPA이기 때문에 SideStore,LiveContainer에서만 사용 하시길 권장합니다.",
-      "date": "2026-09-14T13:02:00+09:00",
+      "date": "2026-09-14T15:53:00+09:00",
       "tintColor": "#ff0600",
       "notify": true,
       "appID": "com.google.ios.youtube.youmod"

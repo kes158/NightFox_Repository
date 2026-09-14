@@ -143,7 +143,7 @@
       "bundleIdentifier": "com.google.ios.youtube.youmod",
       "developerName": "Tonwalter888",
       "subtitle": "YouMod",
-      "localizedDescription": "현재 트윅 버전 : 2.0.0\n소스 유튜브 최신 버전 : 21.37.4\n번들ID를 com.google.ios.youtube.youmod 이렇게 수정해놔서\n유료인증서로 사용시에 알림 못받을 수 있으니\n유료인증서 사용시에 번들ID com.google.ios.youtube로 수정해 사용 권장 함",
+      "localizedDescription": "현재 트윅 버전 : 2.0.0\n소스 유튜브 최신 버전 : 21.37.4\n번들ID를 `com.google.ios.youtube.youmod` 이렇게 수정해놔서\n유료인증서로 사용시에 알림 못받을 수 있으니\n유료인증서 사용시에 번들ID `com.google.ios.youtube`로 수정해 사용 권장 함",
       "iconURL": "https://i.imgur.com/KzZra1d.png",
       "tintColor": "#fc0434",
       "category": "other",
